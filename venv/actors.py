@@ -2,9 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 import mariadb
 import sys
+from connect_db import *
+
+conn, cursor = connect_to_db()
 
 # Empty persons table
-def empty_persons(cursor):
+def empty_persons():
     try:
         cursor.execute("TRUNCATE TABLE  persons;")
     except mariadb.Error as e:
