@@ -7,9 +7,9 @@ from connect_db import *
 conn, cursor = connect_to_db()
 
 # Empty persons table
-def empty_persons():
+def empty_persons_table():
     try:
-        cursor.execute("TRUNCATE TABLE  persons;")
+        cursor.execute("DELETE FROM persons;")
     except mariadb.Error as e:
         print(f"Error: {e}")
 
@@ -39,9 +39,9 @@ def scrap_by_pagination(url):
 # End of scrap_by_pagination function
 
 
-def scrap_by_letter():
+def begin_actors_scraping():
     greek_letters = ['%CE%91', '%CE%92', '%CE%93', '%CE%94', '%CE%95', '%CE%96', '%CE%97', '%CE%98', '%CE%99', '%CE%9A', '%CE%9B', '%CE%9C', '%CE%9D', '%CE%9E', '%CE%9F', '%CE%A0', '%CE%A1', '%CE%A3', '%CE%A4', '%CE%A5', '%CE%A6', '%CE%A7', '%CE%A8']
     for each_letter in greek_letters:
         scrap_by_pagination('https://www.unstage.gr/sintelestes?letter='+each_letter)
 
-# End of scrap_by_letter function
+# End of begin_actors_scraping function
