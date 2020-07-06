@@ -10,8 +10,10 @@ from connect_db import *
 
 conn, cursor = connect_to_db()
 
-empty_production_table()
-begin_productions_scraping()
+#empty_table('production')
+#begin_productions_scraping()
 #begin_actors_scraping()
+events('https://www.viva.gr/tickets/theater/theatro-ivi/opoios-thelei-na-horisei-na-sikosei-to-heri-tou/')
+
 
 conn.close()
