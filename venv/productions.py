@@ -101,13 +101,13 @@ def events(url):
     # for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div", class_="events-container__item"):
     #     print (each_event)
 
-    #date = each_event.find(class_='events-container__item-date').getText()
-    month = re.findall("\d/\d", "Πεμ, 1/10")
-    #hour = each_event.find(class_="events-container__item-time").getText()
+    date = each_event.find(class_='events-container__item-date').getText()
+    unformatted_date = re.findall("\d+/\d+", date)
+    formatted_date = ''.join(map(str, unformatted_date)).split("/")
+    hour = each_event.find(class_="events-container__item-time").getText()
+    now = datetime.datetime.now()
+    full_date = f"{now.year}-{formatted_date[1]}-{formatted_date[0]} {hour}"
 
-    print(month)
-
-    # now2 = f"{now.year}-{}-{} {}"
     #
     # try:
     #     cursor.execute(
