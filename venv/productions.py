@@ -3,9 +3,12 @@ from bs4 import BeautifulSoup
 import mariadb
 import sys
 import datetime
+import time
 import re
 from connect_db import *
 from urllib.parse import urljoin
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 conn, cursor = connect_to_db()
 
@@ -49,8 +52,6 @@ def scrap_by_production(url):
     except mariadb.Error as e:
         print(f"Database Error: {e}")
 
-
-
 # End of scrap_by_production function
 
 
@@ -64,6 +65,7 @@ def begin_productions_scraping():
         play_url = urljoin(url,each_play['href'])
         scrap_by_production(play_url)# fill production table
         venue_scrap(play_url)# scrap venue title
+        events(play_url)#scrap events
 
     fill_venue(venue_titles)
 
@@ -73,8 +75,6 @@ def begin_productions_scraping():
 def fill_venue(lvenue_titles):
     venue_title_set = set(lvenue_titles)
     lvenue_titles = list(venue_title_set)
-
-    empty_table('venue')
 
     for each_title in lvenue_titles:
         try:
@@ -93,25 +93,60 @@ def venue_scrap(url):
         return
 
 
-
-
 def events(url):
-    page = requests.get(url)
-    soup = BeautifulSoup(page.content, 'html.parser')
-    # for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div", class_="events-container__item"):
-    #     print (each_event)
+    options = webdriver.ChromeOptions()
+    options.add_argument("headless")
+    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
+    driver.get(url)
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
 
-    date = each_event.find(class_='events-container__item-date').getText()
-    unformatted_date = re.findall("\d+/\d+", date)
-    formatted_date = ''.join(map(str, unformatted_date)).split("/")
-    hour = each_event.find(class_="events-container__item-time").getText()
-    now = datetime.datetime.now()
-    full_date = f"{now.year}-{formatted_date[1]}-{formatted_date[0]} {hour}"
+    for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div", class_="events-container__item"):
 
-    #
-    # try:
-    #     cursor.execute(
-    #         "INSERT INTO events (ProductionID,VenueID,DateEvent) VALUES (?, ?, ?)", (792, 33, now2))
-    # except mariadb.Error as e:
-    #     print(f"Database Error: {e}")
+        date = each_event.find(class_='events-container__item-date').getText()
+        unformatted_date = re.findall("\d+/\d+", date)
+        formatted_date = ''.join(map(str, unformatted_date)).split("/")
+        hour = each_event.find(class_="events-container__item-time").getText()
+        now = datetime.datetime.now()
+        full_date = f"{now.year}-{formatted_date[1]}-{formatted_date[0]} {hour}"
+
+        price_range = each_event.find("div", class_="events-container__item-prices").getText().strip()
+
+        vanue_full = each_event.find("span", class_="events-container__item-venue").getText().strip()
+        vanue_full_list = vanue_full.split("-")
+        vanue_title =  vanue_full_list[0].strip()
+        vanue_address = vanue_full_list[1].strip()
+
+        cursor.execute(
+            "SELECT DISTINCT ID FROM venue WHERE Title=?",
+            (vanue_title,))
+        row  = cursor.fetchone()
+
+        try:
+            venue_id= row[0]
+        except TypeError:
+            try:
+                cursor.execute(
+                    "INSERT INTO venue (Title,Address) VALUES (?, ?)", (vanue_title,vanue_address))
+
+                cursor.execute(
+                    "SELECT DISTINCT ID FROM venue WHERE Title=?",
+                    (vanue_title,))
+                row1 = cursor.fetchone()
+                venue_id = row1[0]
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
+
+
+        cursor.execute(
+            "SELECT ID FROM production WHERE URL=?",
+            (url,))
+        row2 = cursor.fetchone()
+        production_id = row2[0]
+
+        try:
+            cursor.execute(
+                "INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange) VALUES (?, ?, ?, ?)", (production_id, venue_id, full_date, price_range))
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
 
