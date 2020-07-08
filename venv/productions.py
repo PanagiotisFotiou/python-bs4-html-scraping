@@ -46,11 +46,18 @@ def scrap_by_production(url):
         if container.find("h4") is not None:
             production_name = container.find("h4").getText()
 
-    try:
-        cursor.execute(
-        "INSERT INTO production (Title,Description,URL,Production,MediaURL) VALUES (?, ?, ?, ?, ?)", (title, description, url, production_name, media_url))
-    except mariadb.Error as e:
-        print(f"Database Error: {e}")
+
+    organizer_id = scrap_orginizer(url)
+    if(organizer_id != 0):
+        try:
+            cursor.execute("INSERT INTO production (OrganizerID,Title,Description,URL,Production,MediaURL) VALUES (?, ?, ?, ?, ?, ?)",(organizer_id, title, description, url, production_name, media_url))
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
+    else:
+        try:
+            cursor.execute("INSERT INTO production (Title,Description,URL,Production,MediaURL) VALUES (?, ?, ?, ?, ?)", (title, description, url, production_name, media_url))
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
 
 # End of scrap_by_production function
 
@@ -65,10 +72,9 @@ def begin_productions_scraping():
         play_url = urljoin(url,each_play['href'])
         scrap_by_production(play_url)# fill production table
         venue_scrap(play_url)# scrap venue title
-        events(play_url)#scrap events
+        scrap_events(play_url)#scrap events
 
     fill_venue(venue_titles)
-
 
 # End of begin_productions_scraping function
 
@@ -83,6 +89,7 @@ def fill_venue(lvenue_titles):
         except mariadb.Error as e:
             print(f"Database Error: {e}")
 
+# End of fill_venue function
 
 def venue_scrap(url):
     page = requests.get(url)
@@ -92,8 +99,10 @@ def venue_scrap(url):
     except AttributeError as error:
         return
 
+# End of venue_scrap function
 
-def events(url):
+
+def scrap_events(url):
     options = webdriver.ChromeOptions()
     options.add_argument("headless")
     driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
@@ -137,12 +146,14 @@ def events(url):
             except mariadb.Error as e:
                 print(f"Database Error: {e}")
 
-
-        cursor.execute(
-            "SELECT ID FROM production WHERE URL=?",
-            (url,))
-        row2 = cursor.fetchone()
-        production_id = row2[0]
+        try:
+            cursor.execute(
+                "SELECT ID FROM production WHERE URL=?",
+                (url,))
+            row2 = cursor.fetchone()
+            production_id = row2[0]
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
 
         try:
             cursor.execute(
@@ -150,3 +161,49 @@ def events(url):
         except mariadb.Error as e:
             print(f"Database Error: {e}")
 
+# End of scrap_events function
+
+
+def scrap_orginizer(url):
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    try:
+        for organizer_desc in soup.find("dt", id="organizer").find_next_siblings('dd'):
+            name = organizer_desc.select(".playDetailsContainer > h4")[0].getText()
+            address = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtAddress_0").find_next_siblings(class_="field")[0].getText().strip()
+            town = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtCity_0").find_next_siblings(class_="field")[0].getText().strip()
+            postcode = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtpostCode_0").find_next_siblings(
+                class_="field")[0].getText().strip()
+            phone = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtphone_0").find_next_siblings(
+                class_="field")[0].getText().strip()
+            email = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtemail_0").find_next_siblings(
+                class_="field")[0].getText().strip()
+            doy = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtdoy_0").find_next_siblings(
+                class_="field")[0].getText().strip()
+            afm = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtvat_0").find_next_siblings(
+                class_="field")[0].getText().strip()
+
+            try:
+                cursor.execute(
+                    "SELECT ID FROM organizer WHERE Afm=?",
+                    (afm,))
+                row = cursor.fetchone()
+                try:
+                    id = row[0]
+                    return id
+                except TypeError:
+                    try:
+                        cursor.execute(
+                            "INSERT INTO organizer (Name,Address,Town,postcode,Phone,Email,Doy,Afm) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (name, address, town, postcode, phone, email, doy, afm))
+                        cursor.execute(
+                            "SELECT ID FROM organizer WHERE Afm=?",
+                            (afm,))
+                        row = cursor.fetchone()
+                        id = row[0]
+                        return id
+                    except mariadb.Error as e:
+                        print(f"Database Error: {e}")
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
+    except AttributeError as error:
+        return 0
