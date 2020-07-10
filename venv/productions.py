@@ -207,3 +207,17 @@ def scrap_orginizer(url):
                 print(f"Database Error: {e}")
     except AttributeError as error:
         return 0
+
+def scrap_persons(url):
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, 'html.parser')
+
+    try:
+        search = text=re.compile('Συντελεστές$')
+        syntelestes = soup.find("dt", string=search)
+        syntelestes_text = syntelestes.findNext('dd').getText()
+        print (syntelestes.findNext('dd').getText())
+        for each in re.findall(" [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}", syntelestes_text):
+            print (each)
+    except AttributeError as error:
+        return 0
