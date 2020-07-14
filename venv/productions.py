@@ -217,7 +217,7 @@ def scrap_persons(url):
         syntelestes = soup.find("dt", string=search)
         syntelestes_text = syntelestes.findNext('dd').getText()
         print (syntelestes.findNext('dd').getText())
-        for each in re.findall(" [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}", syntelestes_text):
+        for each in re.findall("[A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3+,}.: [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}", syntelestes_text):
             print (each)
     except AttributeError as error:
         return 0
