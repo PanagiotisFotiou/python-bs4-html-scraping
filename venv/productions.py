@@ -137,7 +137,6 @@ def scrap_events(url):
             try:
                 cursor.execute(
                     "INSERT INTO venue (Title,Address) VALUES (?, ?)", (vanue_title,vanue_address))
-
                 cursor.execute(
                     "SELECT DISTINCT ID FROM venue WHERE Title=?",
                     (vanue_title,))
@@ -211,13 +210,68 @@ def scrap_orginizer(url):
 def scrap_persons(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
+    person_id, production_id, role_id = ''
+
 
     try:
         search = text=re.compile('Συντελεστές$')
         syntelestes = soup.find("dt", string=search)
         syntelestes_text = syntelestes.findNext('dd').getText()
-        print (syntelestes.findNext('dd').getText())
-        for each in re.findall("[A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3+,}.: [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}", syntelestes_text):
+        # print (syntelestes.findNext('dd').getText())
+        for each in re.findall("(.*:){0,} ([A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}){1,}", syntelestes_text):
             print (each)
+            job = each[0].replace(':', '').strip()
+            full_name = each[1].split();
+            print(job)
+            print(full_name[0])
+            print(full_name[1])
+
+            try:
+                if not job:
+                    try:
+                        cursor.execute(
+                            "INSERT INTO roles (Role) VALUES (?, ?)",
+                            (job,))
+                        cursor.execute(
+                            "SELECT ID FROM roles WHERE Role=?",
+                            (job,))
+                        row = cursor.fetchone()
+                        role_id = row[0]
+                    except mariadb.Error as e:
+                        print(f"Database Error: {e}")
+
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
+
+
+            try:
+                cursor.execute(
+                    "INSERT INTO persons (Firstname,Lastname) VALUES (?, ?)",
+                    (full_name[0], full_name[1]))
+                cursor.execute(
+                    "SELECT ID FROM persons WHERE Firstname=? AND Lastname=?",
+                    (full_name[0], full_name[1]))
+                row = cursor.fetchone()
+                person_id = row[0]
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
+
+            try:
+                cursor.execute(
+                    "SELECT ID FROM production WHERE URL=?",
+                    (url,))
+                row = cursor.fetchone()
+                production_id = row[0]
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
+
+
+            try:
+                cursor.execute(
+                    "INSERT INTO contributions (PeopleID,ProductionID,RoleID) VALUES (?, ?, ?)",
+                    (person_id, production_id, role_id))
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
+
     except AttributeError as error:
         return 0
