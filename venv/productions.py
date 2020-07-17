@@ -210,7 +210,7 @@ def scrap_orginizer(url):
 def scrap_persons(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
-    person_id, production_id, role_id = ''
+    person_id, production_id, role_id = '','',''
 
 
     try:
@@ -227,10 +227,10 @@ def scrap_persons(url):
             print(full_name[1])
 
             try:
-                if not job:
+                if job:
                     try:
                         cursor.execute(
-                            "INSERT INTO roles (Role) VALUES (?, ?)",
+                            "INSERT INTO roles (Role) VALUES (?)",
                             (job,))
                         cursor.execute(
                             "SELECT ID FROM roles WHERE Role=?",

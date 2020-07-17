@@ -15,6 +15,7 @@ conn, cursor = connect_to_db()
 # empty_table('production')
 # empty_table('venue')
 # empty_table('organizer')
+empty_table('persons')
 # begin_productions_scraping()
 #begin_actors_scraping()
 
