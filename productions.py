@@ -1,3 +1,5 @@
+import string
+
 import requests
 from bs4 import BeautifulSoup
 import mariadb
@@ -5,6 +7,7 @@ import sys
 import datetime
 import time
 import re
+import unidecode
 from connect_db import *
 from urllib.parse import urljoin
 from selenium import webdriver
@@ -212,19 +215,20 @@ def scrap_persons(url):
     soup = BeautifulSoup(page.content, 'html.parser')
     person_id, production_id, role_id = '','',''
 
-
     try:
         search = text=re.compile('Συντελεστές$')
         syntelestes = soup.find("dt", string=search)
-        syntelestes_text = syntelestes.findNext('dd').getText()
-        print (syntelestes.findNext('dd').getText())
-        for each in re.findall("([A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}){0,} ([A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}){1,}", syntelestes_text):
+        syntelestes_text = syntelestes.findNext('dd').getText().strip()
+        syntelestes_text = 'σκηνοθεσϊα ΓΙΑΝΝΗΣ ΚΑΚΛΕΑΣ'
+        syntelestes_text = syntelestes_text.replace('ί', 'ι').replace('ϊ','ι').upper()
+        print (syntelestes_text)
+        for each in re.findall("(σκηνοθεσια){0,}:*\s([A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}){1,}", syntelestes_text ,re.IGNORECASE):
             print (each)
-            job = each[0].replace(':', '').strip()
-            full_name = each[1].split();
-            print(job)
-            print(full_name[0])
-            print(full_name[1])
+            # job = each[0].replace(':', '').strip()
+            # full_name = each[1].split();
+            # print(job)
+            # print(full_name[0])
+            # print(full_name[1])
 
             # try:
             #     if job:
