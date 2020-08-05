@@ -216,14 +216,18 @@ def scrap_persons(url):
     person_id, production_id, role_id = '','',''
 
     try:
-        search = text=re.compile('Συντελεστές$')
+        search = text =re.compile('Συντελεστές$')
         syntelestes = soup.find("dt", string=search)
-        syntelestes_text = syntelestes.findNext('dd').getText().strip()
-        syntelestes_text = 'σκηνοθεσϊα ΓΙΑΝΝΗΣ ΚΑΚΛΕΑΣ'
-        syntelestes_text = syntelestes_text.replace('ί', 'ι').replace('ϊ','ι').upper()
-        print (syntelestes_text)
-        for each in re.findall("(σκηνοθεσια){0,}:*\s([A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}){1,}", syntelestes_text ,re.IGNORECASE):
-            print (each)
+        syntelestes_text = syntelestes.findNext('dd')
+        #print (syntelestes_text)
+        idx = 0;
+        for each in syntelestes_text.select("p"):
+            print(idx)
+            idx = idx + 1
+            print(each)
+            job = re.findall("(.*?):", each.getText(), re.IGNORECASE)
+            print(job)
+
             # job = each[0].replace(':', '').strip()
             # full_name = each[1].split();
             # print(job)

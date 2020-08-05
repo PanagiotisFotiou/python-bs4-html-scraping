@@ -22,7 +22,7 @@ conn, cursor = connect_to_db()
 #scrap_events('https://www.viva.gr/tickets/theater/pollaploi-choroi/den-akouw-de-vlepw-de-milaw')
 #scrap_by_production('https://www.viva.gr/tickets/theater/anoigei-avlaia/oloi-mazi-mporoume')
 
-scrap_persons('https://www.viva.gr/tickets/theater/periodeia/perimenontas-ton-gkonto')
-#scrap_persons('https://www.viva.gr/tickets/theater/periodeia/art-kalokairini-periodeia')
+#scrap_persons('https://www.viva.gr/tickets/theater/periodeia/perimenontas-ton-gkonto')
+scrap_persons('https://www.viva.gr/tickets/theater/periodeia/art-kalokairini-periodeia')
 
 conn.close()

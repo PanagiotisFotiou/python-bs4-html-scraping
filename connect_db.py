@@ -11,7 +11,7 @@ def connect_to_db():
         )
     except mariadb.Error as e:
         print(f"Error connecting to MariaDB Platform: {e}")
-        sys.exit(1)
+        conn.exit(1)
     # Get Cursor
     cursor = conn.cursor()
     return conn,cursor
