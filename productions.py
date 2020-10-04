@@ -1,5 +1,4 @@
 import string
-
 import requests
 from bs4 import BeautifulSoup
 import mariadb
@@ -16,6 +15,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 conn, cursor = connect_to_db()
 
 venue_titles = []
+system_id = 2
 
 def empty_table(table_name):
     try:
@@ -53,12 +53,12 @@ def scrap_by_production(url):
     organizer_id = scrap_orginizer(url)
     if(organizer_id != 0):
         try:
-            cursor.execute("INSERT INTO production (OrganizerID,Title,Description,URL,Production,MediaURL) VALUES (?, ?, ?, ?, ?, ?)",(organizer_id, title, description, url, production_name, media_url))
+            cursor.execute("INSERT INTO production (OrganizerID,Title,Description,URL,Production,MediaURL, Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?,?)",(organizer_id, title, description, url, production_name, media_url, 0, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
     else:
         try:
-            cursor.execute("INSERT INTO production (Title,Description,URL,Production,MediaURL) VALUES (?, ?, ?, ?, ?)", (title, description, url, production_name, media_url))
+            cursor.execute("INSERT INTO production (Title,Description,URL,Production,MediaURL,Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?)", (title, description, url, production_name, media_url, 0, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
 
@@ -88,7 +88,7 @@ def fill_venue(lvenue_titles):
     for each_title in lvenue_titles:
         try:
             cursor.execute(
-            "INSERT INTO venue (Title) VALUES (?)", (each_title,))
+            "INSERT INTO venue (Title, SystemID) VALUES (?, ?)", (each_title, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
 
@@ -103,7 +103,6 @@ def venue_scrap(url):
         return
 
 # End of venue_scrap function
-
 
 def scrap_events(url):
     options = webdriver.ChromeOptions()
@@ -132,14 +131,14 @@ def scrap_events(url):
         cursor.execute(
             "SELECT DISTINCT ID FROM venue WHERE Title=?",
             (vanue_title,))
-        row  = cursor.fetchone()
+        row = cursor.fetchone()
 
         try:
             venue_id= row[0]
         except TypeError:
             try:
                 cursor.execute(
-                    "INSERT INTO venue (Title,Address) VALUES (?, ?)", (vanue_title,vanue_address))
+                    "INSERT INTO venue (Title,Address, SystemID) VALUES (?, ?, ?)", (vanue_title,vanue_address, system_id))
                 cursor.execute(
                     "SELECT DISTINCT ID FROM venue WHERE Title=?",
                     (vanue_title,))
@@ -159,7 +158,7 @@ def scrap_events(url):
 
         try:
             cursor.execute(
-                "INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange) VALUES (?, ?, ?, ?)", (production_id, venue_id, full_date, price_range))
+                "INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)", (production_id, venue_id, full_date, price_range, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
 
@@ -196,7 +195,7 @@ def scrap_orginizer(url):
                 except TypeError:
                     try:
                         cursor.execute(
-                            "INSERT INTO organizer (Name,Address,Town,postcode,Phone,Email,Doy,Afm) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (name, address, town, postcode, phone, email, doy, afm))
+                            "INSERT INTO organizer (Name,Address,Town,postcode,Phone,Email,Doy,Afm, SystemID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (name, address, town, postcode, phone, email, doy, afm, system_id))
                         cursor.execute(
                             "SELECT ID FROM organizer WHERE Afm=?",
                             (afm,))
@@ -216,18 +215,13 @@ def scrap_persons(url):
     person_id, production_id, role_id = '','',''
 
     try:
-        search = text =re.compile('Συντελεστές$')
+        search = text=re.compile('Συντελεστές$')
         syntelestes = soup.find("dt", string=search)
-        syntelestes_text = syntelestes.findNext('dd')
+        syntelestes_text = syntelestes.findNext('dd').getText().strip()
         #print (syntelestes_text)
-        idx = 0;
-        for each in syntelestes_text.select("p"):
-            print(idx)
-            idx = idx + 1
-            print(each)
-            job = re.findall("(.*?):", each.getText(), re.IGNORECASE)
-            print(job)
-
+        #for each in re.findall("(σκηνοθεσια){0,}:*\s([A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,} [A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]{3,}){1,}", syntelestes_text ,re.IGNORECASE):
+        for each in syntelestes_text.split('\n'):
+            print (each.split(":"))
             # job = each[0].replace(':', '').strip()
             # full_name = each[1].split();
             # print(job)
