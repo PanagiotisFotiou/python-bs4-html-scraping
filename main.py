@@ -11,7 +11,7 @@ from connect_db import *
 conn, cursor = connect_to_db()
 
 
-#empty_table('events')
+# empty_table('events')
 #empty_table('contributions')
 #empty_table('production')
 #empty_table('venue')
