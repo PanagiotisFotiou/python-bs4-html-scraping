@@ -53,14 +53,15 @@ def scrap_by_production(url):
     organizer_id = scrap_orginizer(url)
     if(organizer_id != 0):
         try:
-            cursor.execute("INSERT INTO production (OrganizerID,Title,Description,URL,Production,MediaURL, Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?,?)",(organizer_id, title, description, url, production_name, media_url, 0, system_id))
+            cursor.execute("INSERT INTO production (OrganizerID,Title,Description,URL,Producer,MediaURL, Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?,?)",(organizer_id, title, description, url, production_name, media_url, 0, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
     else:
         try:
-            cursor.execute("INSERT INTO production (Title,Description,URL,Production,MediaURL,Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?)", (title, description, url, production_name, media_url, 0, system_id))
+            cursor.execute("INSERT INTO production (Title,Description,URL,Producer,MediaURL,Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?)", (title, description, url, production_name, media_url, 0, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
+
 
 # End of scrap_by_production function
 
@@ -235,16 +236,14 @@ def scrap_persons(url):
                     if len(names)>1:
                         for each_name in names:
                             name = each_name.strip().replace(u"\xa0"," ")
-                            name = name.split(" ")
-                            print("List names: " + name[0], name[1])
-                            person_id = insertPersonToDB(name[0], name[1])
+                            print("List names: " + name)
+                            person_id = insertPersonToDB(name)
                             insertContributionToDB(url, person_id, role_id)
 
                     else:
                         name = full_name.strip().replace(u"\xa0", " ")
-                        name = name.strip().split(" ")
                         print("name: " + full_name.strip())
-                        person_id = insertPersonToDB(name[0], name[1])
+                        person_id = insertPersonToDB(name)
                         insertContributionToDB(url, person_id, role_id)
 
                 elif length == 1:
@@ -252,12 +251,11 @@ def scrap_persons(url):
                     names = re.split(', |- ', line[0])
                     for each_name in names:
                         name = each_name.strip().replace(u"\xa0", " ")
-                        name = name.split(" ")
                         if len(name) < 2:
                             continue
-                        print("ηθοποιος: " + name[0], name[1])
+                        print("ηθοποιος: " + name)
                         role_id = insertRoletoDb('Ηθοποιός')
-                        person_id = insertPersonToDB(name[0], name[1])
+                        person_id = insertPersonToDB(name)
                         insertContributionToDB(url, person_id, role_id)
     except AttributeError as error:
         return 0
@@ -286,20 +284,20 @@ def insertRoletoDb(role):
     return role_id
 
 
-def insertPersonToDB(firstName,lastName):
+def insertPersonToDB(fullname):
     cursor.execute(
-        "SELECT DISTINCT ID FROM persons WHERE Firstname=? AND Lastname=?",
-        (firstName, lastName))
+        "SELECT DISTINCT ID FROM persons WHERE Firstname=?",
+        (fullname, ))
     row = cursor.fetchone()
     try:
         person_id = row[0]
     except TypeError:
         try:
             cursor.execute(
-                "INSERT INTO persons (Firstname,Lastname,SystemID) VALUES (?, ?, ?)",(firstName, lastName, system_id))
+                "INSERT INTO persons (Firstname,Lastname,SystemID) VALUES (?, ?, ?)",(fullname, system_id))
             cursor.execute(
-                "SELECT ID FROM persons WHERE Firstname=? AND Lastname=?",
-                (firstName, lastName))
+                "SELECT ID FROM persons WHERE fullname=?",
+                (fullname, ))
             row1 = cursor.fetchone()
             person_id = row1[0]
         except mariadb.Error as e:
