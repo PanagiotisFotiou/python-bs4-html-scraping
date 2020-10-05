@@ -234,20 +234,28 @@ def scrap_persons(url):
                     role_id = insertRoletoDb(job)
                     if len(names)>1:
                         for each_name in names:
-                            name = each_name.strip().split(" ")
+                            name = each_name.strip().replace(u"\xa0"," ")
+                            name = name.split(" ")
+                            print("List names: " + name[0], name[1])
                             person_id = insertPersonToDB(name[0], name[1])
                             insertContributionToDB(url, person_id, role_id)
-                            print("List name: " + each_name.strip())
+
                     else:
-                        name = full_name.strip().split(" ")
+                        name = full_name.strip().replace(u"\xa0", " ")
+                        name = name.strip().split(" ")
                         print("name: " + full_name.strip())
                         person_id = insertPersonToDB(name[0], name[1])
                         insertContributionToDB(url, person_id, role_id)
 
                 elif length == 1:
+
                     names = re.split(', |- ', line[0])
                     for each_name in names:
-                        name = each_name.strip().split(" ")
+                        name = each_name.strip().replace(u"\xa0", " ")
+                        name = name.split(" ")
+                        if len(name) < 2:
+                            continue
+                        print("ηθοποιος: " + name[0], name[1])
                         role_id = insertRoletoDb('Ηθοποιός')
                         person_id = insertPersonToDB(name[0], name[1])
                         insertContributionToDB(url, person_id, role_id)
