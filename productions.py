@@ -216,7 +216,8 @@ def scrap_orginizer(url):
 def scrap_persons(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
-    person_id, production_id, role_id = '','',''
+    person_id, production_id, role_id, subrole = '','','',''
+    subrole_flag = 0
 
     try:
         search = text=re.compile('Συντελεστές$')
@@ -230,33 +231,41 @@ def scrap_persons(url):
                 if (length > 1) and (len(line[1]) > 0):
                     job = line[0]
                     full_name = line[1]
-                    names = re.split(', |- ',full_name)
+                    names = re.split(', |- ', full_name)
+
+                    if(subrole_flag == 1):
+                        subrole = line[0]
+                        role_id = insertRoletoDb('Ηθοποιός')
+                    else:
+                        role_id = insertRoletoDb(job)
+
                     print("job: " + job)
-                    role_id = insertRoletoDb(job)
+
                     if len(names)>1:
                         for each_name in names:
                             name = each_name.strip().replace(u"\xa0"," ")
                             print("List names: " + name)
                             person_id = insertPersonToDB(name)
-                            insertContributionToDB(url, person_id, role_id)
+                            insertContributionToDB(url, person_id, role_id,subrole)
 
                     else:
                         name = full_name.strip().replace(u"\xa0", " ")
                         print("name: " + full_name.strip())
                         person_id = insertPersonToDB(name)
-                        insertContributionToDB(url, person_id, role_id)
+                        insertContributionToDB(url, person_id, role_id, subrole)
 
                 elif length == 1:
 
                     names = re.split(', |- ', line[0])
                     for each_name in names:
                         name = each_name.strip().replace(u"\xa0", " ")
-                        if len(name) < 2:
+                        if len(name.split(" ")) < 2:
+                            subrole_flag = 1
                             continue
                         print("ηθοποιος: " + name)
                         role_id = insertRoletoDb('Ηθοποιός')
                         person_id = insertPersonToDB(name)
-                        insertContributionToDB(url, person_id, role_id)
+                        insertContributionToDB(url, person_id, role_id, subrole)
     except AttributeError as error:
         return 0
 
@@ -286,7 +295,7 @@ def insertRoletoDb(role):
 
 def insertPersonToDB(fullname):
     cursor.execute(
-        "SELECT DISTINCT ID FROM persons WHERE Firstname=?",
+        "SELECT DISTINCT ID FROM persons WHERE Fullname=?",
         (fullname, ))
     row = cursor.fetchone()
     try:
@@ -294,9 +303,9 @@ def insertPersonToDB(fullname):
     except TypeError:
         try:
             cursor.execute(
-                "INSERT INTO persons (Firstname,Lastname,SystemID) VALUES (?, ?, ?)",(fullname, system_id))
+                "INSERT INTO persons (Fullname,SystemID) VALUES (?, ?)",(fullname, system_id))
             cursor.execute(
-                "SELECT ID FROM persons WHERE fullname=?",
+                "SELECT ID FROM persons WHERE Fullname=?",
                 (fullname, ))
             row1 = cursor.fetchone()
             person_id = row1[0]
@@ -304,7 +313,7 @@ def insertPersonToDB(fullname):
             print(f"Database Error: {e}")
     return person_id
 
-def insertContributionToDB(url,person_id,role_id):
+def insertContributionToDB(url,person_id,role_id,subrole):
     try:
         cursor.execute(
             "SELECT ID FROM production WHERE URL=?",
@@ -316,7 +325,7 @@ def insertContributionToDB(url,person_id,role_id):
 
     try:
         cursor.execute(
-            "INSERT INTO contributions (PeopleID,ProductionID,RoleID,SystemID) VALUES (?, ?, ?, ?)",
-            (person_id, production_id, role_id, system_id))
+            "INSERT INTO contributions (PeopleID,ProductionID,RoleID,subRole,SystemID) VALUES (?, ?, ?, ?, ?)",
+            (person_id, production_id, role_id, subrole,system_id))
     except mariadb.Error as e:
         print(f"Database Error: {e}")
