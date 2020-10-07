@@ -1,0 +1,1906 @@
+"C:\Users\Panagiotis Artabout\PycharmProjects\untitled\venv\Scripts\python.exe" "C:/Users/Panagiotis Artabout/PycharmProjects/untitled/main.py"
+scraping url: https://www.viva.gr/tickets/theatre/pallas/trito-stefani
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σκηνοθεσία
+name: Κωνσταντίνος Μαρκουλάκης
+job: Διασκευή
+List names: Κωνσταντίνος Μαρκουλάκης
+List names: Νίκος Μανουσάκης
+job: Σκηνικά
+name: Πάρις Μέξης
+job: Μουσική
+name: Μίνως Μάτσας
+job: Φωτισμοί
+name: Αλέκος Γιάνναρος
+job: Κοστούμια
+name: Βασιλική Σύρμα
+job: Κίνηση
+name: Κική Μπάκα
+job: Βοηθός σκηνοθέτη
+name: Χριστίνα Ματθαίου
+job: Φωτογραφίες
+name: Ελίνα Γιουνανλή
+skipped line: ΠΡΩΤΑΓΩΝΙΣΤΟΥΝ
+ηθοποιος:  onoma: Μαρία Καβογιάννη
+ηθοποιος:  onoma: Μαρία Κίτσου
+skipped line: ΠΑΙΖΟΥΝ ΑΛΦΑΒΗΤΙΚΑ
+ηθοποιος:  onoma: Ανταλόπουλος Κώστας
+ηθοποιος:  onoma: Βαλατσού Ειρήνη
+ηθοποιος:  onoma: Γιαννακοπούλου Ντάνη
+ηθοποιος:  onoma: Επιθυμιάδη Δανάη
+ηθοποιος:  onoma: Καραβιώτης Δημήτρης
+ηθοποιος:  onoma: Κεκέ Σύρμω
+ηθοποιος:  onoma: Λέκκας Τάσος
+ηθοποιος:  onoma: Λούτη Ορνέλα
+ηθοποιος:  onoma: Μακρής Γιώργος
+ηθοποιος:  onoma: Μανδρινός Δημήτρης
+ηθοποιος:  onoma: Μαντζώρος Στάθης
+ηθοποιος:  onoma: Μυριαγκού Καλλιρρόη
+ηθοποιος:  onoma: Νούσης Γιώργος
+ηθοποιος:  onoma: Παγκάλου Ελευθερία
+ηθοποιος:  onoma: Παντελάκη Αλεξάνδρα
+ηθοποιος:  onoma: Σκολίδη Ελίζα
+ηθοποιος:  onoma: Χαζαράκης Μενέλαος
+ηθοποιος:  onoma: Ψυχογυιός Γιώργος
+scraping url: https://www.viva.gr/tickets/theater/multiple-locations/i-porni-apo-panw
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενο
+name: Αντώνης Τσιπιανίτης
+job: Σκηνοθεσία
+name: Σταμάτης Πατρώνης
+job: Φωτισμοί
+name: Ελένη Αναγνωστοπούλου
+job: Καλλιτεχνική επιμέλεια
+name: Μηνάς Μινατσής
+job: Κοστούμια
+name: Δημήτρης Ανδριανός
+job: Μουσική επιμέλεια
+List names: Μιχάλης Ρουμπής
+List names: Ιωάννης-Ιόλαος Μανιάτης
+job: Βοηθός σκηνοθέτη
+name: Μιχάλης Ρουμπής
+job: Επιμέλεια σκηνικού
+name: Ματθαίος Δαμίγος
+scraping url: https://www.viva.gr/tickets/theater/theatro-ivi/opoios-thelei-na-horisei-na-sikosei-to-heri-tou
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενο και σκηνοθεσία
+name: Γιώργος Καπουτζίδης
+job: Σκηνικά
+name: Μαίρη Τσαγκάρη
+job: Κοστούμια
+name: Κική Γραμματικοπούλου
+job: Φωτισμός
+name: Χρήστος Τζιόγκας
+job: Βοηθός Σκηνοθέτη
+name: Μαρία Οικονομίδη
+skipped line: Παίζουν με σειρά εμφάνισης
+ηθοποιος:  onoma: Αλεξάνδρα Ταβουλάρη
+ηθοποιος:  onoma: Μαριλού Κατσαφάδου
+ηθοποιος:  onoma: Ανθή Σαββάκη
+ηθοποιος:  onoma: Γιώργος Σαββίδης
+ηθοποιος:  onoma: Γιάννης Κουκουράκης
+ηθοποιος:  onoma: Πάνος Νάτσης
+ηθοποιος:  onoma: Αποστόλης Ψαρρός
+skipped line: και η Κατιάνα Μπαλανίκα
+scraping url: https://www.viva.gr/tickets/theater/theatro-poreia/giougkerman
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Διασκευή
+name: Στρατής Πασχάλης
+job: Σκηνοθεσία
+name: Δημήτρης Τάρλοου
+job: Σκηνικά
+List names: Έλλη Παπαγεωργακοπούλου
+List names: Δημήτρης Αγγέλης
+job: Κοστούμια
+name: Άγγελος Μέντης
+job: Μουσική
+name: Κατερίνα Πολέμη
+job: Φωτισμοί
+name: Αλέκος Αναστασίου
+job: Χορογραφία - Επιμέλεια κίνησης
+name: Κορίνα Κόκκαλη
+job: Σχεδιασμός μακιγιάζ
+name: Εύη Ζαφειροπούλου
+job: Βοηθοί σκηνοθέτη
+List names: Δήμητρα Κουτσοκώστα
+List names: Θωμαΐς Γκερλεγκτσή
+List names: Ελένη Χαλαστάνη
+job: Βοηθοί ενδυματολόγου
+List names: Αλέξανδρος Γαρνάβος
+List names: Λίνα Σταυροπούλου
+job: Βοηθός χορογράφου
+name: Χριστιάνα Κοσιάρη
+job: Φωτογραφίες-trailer
+name: Βάσια Αναγνωστοπούλου
+job: Γιούγκερμαν
+name: Γιάννης Στάνκογλου
+job: Μιχάλης Καραμάνος / Σύλβεστρος
+name: Χρήστος Μαλάκης
+job: Ντάινα / Λίλη
+List names: Ζέτα Μακρυπούλια
+List names: Βασιλική Τρουφάκου
+job: Βούλα
+name: Θάλεια Σταματέλου
+job: Γιώργος Μάζης / Αστυφύλακας
+List names: Γιάννης Καπελέρης
+List names: Γιάννης Σοφολόγης
+job: Κλεό / Μάγκας 2
+List names: Αλέξανδρος Βαμβούκος
+List names: Πολύδωρος Βογιατζής
+job: Σκλαβογιάννης / Διευθυντής Τραπέζης / Ντε Κρεσύ
+name: Χάρης Εμμανουήλ
+job: Θωμάς Παπαδέλης / Σύμβουλος οικονομικών / Κάρλ
+name: Γιάννης Νταλιάνης
+job: Αλκμήνη / Σάσα
+name: Δανάη Σαριδάκη
+job: Ασπασία / μητέρα Καραμάνου
+name: Καίτη Μανωλιδάκη
+job: Λιάπκιν / Μόγιας / Πρίγκηψ Αρκάνωφ
+name: Δημήτρης Μπίτος
+job: Γερο-Στρατής / Υπηρέτης
+name: Νίκος Καλαμό
+job: Νίτσα / γυναίκα που τραγουδά / Αντιόπη
+name: Λήδα Μανιατάκου
+job: Μάγκας 1 / Παύλος / Νεαρός
+name: Αλκιβιάδης Μαγγόνας
+job: Κοσμική καλλονή / Πόρνη 2 / Συνοδός Γιώργου
+name: Μπίλιω Μαρνέλη
+job: Τσιγγάνα / Πόρνη 1 / Συνοδός Κλεό / Ελίζ
+List names: Ειρήνη – Ερωφίλη Κλέπκου
+List names: Κορίνα Κόκκαλη
+job: Νάσος / Υπάλληλος / Τραπεζικός
+name: Ανδρέας Νάτσιος
+job: Γυναίκα συνοδός
+name: Στεφανία Γώγου. Ελένη Χαλαστάνη
+skipped line: Ζωντανά παίζει μουσική η Στέλλα Ζιοπούλου και η Λένα Χατζηγρηγορίου
+scraping url: https://www.viva.gr/tickets/theater/theatro-kivotos/rinokeros
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σκηνοθεσία/Απόδοση κειμένου
+name: Γιάννης Κακλέας
+job: Σκηνικά
+List names: Σάκης Μπιρμπίλης
+List names: Γιάννης Κακλέας
+job: Κοστούμια
+name: Μαρία Καραπούλιου
+job: Μουσική
+name: Σταύρος Γασπαράτος
+job: Φωτισμοί
+name: Σάκης Μπιρμπίλης
+job: Κινησιολογία
+name: Αγγελική Τρομπούκη
+job: Σχεδιασμός βίντεο
+name: Στάθης Αθανασίου
+job: Βοηθός σκηνοθέτη
+name: Άρης Κακλέας
+job: Παίζουν
+List names: Άρης Σερβετάλης
+List names: Στέλιος Ιακωβίδης
+List names: Ροζαλία Κυρίου
+List names: Θάνος Μπίρκος
+List names: Πάνος Παπαδόπουλος
+List names: Αγγελική Τρομπούκη
+List names: Κωστής Μπούντας
+List names: Αναστασία Στυλιανίδη
+job: Παραγωγή
+name: ΑΜ ΤΕΧΝΗΧΩΡΟΣ ΕΕ
+scraping url: https://www.viva.gr/tickets/theater/neos-akadimos/ksypolitoi-sto-parko
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: Ταυτότητα Παράστασης
+job: Συγγραφέας
+name: Νηλ Σάιμον
+job: Σκηνοθεσία
+name: Ρέινα Σ. Εσκενάζυ
+job: Μετάφραση
+name: Αντώνης Γαλέος
+job: Σκηνικά
+name: Άση Δημητρολοπούλου
+job: Κοστούμια
+name: Μάριος Καραβασίλης
+job: Φωτισμοί
+name: Μελίνα Μάσχα
+job: Μουσική/Ενορχήστρωση
+name: Σταμάτης Γιατράκος
+job: Φωτογραφία
+name: Gridfox (Δημήτρης Γκιολές)
+job: Βοηθός Σκηνοθέτη
+name: Ανδρομάχη Παπαδοπούλου
+job: Γραφιστική Επεξεργασία
+name: Gridfox (Στιβανάκης Γιάννης)
+job: Hairstyle
+name: Κέλλυ Καλογεροπούλου
+job: Make up artist
+name: Ελίνα Μαυράκη
+job: Social Media Manager
+name: Σπύρος Μάης
+job: Διεύθυνση Παραγωγής
+name: Ιωάννης Παντελίδης
+job: Προβολή/Επικοινωνία
+name: Αγλαϊα Παγώνα
+skipped line: Διανομή
+ηθοποιος:  onoma: Αργύρης Αγγέλου
+ηθοποιος:  onoma: Βασιλική Τρουφάκου
+ηθοποιος:  onoma: Άρης Λεμπεσόπουλος
+ηθοποιος:  onoma: Ελένη Κρίτα
+ηθοποιος:  onoma: Jerome Kaluta
+ηθοποιος:  onoma: Νίκος Κυριανάκης
+scraping url: https://www.viva.gr/tickets/theatre/rialto/hair
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+ηθοποιος:  onoma: Ταυτότητα Παράστασης
+job: Απόδοση - Σκηνοθεσία
+name: Δημήτρης Μαλισσόβας
+job: Χορογραφίες
+name: Τάσος Ξιαρχό
+job: Μουσική διδασκαλία - διεύθυνση ορχήστρας
+name: Ανδρέας Κουρέτας
+job: Απόδοση Ελληνικών στίχων
+name: Ανδρέας Κουρέτας
+job: Ενδυματολόγος
+name: Γιώργος Σεγρεδάκης
+job: Σκηνογράφος
+name: Τέλης Καρανάνος
+job: Μακιγιάζ
+name: Make Up Lab by Yannis Marketakis
+job: Hair styling
+name: Κώστας Μπράτης
+job: Φωτογραφίες παράστασης
+name: Πάνος Γιαννακόπουλος
+job: Διεύθυνση παραγωγής
+name: Γιώργος Σαμαρτζής
+job: Βοηθός σκηνοθέτη
+name: Τάσος Κοντόγιωργας
+skipped line: Πρωταγωνιστούν
+skipped line: Μαίρη Συνατσάκη, Ίαν Στρατής, Ιάσονας Μανδηλάς, Κατερίνα Σούσουλα, Κόνυ Μεταξά, Τάσος Ξιαρχό,, Στέφανος Μουαγκιέ, Νικόλας Ραπτάκης, Έλενα Κορωναίου, Έλενα Βακάλη, Ανδρέας Κουρέτας, Αντώνης Βλάχος, Γιώργος Γαζής, Ηλίας Σαμαρτζής
+scraping url: https://www.viva.gr/tickets/theater/mikro-pallas/metamfiesi
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενο 
+name: Βαγγέλης Χατζηγιαννίδης
+job: Σκηνοθεσία
+name: Σταύρος Ράγιας
+job: Σκηνικά-Κοστούμια
+name: Ανδρέας Γεωργιάδης
+job: Μουσική 
+name: Άγγελος Τριανταφύλλου
+scraping url: https://www.viva.gr/tickets/theatre/gialino/sinoikia-to-oneiro
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Θεατρική Διασκευή-Σκηνοθεσία
+name: Σωτήρης Χατζάκης
+job: Μουσική
+name: Μίκης Θεοδωράκης
+job: Σκηνικά
+name: Έρση Δρίνη
+job: Κουστού΅ια
+name: Γιάννης Μετζικώφ
+job: Φωτισ΅οί
+name: Αντώνης Παναγιωτόπουλος
+job: Φωτογραφίες
+name: Αγγελική Κοκκοβέ
+job: Βοηθός σκηνοθέτη
+name: Βίκυ Παναγιωτοπούλου
+job: Βοηθός σκηνογράφου, ενδυματολόγου
+name: Εύα Παραδέλλη
+job: Επικοινωνία- Δημόσιες Σχέσεις
+name: Χρήστος Καρυώτης
+job: Παραγωγή
+name: Γυάλινο Μουσικό Θέατρο
+skipped line: Πρωταγωνιστούν
+skipped line: Μάνος Βακούσης, Γιωργής Τσαμπουράκης, Μαρία Φιλίππου, Χαρά- Μάτα Γιαννάτου, Διονύσης Βούλτσος, Δημήτρης Καραμπέτσης, Αγαπη Μανουρά, Γεράσιμος Σοφιανός, Κατερίνα Σπάρταλη και στο ρόλο του τρελού ο Κώστας Φλωκατούλας.
+skipped line: Τα τραγούδια ερμηνεύει ζωντανά ο Ζαχαρίας Καρούνης. Συμμετέχει η Σοφία Μιχαηλίδη.
+scraping url: https://www.viva.gr/tickets/theater/neos-akadimos/pontikopagida
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+ηθοποιος:  onoma: Ταυτότητα Παράστασης
+job: Συγγραφέας
+name: Αγκάθα Κρίστι
+job: Σκηνοθεσία / Δραματουργική επεξεργασία
+name: Κίρκη Καραλή
+job: Μετάφραση
+name: Αντώνης Γαλέος
+job: Πρωτότυπη Μουσική
+name: Αντώνης Παπακωνσταντίνου
+job: Σκηνικά/Κοστούμια
+name: Άση Δημητρολοπούλου
+job: Φωτισμοί
+name: Μελίνα Μάσχα
+job: Β. Σκηνοθέτη
+name: Λητώ Τριανταφυλλίδου
+job: Φωτογραφία
+name: Gridfox (Δημήτρης Γκιολές)
+job: Γραφιστική Επεξεργασία
+name: Gridfox (Στιβανάκης Γιάννης)
+job: Hairstyle
+name: Κέλλυ Καλογεροπούλου
+job: Make up artist
+name: Ελίνα Μαυράκη
+job: Social Media Manager
+name: Σπύρος Μάης
+job: Διεύθυνση Παραγωγής
+name: Ιωάννης Παντελίδης
+job: Προβολή/Επικοινωνία
+name: Αγλαϊα Παγώνα
+skipped line: Διανομή (με αλφαβητική σειρά)
+ηθοποιος:  onoma: Κωνσταντάκη Μαρία
+ηθοποιος:  onoma: Λίτσης Ερρίκος
+ηθοποιος:  onoma: Λουκάκη Δανάη
+ηθοποιος:  onoma: Οικονομίδου Ράνια
+ηθοποιος:  onoma: Πολυζωίδης Σήφης
+ηθοποιος:  onoma: Πουρσανίδης Νίκος
+ηθοποιος:  onoma: Συριόπουλος Μιχάλης
+ηθοποιος:  onoma: Τότσικας Αποστόλης
+job: Β Διανομή
+name: Αλέξανδρος Βάρθης
+scraping url: https://www.viva.gr/tickets/theater/theatro-attis/nora
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σκηνοθεσία - Σκηνική εγκατάσταση – Διασκευή
+name: Θεόδωρος Τερζόπουλος
+job: Μουσική
+name: Παναγιώτης Βελιαντίτης
+job: Κοστούμια
+name: Yiorgos Eleftheriades
+job: Φωτισμοί
+List names: Θεόδωρος Τερζόπουλος
+List names: Κωνσταντίνος Μπεθάνης
+job: Εκτέλεση σκηνικής εγκατάστασης
+name: Χαράλαμπος Τερζόπουλος
+job: Υπεύθυνη παραγωγής
+name: Μαρία Βογιατζή
+job: Φωτογραφίες
+name: Johanna Weber
+job: Νόρα
+name: Σοφία Χιλλ
+job: Κρόγκσταντ
+name: Τάσος Δήμας
+job: Τόρβαλντ
+name: Αντώνης Μυριαγκός
+scraping url: https://www.viva.gr/tickets/theatre/poreia/this-is-not-romeo-and-juliet
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σύλληψη - Σκηνοθεσία
+name: Αργύρης Πανταζάρας
+job: Σύνθεση Κειμένου - Δραματουργική Επεξεργασία
+name: Θεοδώρα Καπράλου
+job: Κοστούμια
+List names: Λίνα Σταυροπούλου
+List names: Τζίνα Ηλιοπούλου
+job: Σκηνικά
+name: Δήμητρα Ζίγκαρις
+job: Φωτισμοί
+name: Σάκης Μπιρμπίλης
+job: Φωτογραφία
+name: Νίκος Πανταζάρας
+job: Κίνηση - Training
+name: Κωσταντίνος Παπανικολάου
+job: Μουσική
+name: Γιώργος Πούλιος
+job: Graphic Design
+name: Ogust
+job: Βοηθός Σκηνοθέτη
+name: Πάνος Βουτσινάς
+job: Διεύθυνση Παραγωγής
+name: Αναστασία Καβαλλάρη
+job: Παραγωγή
+name: Momentum Accelerated Evolution σε συμπαραγωγή με το θέατρο Πορεία
+ηθοποιος: Παραγωγή onoma: Αργύρης Πανταζάρας
+ηθοποιος: Παραγωγή onoma: Έλλη Τρίγγου
+scraping url: https://www.viva.gr/tickets/theater/periodeia/elmer-o-pardalos-elefantas
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενα και Στίχοι
+name: Παύλος Μητσόπουλος
+job: Σκηνοθεσία
+name: Ιωάννα Γεωργαντά
+job: Σκηνογραφία & Κατασκευή σκηνικού
+name: Μαγδαληνή Σίγα
+job: Βοηθός σκηνογράφου
+name: Έλλη Ναλμπάντη
+job: Μουσική
+name: Μάριος Αποστολακούλης
+job: Φωνητική διδασκαλία
+name: Στελλίνα Βογιατζή
+job: Κοστούμια
+name: Δήμητρα Γιοβάνη
+job: Σχεδιασμός-Επιμέλεια κούκλας
+name: Δήμητρα Γιοβάνη
+job: Κατασκευαστική ομάδα κούκλας
+List names: Δήμητρα Γιοβάνη
+List names: Λίζα Ψωμιάδου
+List names: Χαρά Αργυρούδη
+job: Φωτισμός
+name: Τρύφωνας Κεχαγιάς
+job: Video/Φωτογραφίες
+name: Παναγιώτης Πέτρου
+job: Σχεδιασμός Γραφικών
+name: Κλέον Ζησιμόπουλος
+job: Βοηθός
+name: Ανδριάνα Νίκλη
+scraping url: https://www.viva.gr/tickets/show/people
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/show/alsos/takis-zaxaratos-zo-gia-sena-summer-edition
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+ηθοποιος:  onoma: Ταυτότητα παράστασης
+job: Σύλληψη / Κείμενα / Μουσικές επιλογές
+name: Τάκης Ζαχαράτος
+job: Σκηνοθεσία
+List names: Τάκης Ζαχαράτος
+List names: Σοφία Σπυράτου
+job: Χορογραφία
+name: Σοφία Σπυράτου
+job: Σκηνικά
+name: Μανόλης Παντελιδάκης
+job: Κοστούμια
+name: Φιλίτσα Νικολαΐδη
+job: Πρωτότυπη μουσική
+name: Γιάννης Χριστοδουλόπουλος σε στίχους Γιάννη Ξανθούλη
+job: Σχεδιασμός φωτισμών
+name: Χρήστος Τζιόγκας
+job: Ενορχήστρωση / Διεύθυνση ορχήστρας
+name: Δημήτρης Δημόπουλος
+job: Video art παράστασης
+name: Νίκος Σούλης
+job: Video παράστασης
+name: Γιώργος Λυκούδης
+job: Βοηθός σκηνοθέτη
+name: Μαρίτα Βλασσοπούλου
+job: Βοηθός χορογράφου
+name: Αλέξανδρος Κεϊβανάη
+job: Βοηθός σκηνογράφου
+name: Ελίνα Δράκου
+job: Μακιγιάζ
+List names: Τάκης Ζαχαράτος
+List names: Αχιλλέας Χαρίτος
+job: Art Director αφίσας
+name: Θοδωρής Λαλάγκας
+skipped line: Δημόσιες Σχέσεις / Επικοινωνία / Γραφείο Τύπου
+skipped line: Ελένη Τώρου - Μάνος Μαγιάτης - Ελένη Βλαχοπούλου
+job: Διεύθυνση παραγωγής
+name: Αθανάσιος Μαροσούλης
+job: Παραγωγή 
+name: Ηλίας Μαροσούλης – Άγγελος Κοταρίδης
+skipped line: Μια παραγωγή του Ομίλου Μαροσούλη-Κοταρίδη (MK GROUP)
+scraping url: https://www.viva.gr/tickets/theater/theatro-aulaia/jordan
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Συγγραφείς 
+name: Άννα Ρέϋνολντς και Μόιρα Μπουφίνι
+job: Μετάφραση
+name: Μάριος Πλωρίτης
+job: Σκηνοθεσία
+name: Γιάννης Αϊβάζης
+job: Ερμηνεία
+name: Μαρία Κορινθίου (Σίρλεϋ Τζόουνς)
+job: Φωτισμοί
+name: Νίκος Βούλγαρης
+job: Σκηνικά
+name: Μαρία Φιλίππου
+job: Μουσική Σύνθεση
+name: Δημήτρης Ίσαρης
+job: Βοηθός Σκηνοθέτη
+name: Κωνσταντίνος Φρίγκας
+job: Φωτογράφος
+name: Παναγιώτης Μαλλιάρης
+job: Μακιγιάζ ειδικών εφέ
+name: Γιώργος Αλαχούζος – Ρούλης Αλαχούζος
+job: Μακιγιάζ
+name: Άρης Βερέμης
+job: Hair Stylist
+name: Στάθης Λίτσας
+job: Βίντεο – Μοντάζ
+name: Νικόλας Μακρής
+job: Παραγωγή
+List names: Alhambra Art Theatre Productions
+List names: Aikor Productions
+scraping url: https://www.viva.gr/tickets/theater/fargkani-art/o-prigkipas-lemonis
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενο – Μουσική
+name: Γ. Σακελλαρίδης
+job: Θεατρική Διασκευή – Σκηνοθεσία
+name: Μπίλιω Κωνσταντοπούλου
+job: Βοηθός Σκηνοθέτη
+name: Βαγγέλης Δαλλές
+job: Σκηνικά – Κοστούμια
+name: Anna Wassiac
+job: Φωτισμοί
+name: Γ. Ζίγκας
+job: Ηθοποιοί
+name: Λευτέρης Κωνσταντίνου – Αννα Χατζηαντωνίου
+skipped line: Μουσική παίζει ζωντανά η Ελένη Γαβριηλάτου
+job: Παραγωγη
+name: Θέατρο του Βορρά
+scraping url: https://www.viva.gr/tickets/theater/theatro-dimitris-xorn/master-class-3h-xronia
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+ηθοποιος:  onoma: ΜΕΤΑΦΡΑΣΗ ΚΕΙΜΕΝΟΥ
+ηθοποιος:  onoma: Στρατής Πασχάλης
+ηθοποιος:  onoma: Οδυσσέας Παπασπηλιόπουλος
+ηθοποιος:  onoma: Όλγα Μπρούμα
+ηθοποιος:  onoma: ΕΝΔΥΜΑΤΟΛΟΓΙΚΗ ΕΠΙΜΕΛΕΙΑ
+ηθοποιος:  onoma: Σταματία Μέγκλα
+ηθοποιος:  onoma: ΜΟΥΣΙΚΗ ΕΠΙΜΕΛΕΙΑ
+ηθοποιος:  onoma: Πέτρος Μπούρας
+ηθοποιος:  onoma: Νίκος Βλασόπουλος
+skipped line: Τα κοστούμια της κυρίας Ναυπλιώτου επιμελήθηκε ο Βασίλης Ζούλιας 
+ηθοποιος:  onoma: Μαρία Κάλλας
+ηθοποιος:  onoma: Μαρία Ναυπλιώτου
+ηθοποιος:  onoma: Σοπράνο Α'
+ηθοποιος:  onoma: Εύα Γαλογαύρου
+skipped line: Σοπράνο Β' (Διπλή διανομή)
+ηθοποιος:  onoma: Λητώ Μεσσήνη
+ηθοποιος:  onoma: Δάφνη Δαυίδ
+ηθοποιος:  onoma: Γιώργος Φλωράτος
+ηθοποιος:  onoma: Πιανίστας (Διπλή διανομή)
+ηθοποιος:  onoma: Πέτρος Μπούρας
+ηθοποιος:  onoma: Αλέξανδρος Αβδελιώδης
+ηθοποιος:  onoma: Stage Hand
+ηθοποιος:  onoma: Δημήτριος Ψύλλος
+scraping url: https://www.viva.gr/tickets/theater/theatro-sofouli/to-palto
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σκηνοθεσία
+name: Αντώνης Καραγιάννης
+job: Μετάφραση – θεατρική διασκευή
+name: Δέσποινα Καλαΐτζίδου
+job: Μουσική
+name: Γιώργος Καζαντζής
+job: Ερμηνεία τραγουδιού
+name: Ναντίνα Κυριαζή
+job: Στίχοι
+name: Κρίτωνας Ζαχαριάδης
+job: Σκηνογραφία
+name: Lorenzo Bellelli
+job: Ενδυματολογία 
+name: Μαρία Καβαλιώτη
+job: Video - Promo trailer
+name: Γιώργος Κόγιας
+job: Σχεδιασμός φώτων
+name: Ανέστης Ατακτίδης
+job: Β. σκηνοθέτη, μουσική επιμέλεια
+name: Χρύσα Καραμούζη
+job: Γραφιστικά
+name: Λευτέρης Παπασταύρου
+job: Επικοινωνία 
+name: Κατερίνα Νικολάου
+job: Παραγωγή
+name: Καλλιτεχνική εταιρία θεάτρου
+job: Παίζουν
+List names: Κρίτωνας Ζαχαριάδης
+List names: Βασίλης Κανελλόπουλος
+scraping url: https://www.viva.gr/tickets/stand-up-comedy/tae-kwon-do/gabriel-iglesias
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/theater/mikro-horn/o-mikros-prigkipas
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Διασκευή-Σκηνοθεσία 
+name: Δημήτρης Αδάμης
+job: Σκηνικό 
+name: Χριστίνα Παπαδημητρίου–Marc Britz
+job: Κοστούμια 
+name: Μαγικές Σβούρες
+job: Kίνηση 
+name: Φωτεινή Σταματελοπούλου
+job: Ενορχήστρωση 
+name: Γιώργος Κωνσταντινίδης
+job: Διδασκαλία τραγουδιών 
+name: Ιωάννα Εμμανουήλ
+job: Μουσική τραγουδιού φινάλε
+name: Γιώργος Βαρσαμάκης
+job: Ειδικές κατασκευές 
+name: Ιφιγένεια Κωφού
+job: Φωτισμοί - Μουσική Επιμέλεια 
+name: Δημήτρης Αδάμης
+job: Φωτογραφίες-trailer 
+name: Tony Kris
+job: Βοηθός σκηνοθέτη  
+name: Πετρούλα Μαντζουκίδου
+job: Παραγωγή 
+List names: Αθηναϊκά Θέατρα
+List names: Μαγικές Σβούρες
+skipped line: Στο ρόλο του Μικρού Πρίγκιπα ο Θανάσης Τσαλταμπάσης 
+skipped line: Παίζουν επίσης 
+ηθοποιος:  onoma: Θανάσης Βοιδήλος
+ηθοποιος:  onoma: Γεωργία Μαυροειδοπούλου
+ηθοποιος:  onoma: Τάσος Ράπτης
+ηθοποιος:  onoma: Μαριλίζα Χρονέα
+job: Διεύθυνση Επικοινωνίας & Marketing 
+List names: Ελίνα Λαζαρίδου
+List names: lazaridou@a-th.gr
+job: Γραφείο Τύπου Αθηναϊκά Θέατρα 
+List names: Ειρήνη Μακρυωνίτη
+List names: makrioniti@a-th.gr
+scraping url: https://www.viva.gr/tickets/theatre/kappa/deipno-ilithion-5os-xronos
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σκηνοθεσία
+name: Σπύρος Παπαδόπουλος
+job: Μετάφραση
+name: Νικολέτα Κοτσαηλίδου
+job: Σκηνικά
+name: Αθανασία Σμαραγδή
+job: Κοστούμια
+name: Ηλένια Δουλαδίρη
+job: Φωτισμοί
+name: Χρήστος Τζιόγκας
+job: Οι ηθοποιοί
+name: 
+skipped line: Σπύρος Παπαδόπουλος, Πυγμαλίων Δαδακαρίδης, Βασίλης Ρίσβας, Αννα Μενενάκου, Χρήστος Σπανός, Ξανθή Γεωργίου και ο Δημήτρης Μαυρόπουλος
+scraping url: https://www.viva.gr/tickets/theater/kato-skini-apo-mihanis/to-daneio
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση
+name: Els de Paros
+job: Σκηνοθεσία
+name: Δημήτρης Μυλωνάς
+job: Σκηνικά
+name: Έρση Δρίνη
+job: Κοστούμια
+name: Γιάννης Μετζικώφ
+job: Σχεδιασμός Φωτισμού
+name: Αντώνης Παναγιωτόπουλος
+job: Μουσική
+name: Παύλος Κατσιβέλης
+job: Βοηθός σκηνοθέτη
+name: Ελένη Μυλωνά
+scraping url: https://www.viva.gr/tickets/theater/tzeni-karezi/o-pio-megalos-peripatos
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενο 
+name: Χριστόφορος Ζαραλίκος
+job: Ηχοληψία – video - προβολές
+name: Άρης Πρόδρομος
+scraping url: https://www.viva.gr/tickets/theatre/emporikon/oi-magisses-tou-salem
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση - Σκηνοθεσία
+name: Νικορέστης Χανιωτάκης
+job: Σκηνικά
+name: Αρετή Μουστάκα
+job: Κοστούμια
+name: Χριστίνα Πανοπούλου
+job: Πρωτότυπη μουσική
+name: Γιάννης Μαθές
+job: Επιμέλεια κίνησης
+name: Αντιγόνη Γύρα
+job: Φωτισμοί
+name: Χριστίνα Θανάσουλα
+job: Βοηθός Σκηνογράφου
+name: Έμιλυ Ονησιφόρου
+job: Βοηθός ενδυματολόγου
+name: Μαρία Φέξη
+job: Συνεργάτις Θεατρολόγος - Βοηθός σκηνοθέτη
+name: Χριστιάννα Μαντζουράνη
+job: Οργάνωση παραγωγής
+name: Αναστασία Γεωργοπούλου
+job: Εκτέλεση παραγωγής
+name: Ναταλία Μπαρούς
+job: Φωτογραφίες
+name: Αγγελική Κοκκοβέ
+job: Παραγωγή
+name: Μυθωδία
+job: Επικοινωνία - προβολή
+name: Άννα Γιώτη
+skipped line: Παίζουν
+job: Δικαστής Ντάνφορθ
+name: Νικήτας Τσακίρογλου
+job: Τζον Πρόκτορ
+name: Άκης Σακελλαρίου
+job: Άμπιγκεϊλ Γουίλλιαμς
+name: Ιωάννα Παππά
+job: Ελισάβετ Πρόκτορ
+name: Ρένια Λουιζίδου
+job: Σαμουήλ Πάρις
+name: Κώστας Τριανταφυλλόπουλος
+job: Τζον Χέηλ
+name: Γεράσιμος Σκαφίδας
+job: Τόμας Πάτναμ
+name: Θωμάς Γκαγκάς
+job: Άννα Πάτναμ
+name: Κατερίνα Νικολοπούλου
+job: Μαίρη Γουόρεν
+name: Ισιδώρα Δωροπούλου
+job: Μπέτυ Πάρις
+name: Μαρία Μοσχούρη
+job: Σουζάνα Γουόλκοτ
+name: Ηρώ Πεκτέση
+job: Μέρση Λιούις
+name: Αντουανέτα Παπαδοπούλου
+job: Τιτούμπα
+name: Δανάη Ομορεγκιέ Νεάνθη
+scraping url: https://www.viva.gr/tickets/theatre/elpidas/o-papoutsomenos-gatos
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Αφηγητής 
+name: Γεράσιμος Σκιαδαρέσης
+job: Ηθοποιοί
+List names: Νάντια Αντωνίου
+List names: Νίκος Καϊνός
+List names: Γιάννα Σισκοπούλου
+List names: Σωκράτης Ρωμανίδης
+job: Κείμενο - Σκηνοθεσία
+name: Νίκος Λημνιός
+job: Μουσική Επιμέλεια
+name: Νίκη Γρανά
+job: Επιμέλεια Σκηνικών
+name: Δημήτρης Χύτος
+scraping url: https://www.viva.gr/tickets/theatre/veaki/katerina-tou-korto
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: βασισμένο στο “Το Βιβλίο της Κατερίνας”
+job: Συγγραφέας
+name: Αύγουστος Κορτώ
+job: Ιδέα-Διασκευή-Σκηνοθεσία
+name: Γιώργος Νανούρης
+job: Ερμηνεία
+name: Λένα Παπαληγούρα
+skipped line: Μαζί της στην σκηνή και ο Γιώργος Νανούρης
+scraping url: https://www.viva.gr/tickets/theatre/christmas-theater/i-masa-kai-o-arkoudos
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/theater/kato-skini-apo-mihanis/opou-ki-an-pas-na-mh-hatheis
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: Συντελεστές
+job: Σκηνοθεσία
+name: Δημήτρης Μυλωνάς
+job: Σκηνικά
+name: Έρση Δρίνη
+job: Κοστούμια
+name: Γιάννης Μετζικώφ
+job: Σχεδιασμός Φωτισμού
+name: Αντώνης Παναγιωτόπουλος
+job: Μουσική
+name: Παύλος Κατσιβέλης
+job: Βοηθός σκηνοθέτη
+name: Ελένη Μυλωνά
+skipped line: Παίζουν
+job: Στο ρόλο του Ορέστη
+name: Ορέστης Τζιόβας
+skipped line: Άννα Ελεφάντη, Δημήτρης Μυλωνάς, Μαρούσκα Παναγιωτοπούλου
+scraping url: https://www.viva.gr/tickets/theater/theatro-apothiki/good-people
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση - Σκηνοθεσία 
+name: Άννα Μαρία Παπαχαραλάμπους
+job: Σκηνικά 
+name: Νατάσσα Παπαστεργίου
+job: Κοστούμια 
+name: Νινέττα Ζαχαροπούλου
+job: Μουσική Επιμέλεια 
+name: Ηλίας Παπαχαραλάμπους
+job: Φωτισμοί
+name: Βαγγέλης Μούντριχας
+job: Βοηθός Σκηνοθέτη 
+name: Ελένη Τσιμπρικίδου
+job: Φωτογραφίες
+name: Γιώργος Αλεξανδράκης
+job: Παραγωγή 
+List names: Create4art
+List names: Αθηναϊκά Θέατρα
+scraping url: https://www.viva.gr/tickets/theater/theatro-hora/marika
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενο-σκηνοθεσία
+name: Πέτρος Ζούλιας
+skipped line: Σκηνικά  Άννα Ζούλια
+skipped line: Κοστούμια  Ηλένια Δουλαδίρη
+job: Μουσική
+name: Παναγιώτης Αυγερινός
+job: Φώτα
+name: Κατερίνα Μαραγκουδάκη
+job: Φωτογραφίες
+name: Μαριλένα Αναστασιάδου
+skipped line: Πρωταγωνιστούν
+ηθοποιος:  onoma: Νένα Μεντή
+ηθοποιος:  onoma: Νεφέλη Κουρή
+ηθοποιος:  onoma: Δημήτρης Σαμόλης
+ηθοποιος:  onoma: Δεπάστας Γιώργος
+ηθοποιος:  onoma: Πατέλης Μάκης
+ηθοποιος:  onoma: Μαντζουράνη Χριστιάννα
+ηθοποιος:  onoma: Τουντασάκη Μαριάννα
+ηθοποιος:  onoma: Λόξας Γιώργος
+ηθοποιος:  onoma: Σίντος Γιάννης
+ηθοποιος:  onoma: Τόνια Μαράκη
+ηθοποιος:  onoma: Ναταλία Αθανασιάδη
+ηθοποιος:  onoma: Παναγιώτης Ράιος
+scraping url: https://www.viva.gr/tickets/theater/tzeni-karezi/gia-gynaika-kali-einai
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/theater/idrima-mixalis-kakogiannis/istoria-xoris-onoma
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Συγγραφέας του έργου «Ιστορία χωρίς Όνομα»
+name: Στέφανος Δάνδολος
+job: Θεατρική Διασκευή
+name: Ανθή Φουντά –Κώστας Γάκης
+job: Σκηνοθεσία-Μουσική
+name: Κώστας Γάκης
+job: Σκηνικά – Κοστούμια
+name: Κωνσταντίνος Ζαμάνης
+job: Φωτισμοί
+name: Λευτέρης Παυλόπουλος
+job: Ηair and makeup artist
+name: Άννα Μαρία Προκοπίδου
+job: Βοηθός σκηνοθέτη
+List names: Νατάσα
+List names: Φαίη Κοσμίδου
+job: Φωτογράφιση
+name: Σταύρος Χαμπάκης
+job: Promo Video
+name: Γιώργος Γεωργόπουλος
+skipped line: Παίζουν
+job: Ίωνας Δραγούμης
+name: Τάσος Νούσιας
+job: Πηνελόπη Δέλτα
+name: Μπέτυ Λιβανού
+job: Νεαρή Πηνελόπη Δέλτα
+name: Μαρία Παπαφωτίου
+job: Στέφανος Δέλτα
+name: Νίκος Ορφανός
+job: Γιατρός Φρίντμαν
+name: Αργύρης Γκαγκάνης
+job: Γραμματέας Γιατρού
+name: Στέλιος Γιαννακός
+job: Μαριάνθη
+name: Ανθή Φουντά
+job: Μουσική εκτέλεση 
+name: Κώστας Λώλος
+job: Διεύθυνση Παραγωγής
+name: Κατερίνα Διακουμοπούλου
+job: Προβολή & Επικοινωνία Παραγωγής
+name: Άννα Θεοδόση
+job: ΠΑΡΑΓΩΓΗ
+name: Performing Arts & Entertainment Ltd
+scraping url: https://www.viva.gr/tickets/theater/amfitheatro-idrymatos-theoxaraki/ena-spiti-apo-gyali
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Διασκευή κειμένου
+name: Ομάδα The Young Quill
+job: Σκηνοθεσία
+name: Αικατερίνη Παπαγεωργίου
+job: Σκηνικά και Σχεδιασμός Φωτισμών
+name: Κωστής Μουσικός
+job: Κουστούμια
+name: Μάριος Ράμμος
+job: Πρωτότυπη Μουσική
+name: Γιάννης Χριστοδουλόπουλος
+job: Χορογραφίες
+name: Χρυσηίς Λιατζιβίρη
+job: Παίζουν (αλφαβητικά)
+List names: Φιλία Κανελοπούλου
+List names: Χρήστος Καραβέβας
+List names: Χριστίνα Κωστέα
+List names: Φάνης Μιλλεούνης.
+job: Διεύθυνση Παραγωγής
+name: Όλγα Γουναρά
+job: Φωτογραφίες
+name: Ελίνα Γιουνανλή
+job: Γραφιστική επεξεργασία
+name: Μανώλης Λιονάκης
+job: Βίντεο
+name: Μιχάλης Μπροκαλάκης
+scraping url: https://www.viva.gr/tickets/theater/theatro-poreia/euridiki
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση- σκηνοθεσία
+name: Δημήτρης Τάρλοου
+job: Σκηνικά-Κουστούμια
+name: Ελένη Μανωλοπούλου
+job: Μουσική
+name: Κατερίνα Πολέμη
+job: Επιμέλεια κίνησης
+name: Ζωή Χατζηαντωνίου
+job: Στίχοι πρωτότυπων τραγουδιών
+name: Στρατής Πασχάλης
+job: Φωτισμοί
+name: Αλέκος Αναστασίου
+job: Βοηθός σκηνοθέτη
+name: Δήμητρα Κουτσοκώστα
+job: Βοηθός σκηνογράφου
+name: Τίνα Τζόκα
+skipped line: Διανομή
+job: Ευρυδίκη
+name: Κόρα Καρβούνη
+job: Ο Πατέρας της
+name: Γιάννης Νταλιάνης
+job: Ορφέας
+name: Λαέρτης Μαλκότσης
+skipped line: Ένας Απαίσιος Ενδιαφέρων Άντρας /
+job: Ο Άρχοντας του Κάτω Κόσμου
+name: Ορέστης Χαλκιάς
+skipped line: Ένας Χορός από Πέτρες
+job: Μεγάλη Πέτρα
+name: Νεφέλη Μαρκάκη
+job: Μικρή Πέτρα
+name: Αρετή Τίλη
+job: Βροντώδης Πέτρα
+name: Μιχάλης Αφολάνιο
+scraping url: https://www.viva.gr/tickets/theater/kato-skini-apo-mihanis/macbethlaidimacbeth
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: Συντελεστές
+job: Μετάφραση
+name: Κώστας Καρθαίος
+job: Σκηνοθεσία-διασκευή
+name: Δημήτρης Μυλωνάς
+job: Σκηνικά
+name: Γιάννης Μετζικώφ
+job: Κοστούμια
+name: Στεφανία-Ηλέκτρα Πανταβού
+job: Μουσική
+name: Παύλος Κατσιβέλης
+job: Φωτισμοί
+name: Γιώργος Αγιαννίτης
+job: Παίζουν
+List names: Γιάννης Νταλιάνης
+List names: Άννα Ελεφάντη
+List names: Γρηγόρης Ελευθερίου
+scraping url: https://www.viva.gr/tickets/theatre/broadway/to-klouvi-me-tis-treles
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: ΠΡΩΤΑΓΩΝΙΣΤΟΥΝ
+name: Στον ρόλο του ΖΑΖΑ ο Λάκης Γαβαλάς
+skipped line: Τάκης Μπινιάρης, Πέτρος Ξεκούκης, Βίκυ Κουλιανού, Κώστας Φραγκολιάς, Μελίνα Μακρή, Γιάννης Χατζηγεωργίου, Τέτα Καμπουρέλη, Κωνσταντίνος Τσερκάκης. 
+skipped line: Συμμετέχει η Μαρία Ιωαννίδου. 
+job: ΣΥΜΜΕΤΕΧΟΥΝ
+List names: Αναστάσιος Δεληγιάννης
+List names: Πάντης Κούσης
+List names: Άκης Δήμας
+List names: Νικόλας Γεωργανής
+List names: Γιάννης Γιαννατσής
+List names: Θοδωρής Καπιζιώνης
+List names: Δημήτρης Παπαλάμπρος
+List names: Ιωάννα Μαρμάρου.
+job: ΔΙΕΥΘΥΝΣΗ ΟΡΧΗΣΤΡΑΣ
+name: Μαυρίκιος Μαυρικίου
+skipped line: ΣΥΝΤΕΛΕΣΤΕΣ
+job: Διασκευή - Στίχοι - Σκηνοθεσία
+name: Βασίλης Πλατάκης
+job: Μουσική σύνθεση
+name: Μαυρίκιος Μαυρικίου
+job: Χορογραφίες - Κινησιολογία
+name: Αναστάσιος Δεληγιάννης
+job: Σκηνογραφία
+name: Visual Art
+job: Ενδυματολογική επιμέλεια - Ειδικές κατασκευές
+name: Αναστάσιος Παπαλέξης
+job: Σχεδιαστές μόδας
+List names: Λάκης Γαβαλάς
+List names: Νίκος Αποστολόπουλος
+job: Σχεδιασμός φωτισμών
+name: Βασίλης Πλατάκης
+job: Ενορχήστρωση - Προσαρμογή στίχων
+name: Μαυρίκιος Μαυρικίου
+job: Ηλεκτρολόγος - Χειριστής Φωτισμών
+name: Νίκος Καλαντζής
+job: Σχεδιασμός ήχου - Ηχοληψία
+name: Δημήτρης Δημητριάδης
+job: Ηχογράφηση - Μίξη - Mastering
+List names: G-Production Studio
+List names: Τίτος Γεωργιάδης
+job: Βοηθός σκηνοθέτη
+name: Ελεάνα Πλέσσα
+job: Makeup artist - Hair Styling
+name: Νικολέτα Πικέα
+job: Video art
+name: Γιάννης Βολιώτης
+job: Φωτογραφίες
+name: Γιώργος Μεστούσης
+job: Γραφιστική επιμέλεια
+name: Ανδρομάχη Κερκένη
+job: Κατασκευή σκηνικού
+name: Χρήστος Χαμζαλάρης
+job: Οργάνωση παραγωγής
+name: Φειδίας Μαυρικίου
+job: Δημόσιες σχέσεις - Επικοινωνία
+List names: Ρενέ Σαραντινού
+List names: Βιβή Σαραντινού
+scraping url: https://www.viva.gr/tickets/theater/theatro-stoa/to-epaggelma-tis-mitros-mou
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: Συγγραφέας ΜΠΟΣΤ σε θεατρική διασκευή ΘΑΝΑΣΗ ΠΑΠΑΓΕΩΡΓΙΟΥ
+ηθοποιος:  onoma: Σκηνοθεσία ΘΑΝΑΣΗΣ ΠΑΠΑΓΕΩΡΓΙΟΥ
+ηθοποιος:  onoma: Σκηνικό/Κοστούμια Λέα Koύση
+job: Παίζουν
+List names: Θανάσης Παπαγεωργίου
+List names: Εύα Καμινάρη
+List names: Δημήτρης Θεοδώρου
+List names: Ελευθερία Στεργίδου
+List names: Γιάννης Φουντάς
+List names: Αγγελική Τσιάκαλου
+scraping url: https://www.viva.gr/tickets/theatre/vafeio/pinokio-kai-tzepeto
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σκηνοθεσία
+name: Νίκος Λημνιός
+job: Κείμενο
+name: Κώστας Παντελιάς (Costa Funtastico)
+job: Κατασκευή Κοστουμιών
+name: Δημήτρης Χύτος
+job: Σκηνικά
+name: Αθηνόδωρος Λημνιός
+job: Παίζουν
+List names: Αντώνης Ζιώγας
+List names: Κώστας Παντελιάς (Costa Funtastico)
+List names: Νάντια Αντωνίου
+List names: Ελένη Κερολάρη
+scraping url: https://www.viva.gr/tickets/theater/theatro-kolonou/to-anaktoro-stin-ano-toumpa
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Συγγραφέας
+name: Παναγιώτης Μέντης
+job: Ερμηνεία
+name: Ελένη Γερασιμίδου
+job: Σκηνοθεσία
+name: Αγγελική Ξένου
+job: Εικαστική επιμέλεια
+name: Κώστας Βελινόπουλος
+job: Μουσική επιμέλεια
+name: Αγγελική Ξένου
+job: Βοηθός σκηνοθέτη
+name: Μαρία Τοκμάκη
+job: Φωτισμοί
+name: Γιώργος Ζιώγαλας
+scraping url: https://www.viva.gr/tickets/theatre/elpidas/to-asximopapo
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/theatre/studio-mavromixali/to-kivotio-ekti-xronia
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Δραματουργική επεξεργασία - Σκηνοθεσία 
+List names: Φώτης Μακρής
+List names: Κλεοπάτρα Τολόγκου
+job: Σκηνογραφία 
+name: Διονύσης Μανουσάκης
+job: Μουσική 
+name: Γιώργος Νινιός
+skipped line: Παίζει ο Φώτης Μακρής
+scraping url: https://www.viva.gr/tickets/theater/gyalino-mousiko-theatro/superhuman
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: αφήγηση
+name: ΕΣΤΕΡΙΝΑ ΚΑΝΕΛΛΟΥ
+job: χορεύουν
+List names: ΜΑΡΙΑ ΨΥΧΟΓΙΟΥ
+List names: ΕΛΕΑΝΑ ΝΙΚΟΛΟΠΟΥΛΟΥ
+scraping url: https://www.viva.gr/tickets/stand-up-comedy/pollaploi-xwroi/taiming-on-tour-2020
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/theatre/rialto/tao
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+Database Error: Prepared statement needs to be re-prepared
+job: Κείμενο
+name: Γιώργος Καφετζόπουλος
+job: Σκηνοθεσία
+name: Δανάη Σπηλιώτη
+job: Μουσική
+name: Φώτης Σιώτας
+job: Τραγούδι
+name: Goin' Through
+job: Σκηνικά - Κοστούμια
+List names: Τέλης Καρανάνος
+List names: Αλεξανδρα Σιάφκου
+job: Φωτισμοί
+name: Στέλλα Κάλτσου
+ηθοποιος:  onoma: Αντώνης Καφετζόπουλος
+ηθοποιος:  onoma: Στάθης Σταμουλακάτος
+ηθοποιος:  onoma: Γιώργος Καφετζόπουλος
+scraping url: https://www.viva.gr/tickets/theatre/elpidas/ta-tria-gourounakia-9os-xronos
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενο - Σκηνοθεσία
+name: Νίκος Λημνιός
+job: Μουσική Επιμέλεια
+name: Δημήτρης Χύτος
+job: Παραγωγή
+name: L&S
+job: Παίζουν
+List names: Νίκη Σκιαδαρέση
+List names: Ιωάννα Σισκοπούλου
+List names: Εύα Τσαμασιώτη
+List names: Νάντια Αντωνίου
+scraping url: https://www.viva.gr/tickets/theater/pano-skini-apo-mihanis/to-yperoho-mou-diazygio
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση
+name: Δημήτρης Μυλωνάς
+job: Σκηνοθεσία
+name: Δημήτρης Μυλωνάς
+job: Σκηνικά
+name: Έρση Δρίνη
+job: Κοστούμια
+name: Γιάννης Μετζικώφ
+job: Σχεδιασμός Φωτισμού
+name: Αντώνης Παναγιωτόπουλος
+job: Μουσική
+name: Παύλος Κατσιβέλης
+job: Επιμέλεια κίνησης
+name: Κική Μπάκα
+job: Βοηθός σκηνοθέτη
+name: Ελένη Μυλωνά
+scraping url: https://www.viva.gr/tickets/theater/apo-mihanis-panw-skini/triantafyllo-sto-stithos
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: Η ζωή πρέπει πάντα να προχωράει.
+job: Μετάφραση – Σκηνοθεσία
+name: Λευτέρης Γιοβανίδης
+job: Επιμέλεια Κίνησης
+name: Ζωή Χατζηαντωνίου
+job: Σκηνικά
+name: Πουλχερία Τζόβα
+job: Κοστούμια
+name: Μαρία Παπαδοπούλου
+job: Μουσική
+name: Θοδωρής Λεμπέσης
+job: Φωτισμοί
+name: Νίκος Σωτηρόπουλος
+job: Δραματουργική Επεξεργασία
+name: Ιζαμπέλα Κωνσταντινίδου
+job: Βοηθός Σκηνοθέτη
+name: Ρία Δεληογλάνη
+job: Βοηθός Φωτιστή
+name: Εύη Παπαμάρκου
+job: Με τους
+List names: Ευγενία Αποστόλου
+List names: Ειρήνη Ιωάννου
+List names: Πηνελόπη Μαρκοπούλου
+List names: Γεράσιμο Μιχελή
+List names: Μάρω Σαουσοπούλου
+List names: Ισίδωρο Σταμούλης
+List names: Δημήτρη Τσίκλης
+List names: Μάρω Παπαδοπούλου.
+scraping url: https://www.viva.gr/tickets/theater/theatro-mikro-xorn/o-allos-tou-florian-zeller
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση
+name: Νίκος Γιαλελής
+job: Σκηνοθεσία
+name: Αικατερίνη Παπαγεωργίου
+job: Σκηνικά
+name: The Young Quill
+job: Κοστούμια 
+name: Μάριος Ράμμος
+job: Πρωτότυπη Μουσική
+name: Χριστίνα Κωστέα & Θάνος Καραγεωργίου
+job: Σχεδιασμός Φωτισμών και Ήχου
+name: Κωστής Μουσικός
+job: Βοηθός Σκηνοθέτη
+name: Φάνης Μιλλεούνης
+job: Υπεύθυνη Παραγωγής
+name: Όλγα Γουναρά
+job: Φωτογραφίες 
+name: Ελίνα Γιουνανλή
+job: Video
+name: Μιχάλης Μπροκαλάκης
+job: Πρωταγωνιστούν (αλφαβητικά)
+List names: Λεωνίδας Καλφαγιάννης
+List names: Κωνσταντίνος Κάππας
+List names: Μαριάννα Πολυχρονίδη.
+scraping url: https://www.viva.gr/tickets/theater/periodeia/o-rovinsonas-kai-o-kroussos
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση-Διασκευή
+name: Ξένια Καλογεροπούλου
+job: Σκηνοθετική Επιμέλεια-Κινησιολογία
+name: Ηλίας Μπαγεώργος
+job: Σκηνικά - Κοστούμια
+name: Ανθή Πετρουλάκη
+job: Βοηθός Σκηνογράφου-Ενδυματολόγου-Ειδικές κατασκευές
+name: Νάγια Ζαχαράτου
+job: Μουσική Επιμέλεια
+name: Εφη Καπινιάρη
+job: Σχεδιασμός Φωτισμών
+name: Θωμάς Χαρέλας
+job: Φωτογραφίες
+name: Γιώργος Καλφαμανώλης
+job: Graphic-design
+name: Ντίνα Ζαφειρίου
+job: Τεχνική Υποστήριξη
+name: Χρήστος Λουλούδης
+job: Πρωταγωνιστούν
+List names: Φώτης Σπύρος
+List names: Νίκος Χρηστίδης
+scraping url: https://www.viva.gr/tickets/theater/topos-allou/o-ti-oraies-meres-tou-samuel-beckett
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: Παίζουν  Νικολέτα Βλαβιανού και Νίκος Καραστέργιος
+skipped line: Σε καινούργια μετάφραση του ΝΙΚΟΥ ΚΑΜΤΣΗ που θα είναι και ο σκηνοθέτης.
+skipped line: Σκηνικό και κοστούμια Μίκα Πανάγου
+ηθοποιος:  onoma: Μουσική Κώστας Χαριτάτος
+skipped line: Σχεδιασμός φωτισμών Γιάννης Ζέρβας
+skipped line: Βοηθός σκηνοθέτη Λαμπρινή Θάνου
+scraping url: https://www.viva.gr/tickets/theatre/studio-mavromixali/o-tzem-tis-elein-merfy
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/theater/theatro-lixnos-texnis-kai-politismou/paidiki-skini-OLD
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σάββατο στις 15
+name: 00 =>  Ο Τζίτζικας και ο Μέρμηγκας» (2ος χρόνος)
+job: Σκηνοθεσία
+name: Νίκος Λημνιός
+job: Κείμενο
+name: Κωνσταντίνος Παντελιάς (Costa Funtastico)
+job: Επιμέλεια Μαγικών 
+name: Κωνσταντίνος Παντελιάς (Costa Funtastico)
+job: Σκηνογραφία - Ενδυματολογία
+List names: L & S
+List names: Ο Θαυματοποιός
+job: ΠΑΙΖΟΥΝ
+List names: Κωνσταντίνος Παντελιάς
+List names: Ραφαέλα Καβαζαράκη
+List names: Ελένη Κερολάρη
+skipped line: Η παιδική παράσταση “Ο Τζίτζικας και ο Μέμηγκας“είναι μια συμπαραγωγή των L&S και ο Θαυματοποιός.
+job: Σάββατο στις 17
+name: 00 => Ο γύρος του κόσμου σε 80 ημέρες (2ος χρόνος)
+job: Κείμενο - Σκηνοθεσία
+List names: Θοδωρής Κατσαρός
+List names: Νίκος Λημνιός
+job: Μουσική Επιμέλεια - Σχεδιασμός Φωτισμού
+name: Κωνσταντίνος Τζηλίνης
+job: Σκηνογραφία - Ενδυματολογία
+name: “W.T.F -ACT”
+job: Video Effects
+name: 4 o’ clock
+skipped line: Παίζουν
+skipped line: Νίκος Λημνιός, Θοδωρής Κατσαρός, Ραφαέλα Καβαζαράκη
+skipped line: Η παιδική παράσταση “Ο Γύρος Του Κόσμου Σε 80 Ημέρες” είναι μια συμπαραγωγή των εταιρειών  L&S και  W.T.F – ACT.
+job: Κυριακή στις 11
+name: 00=> Η Έλσα συναντά το χιονάνθρωπο Φρόντο
+job: Κείμενο - Σκηνοθεσία
+name: Νίκος Λημνιός
+job: Ενδυματολογία
+name: L & S
+job: Επιμέλεια Μαγικών 
+name: Κωνσταντίνος Παντελιάς (Costa Funtastico)
+job: Επιμέλεια - Σχεδιασμός Φωτισμού
+name: Κωνσταντίνος Τζηλίνης
+job: Παίζουν
+List names: Νίκος Καϊνός
+List names: Γιάννα Σισκοπούλου
+List names: Νίκη Σκιαδαρέση
+List names: Θοδωρής Κατσαρός
+job: Κυριακή στις 17
+name: 00 => Ο λύκος και τα 7 κατσικάκια
+job: Κείμενο - Σκηνοθεσία
+name: Θοδωρής Κατσαρός
+job: Μουσική Επιμέλεια - Σχεδιασμός Φωτισμού
+name: Κωνσταντίνος Τζηλίνης
+job: Χορογραφίες - Κινησιολογία
+name: Μίκα Στεφανάκη
+job: Σκηνογραφία - Ενδυματολογία
+List names: W.T.F -ACT
+List names: L & S
+skipped line: Παίζουν
+skipped line: Θοδωρής Κατσαρός, Στεφέλενα Κόνιαρη, Εύα Τσαμασιώτη, Ελένη Κερολάρη, Ραφαέλα Καβαζαράκη, Σοφία Ζυγούμη, Ελίνα Καπετάνιου, Νικολέττα Κοφινά, Μαρία Γραμματικάκη.
+skipped line: Η παιδική παράσταση «Ο Λύκος και τα 7 Κατσικάκια» είναι μια συμπαραγωγή των εταιρειών  L&S και  W.T.F – ACT.
+scraping url: https://www.viva.gr/tickets/theater/theatro-ilisia/mia-germanida-grammateas
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση-Σκηνοθεσία
+name: Γιάννης Μόσχος
+job: Σκηνικά-Κοστούμια
+name: Τίνα Τζόκα
+job: Video design
+name: Μιχάλης Κλουκίνας
+job: Μουσική-Ηχητικό περιβάλλον
+name: Θοδωρής Οικονόμου
+job: Βοηθός σκηνοθέτη
+name: Θάλεια Γρίβα
+scraping url: https://www.viva.gr/tickets/theater/mikro-pallas/misa-misa
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση
+name: Els de Paros
+job: Σκηνοθεσία
+name: Δημήτρης Μυλωνάς
+job: Σκηνικά
+name: Έρση Δρίνη
+job: Κοστούμια
+name: Γιάννης Μετζικώφ
+job: Σχεδιασμός Φωτισμού
+name: Αντώνης Παναγιωτόπουλος
+job: Μουσική
+name: Παύλος Κατσιβέλης
+job: Βοηθός σκηνοθέτη
+name: Ελένη Μυλωνά
+job: ΠΡΩΤΑΓΩΝΙΣΤΟΥΝ
+name: Λευτέρης Ελευθερίου ,Αντώνης Κρόμπας
+scraping url: https://www.viva.gr/tickets/theater/polihoros-lipasmaton-drapetsonas/kaspar-machine
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Κείμενα
+name: Πέτερ Χάντκε
+job: Σκηνοθεσία | Εικαστική σύνθεση | Φωτισμοί
+name: Νίκος Χατζηπαπάς
+job: Εικαστική εγκατάσταση
+name: Γιώργος Ξένος
+job: Χορογραφία | Επιμέλεια κίνησης
+name: Κάλλια Θεοδοσιάδη
+job: Επιμέλεια κίνησης των street performers
+name: Stefano Tè
+job: Σχεδιασμός κοστουμιών
+name: Flavia Rosana Căpraru
+job: Μουσική
+List names: Rajeev Armando Morabito
+List names: Sons of Pythagoras
+job: Video-Animation | 3D mapping
+name: Κωστής Παπαδόπουλος
+job: Βοηθός σκηνοθέτη
+name: Θεώνη Ριντ
+job: Β’ Βοηθοί σκηνοθέτη
+List names: Δήμητρα Αντωνιάδου
+List names: Γιάννης Πετρίδης
+List names: Στέφανος Τσιμπουρλάς
+skipped line: Παίζουν
+job: -οι ηθοποιοί
+List names: Θανάσης Σαράντος
+List names: Κάλλια Θεοδοσιάδη
+job: -οι performers
+List names: Blake Blakemore
+List names: Francesco Bocchi
+List names: Αγγελική Δεληγιάννη
+List names: Diaconu Bianca
+List names: Clara Carpentieri
+List names: Jakub Henke
+List names: Łukasz Kowalski
+List names: Krzysztof Mędrek
+List names: Μιχάλης Μιχαήλος
+List names: Nemanja Miric
+List names: Stefano Ulivieri
+List names: 25 σπουδαστές της Ανώτερης Σχολής Δραματικής Τέχνης "δήλος" –Δήμητρα Χατούπη
+List names: 20 βοηθητικοί ηθοποιοί
+skipped line: Συμμετέχει η σοπράνο Ελεάννα Κωνσταντά
+job: Πιάνο
+name: Αλέξανδρος Φαρής
+job: Επικοινωνία- Δημόσιες Σχέσεις
+List names: Δέσποινα Ερρίκου
+List names: Ράνια Παπαδοπούλου
+job: Οργάνωση Παραγωγής
+name: Ράνια Παπαδοπούλου
+job: Καλλιτεχνική Διεύθυνση
+name: Νίκος Χατζηπαπάς
+job: Παραγωγή
+name: Labillusions
+job: **H άδεια αναβίβασης της παράστασης με τα αποσπάσματα των έργων "Βρίζοντας το κοινό", "Κραυγές βοήθειας" και "Κάσπαρ" του Πέτερ Χάντκε έχει δοθεί από την Suhrkamp Verlag, Berlin.Kaspar, copyright
+List names: Frankfurt
+List names: Suhrkamp Verlag
+List names: 1967
+scraping url: https://www.viva.gr/tickets/theater/theatro-aliki/meatball-okeftes
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σκηνοθεσία
+name: Γιώργος Λύρας
+job: Κείμενο 
+name: Δημήτρης Φούτσιας
+job: Σκηνικός χώρος 
+name: Γιώργος Λύρας (βασισμένο σε μία ιδέα της Μαίρης Τσαγκάρη)
+job: Κοστούμια
+name: Κατερίνα Ανδρικοπούλου
+job: Σχεδιασμός Φωτισμών
+name: Αλέξανδρος Αλεξάνδρου
+job: Φωτογραφίες Παράστασης 
+name: Νίκος Ζήκος
+job: Παραγωγή
+name: ΑΘΗΝΑΪΚΑ ΘΕΑΤΡΑ
+skipped line: ΠΡΩΤΑΓΩΝΙΣΤΟΥΝ (Αλφαβητικά)
+skipped line: Άρτεμις Γρύμπλα, Απόστολος Καμιτσάκης, Βασιλική Κίσσα, Βαγγέλης Σαλεύρης
+job: Διεύθυνση Επικοινωνίας & Marketing 
+List names: Ελίνα Λαζαρίδου
+List names: lazaridou@a-th.gr
+List names: 211 10 26263-6972217615.
+job: Γραφείο Τύπου Αθηναϊκά Θέατρα 
+List names: Ειρήνη Μακρυωνίτη
+List names: makrioniti@a-th.gr
+List names: 2111024402
+List names: 6998529567
+scraping url: https://www.viva.gr/tickets/theater/apo-mixanis-theatro-katw-skini/metamorfosi-franz-kafka
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σκηνοθεσία
+name: Τάσος Σαγρής
+job: Παίζουν
+List names: Σίσσυ Δουτσίου
+List names: Στέβη Φόρτωμα
+List names: Μάνος Τσίζεκ,
+skipped line: Λουκία Ανάγνου, Θωμάς Χαβιανίδης 
+job: Μουσική
+name: Whodoes
+skipped line:   Radiohead . Arvo Part . Einsturzende Neubauten . 
+skipped line: Jani Christou . Godspeed You Black Emperor. Max Richter 
+job: Φωτισμοί
+name: Γιώργος Παπανδρικόπουλος
+job: Video art
+List names: Άλκηστις Καφετζή
+List names: Kipseli Film Coop
+List names: 
+skipped line: Void Optical Art Laboratory, Μίλτος Αρβανιτάκης
+job: Κατασκευή Μάσκας
+name: Κοραλία Κρικελλή
+scraping url: https://www.viva.gr/tickets/theatre/ellinikos-kosmos/apo-smyrni-saloniki
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+ηθοποιος:  onoma: ΤΑΥΤΟΤΗΤΑ ΠΑΡΑΣΤΑΣΗΣ
+job: ΚΕΙΜΕΝΟ – ΣΚΗΝΟΘΕΣΙΑ
+name: Μιμή Ντενίση
+job: ΣΚΗΝΙΚΑ
+name: Μανόλης Παντελιδάκης
+job: ΚΟΣΤΟΥΜΙΑ
+name: Ηλένια Δουλαδίρη
+job: ΦΩΤΙΣΜΟΙ
+name: Αργύρης Θέος
+job: ΚΙΝΗΣΙΟΛΟΓΙΑ
+name: Μάρω Μαρμαρινού
+job: ΜΟΥΣΙΚΗ
+name: Ανδρέας Κατσιγιάννης
+job: ΤΡΙΣΔΙΑΣΤΑΤΑ ΓΡΑΦΙΚΑ
+name: K. Τηλιγάδης & Δ. Αγαθόπουλος
+ηθοποιος:  onoma: Πρωταγωνιστεί η
+ηθοποιος:  onoma: Μιμή Ντενίση
+job: και με αλφαβητική σειρά
+name: 
+skipped line: Αλέξανδρος Αντωνόπουλος, Γιώργος Αρμένης, Νικολέτα Βλαβιανού, Κατερίνα Γερονικολού, Μαρία Εγγλεζάκη, Λευτέρης Ελευθερίου, Δημήτρης Μακαλιάς, Μιχάλης Μητρούσης, Κωνσταντίνα Μιχαήλ, Νίκη Παλληκαράκη, Όλγα Πολίτου, Δήμητρα Σιγάλα, Αναστασία Σκοπελίτη, Γιάννης Τσιμιτσέλης, Αντιγόνη Ψυχράμη.
+job: Παίζουν επίσης
+name: 
+skipped line: Κατερίνα Αντωνιάδου, Χρήστος Βελιάνο, Νικόλας Γκιούλης, Δήμητρα Μιχαηλίδου, Μαρίλια Μητρούση, Αιμίλιος Μωσαίδης, Ηλίας Νομικός, Έφη Σταυροπούλου, Ζαχαρένια Φραγκιαδάκη.
+scraping url: https://www.viva.gr/tickets/theater/xytirio-proavlio/ki-ego-s-agapo
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση
+name: Βάσια Παναγοπούλου
+job: Σκηνοθεσία
+name: Γιάννης Αϊβάζης
+skipped line: Πρωταγωνιστούν 
+ηθοποιος:  onoma: Βασίλης Κούκουρας
+ηθοποιος:  onoma: Παναγιώτης Καρμάτης
+ηθοποιος:  onoma: Χριστίνα Δαλαμάγκα
+ηθοποιος:  onoma: Φωτεινή Λεβογιάννη
+job: Φωτισμοί 
+name: Νίκος Βούλγαρης
+job: Σκηνικά 
+name: Μαρία Φιλίππου
+job: Μουσική 
+name: Βασίλης Κουμεντάκης
+job: Ενδυματολόγος 
+name: Ελένη Μπλέτσα
+job: Βοηθός Σκηνοθέτη 
+name: Κωνσταντίνος Φρίγγας
+skipped line: Για την φωτογράφιση 
+job: Φωτογραφίες 
+name: Παναγιώτης Μάλλιαρης
+job: Ηαir Stylist 
+name: Στάθης Λίτσας – Cut_n_chemistry team
+job: Mακιγιάζ 
+name: Dionysia_Protos
+job: Eνδυματολόγος 
+name: Ελένη Μπλέτσα
+job: Backstage video 
+name: AIKOR PRODUCTION
+skipped line: Η φωτογράφιση πραγματοποιήθηκε στο στούντιο της ΑΙΚΟR
+job: Kαλλιτεχνική επιμέλεια 
+name: ΑIKOR PRODUCTION
+job: Επικοινωνία και προβολή της παράστασης 
+name: Νταίζη Λεμπέση,
+job: Παραγωγή 
+name: Βάσια Παναγοπούλου
+scraping url: https://www.viva.gr/tickets/theater/pano-skini-apo-mihanis/homos-i-oloi-stin-ellada
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/theater/theatro-roes/ikaros
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σύλληψη-σκηνοθεσία
+name: Δημήτρης Παγώνης
+job: Βοηθός σκηνοθέτη
+name: Κατερίνα Σκυλογιάννη
+job: Σχεδιασμός φωτισμού/ήχου
+name: Ιωάννα Ζέρβα
+job: Φωτογραφίες/trailer edit
+name: Χρήστος Συμεωνίδης
+job: Διευθηντής φωτογραφίας
+name: Λάζαρος Καραγιώργος
+job: Σχεδιασμός αφίσας
+name: Χρήστος Συμεωνίδης
+job: Εταιρία παραγωγής
+name: Ομικρον τρία ο.ε.
+job: Επικοινωνία- Δημόσιες σχέσεις
+name: Γιώτα Δημητριάδη
+scraping url: https://www.viva.gr/tickets/theater/theatro-lisi/ismini-tou-gianni-ritsou
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+scraping url: https://www.viva.gr/tickets/theater/gyalino-mousiko-theatro/erotokritos-paidiki-skini
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Διανομή (αλφαβητικά)
+List names: Αργυρώ Ανανιάδου
+List names: Κωνσταντίνος Γεωργαλής
+List names: Κωνσταντίνος Δαλαμάγκας
+List names: Στέλιος Θεοδώρου-Γκλίναβος
+List names: Δημήτρης Μηλιώτης
+List names: Αλέξανδρος Σιάτρας
+List names: Χαρά Τζόκα.
+job: Μουσικός επί σκηνής
+name: Ηλίας Βαμβακούσης
+job: Θεατρική διασκευή για παιδιά - Σκηνοθεσία
+name: Ελένη Βλάχου
+job: Μουσική σύνθεση – Μουσική διδασκαλία - Ζωντανή εκτέλεση
+name: Ηλίας Βαμβακούσης
+job: Σκηνικά
+name: Θάλεια Μέλισσα
+job: Κοστούμια
+name: Βασιλική Σύρμα
+job: Ειδικές κατασκευές - Props
+name: Γιώργος Κωτσάκος
+job: Ζωγράφος σκηνικών
+name: Αμαλία Θεοδωροπούλου
+job: Κινησιολογία - Χορογραφία
+name: Βρισηίδα Σολωμού
+job: Σχεδιασμός Φωτισμών
+name: Ελίζα Αλεξανδροπούλου
+job: Φωτογραφίες - Video
+name: Πάτροκλος Σκαφίδας
+job: Γραφιστικά
+name: Γιάννης Στύλος
+job: Βοηθός σκηνοθέτη
+name: Δημήτρης Καπαμάς
+job: Κατασκευή Σκηνικού
+name: Στέλιος Λαμπαδάριος
+job: Ραφή Κοστουμιών
+name: Ευαγγελία Τσιούνη
+job: Υπεύθυνοι ήχου
+name: Γιάννης Κολεβέντης – Γιώργος Κολεβέντης
+job: Υπεύθυνος φωτισμών
+name: Αργύρης Καλοπήτας
+job: Βοηθός παραγωγής
+name: Αρθούρος Ντόι
+job: Βοηθός οργάνωσης παραγωγής
+name: Πόπη Τζινευράκη
+job: Υπεύθυνος Δημοσίων Σχέσεων
+name: Μυρτώ Απαλοπούλου
+job: Οργάνωση Παραγωγής
+name: Εύη Κουρεμένου
+job: Παραγωγή
+name: Γυάλινο Μουσικό Θέατρο
+scraping url: https://www.viva.gr/tickets/theater/gialino-mousiko-theatro/imerologio-kathimerinis-psixosis
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: κείμενο – ερμηνεία – μουσική επιμέλεια 
+name: ΚΟΣΜΑΣ ΧΑΤΖΗΣ
+job: σκηνοθεσία
+name: ΠΑΝΑΓΙΩΤΗΣ ΜΠΕΝΕΚΟΣ / ΚΟΣΜΑΣ ΧΑΤΖΗΣ
+job: σκηνικά – κοστούμια – φωτισμοί 
+name: η ΟΜΑΔΑ
+job: installation
+name: ΑΙΜΙΛΙΑ ΓΙΑΝΝΟΠΟΥΛΟΥ
+scraping url: https://www.viva.gr/tickets/theater/apomixanis-theatro/i-klironomia
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: ΜΕΤΑΦΡΑΣΗ 
+name: Ανδρέας Στάικος
+job: ΣΚΗΝΟΘΕΣΙΑ 
+name: Γιάννης Νταλιάνης.
+job: ΣΚΗΝΙΚΑ-ΚΟΣΤΟΥΜΙΑ 
+name: ΆρτεμιςΦλέσσα.
+job: ΜΟΥΣΙΚΗ 
+name: Κώστας Λώλος.
+job: ΚΙΝΗΣΗ 
+name: Μπίλιω Μαρνέλη
+job: ΦΩΤΙΣΜΟΙ 
+name: Γιώργος Αγιαννίτης
+job: ΦΩΤΟΓΡΑΦΙΕΣ 
+name: Πάτροκλος Σκαφίδας
+job: ΚΟΜΜΩΣΕΙΣ
+name: Σοφία Σπυροπούλου
+job: ΒΟΗΘΟΣ ΣΚΗΝΟΘΕΤΗ
+name: Χρύσα Νταή
+job: ΗΘΟΠΟΙΟΙ 
+List names: Μαριλίτα Λαμπροπούλου
+List names: Νίκος Νίκας
+List names: Μπίλιω Μαρνέλη
+List names: Γιάννης Σοφολόγης
+List names: Παρή Τρίκα
+List names: Γιώργος Πατεράκης
+List names: συμμετέχουν
+scraping url: https://www.viva.gr/tickets/theatre/piraios-131/i-gynaika-me-ta-mavra
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: Συντελεστές
+job: Μετάφραση-Σκηνοθεσία
+name: Νικορέστης Χανιωτάκης
+job: Σκηνικά
+name: Μαίρη Τσαγκάρη
+job: Κοστούμια
+name: Βασιλική Σύρμα
+job: Φωτισμοί
+name: Χριστίνα Θανάσουλα
+job: Φωτογραφίες
+name: Αγγελική Κοκκοβέ
+job: Παραγωγή
+List names: People
+List names: Μυθωδία
+List names: Αθηναϊκά Θέατρα
+job: Επικοινωνία - προβολή
+name: Άννα Γιώτη
+skipped line: Παίζουν
+ηθοποιος:  onoma: Τάσος Χαλκιάς
+ηθοποιος:  onoma: Κωνσταντίνος Ασπιώτης
+scraping url: https://www.viva.gr/tickets/theatre/ilisia-volanakis/170-tetragonika
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+skipped line: Συντελεστές
+job: Συγγραφέας
+name: Γιωργής Τσουρής
+job: Σκηνοθεσία
+name: Γιώργος Παλούμπης
+job: Δραματουργική επεξεργασία
+name: Γιώργος Παλούμπης – Βάλια Παπακωνσταντίνου
+job: Μουσική – Video εγκατάσταση
+name: Γιωργής Τσουρής
+job: Βοηθός σκηνοθέτης
+name: Γιωργής Τσουρής
+job: Σκηνικά
+name: Κωνσταντίνα Μαρδίκη – Έλλη Παπαδάκη
+job: Κοστούμια
+name: Βασιλική Σύρμα
+job: Φωτισμοί
+name: Σεμίνα Παπαλεξανδροπούλου
+job: Σχεδιασμός μακιγιάζ
+name: Άρτεμις Βαλτάτζη
+job: Φωτογραφίες
+name: Ανδρέας Παπακωνσταντίνου
+job: Παραγωγή
+name: Θέασις Δράσεις Πολιτισμού Ε.Π.Ε.
+skipped line: Ηθοποιοί
+ηθοποιος: Παραγωγή onoma: Αμαλία Αρσένη
+ηθοποιος: Παραγωγή onoma: Βάλια Παπακωνσταντίνου
+ηθοποιος: Παραγωγή onoma: Αντώνης Τσιοτσιόπουλος
+ηθοποιος: Παραγωγή onoma: Ελένη Τσιμπρικίδου
+ηθοποιος: Παραγωγή onoma: Γιωργής Τσουρής
+scraping url: https://www.viva.gr/tickets/theater/tzeni-karezi/agonas-negrou-kai-skylon-tou-bernard-marie-koltes
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Μετάφραση
+name: Σύλβια Κιούση
+job: Σκηνοθεσία
+name: Αλέξανδρος Σωτηρίου
+job: Σκηνικά
+name: Τζίνα Ηλιοπούλου
+job: Κοστούμια
+name: Λίνα Σταυροπούλου
+job: Φωτισμοί
+name: Νίκος Σωτηρόπουλος
+job: Όρν
+name: Νίκος Γεωργάκης
+job: Άλμπουρυ
+name: Σαμουήλ Ακίνολα
+job: Λεονή
+name: Ευτυχία Γιακουμή
+job: Κάλ
+name: Μάρκος Παπαδοκωνσταντάκης
+scraping url: https://www.viva.gr/tickets/theatre/mikro-xorn/axyrista-phgounia
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Διανομή
+name: Γιώργος Πυρπασόπουλος
+ηθοποιος:  onoma: Ηλίας Βαλάσης
+ηθοποιος:  onoma: Στέλιος Δημόπουλος
+ηθοποιος:  onoma: Μαρία Νεφέλη Δούκα
+job: Σκηνοθεσία
+name: Γιώργος Παλούμπης
+job: Παραγωγή
+name: ΑΘΗΝΑΪΚΑ ΘΕΑΤΡΑ
+scraping url: https://www.viva.gr/tickets/theatre/theatro-poreia-at-victoria/doksa-koinh
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+ 
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: Σύνθεση κειμένου
+name: Στρατής Πασχάλης
+job: Σκηνοθεσία
+name: Δημήτρης Τάρλοου
+job: Σκηνικά
+name: Εύα Μανιδάκη
+job: Κοστούμια
+List names: Αλέξανδρος Γαρνάβος
+List names: Τζίνα Ηλιοπούλου
+job: Μουσική
+name: Λήδα Μανιατάκου
+job: Φωτισμοί
+name: Αλέκος Αναστασίου
+job: Επιμέλεια Kίνησης
+name: Κορίνα Κόκκαλη
+job: Βοηθός σκηνοθέτη
+name: Δήμητρα Κουτσοκώστα
+job: Βοηθός σκηνογράφου
+name: Φιλάνθη Μπουγάτσου
+job: Βοηθός φωτιστή
+name: Ναυσικά Χριστοδουλάκου
+job: Φωτογραφίες παράστασης
+name: Βάσια Αναγνωστοπούλου
+skipped line: Ηθοποιοί
+ηθοποιος:  onoma: Αλέξανδρος Βαμβούκος
+ηθοποιος:  onoma: Λήδα Μανιατάκου
+ηθοποιος:  onoma: Ηλιάνα Μαυρομάτη
+ηθοποιος:  onoma: Άρης Μπαλής
+ηθοποιος:  onoma: Γιάννης Νταλιάνης
+ηθοποιος:  onoma: Διονύσης Πιφέας
+ηθοποιος:  onoma: Θάλεια Σταματέλου
+ηθοποιος:  onoma: Αρετή Τίλη
+ηθοποιος:  onoma: Σίσσυ Τουμάση
+ηθοποιος:  onoma: Ορέστης Χαλκιάς
+job: Μουσικός
+name: Μάριος Παπούλιας
+scraping url: https://www.viva.gr/tickets/theater/gyalino-mousiko-theatro/mpoum
+ 
+[WDM] - Current google-chrome version is 85.0.4183
+[WDM] - Get LATEST driver version for 85.0.4183
+[WDM] - Driver [C:\Users\Panagiotis Artabout\.wdm\drivers\chromedriver\win32\85.0.4183.87\chromedriver.exe] found in cache
+job: μετάφραση
+name: ΒΙΡΓΙΝΙΑ ΤΑΜΠΑΡΟΠΟΥΛΟΥ
+job: διασκευή / σκηνοθεσία
+name: ΑΝΤΩΝΗΣ ΑΝΤΩΝΑΚΟΣ
+job: μουσική
+name: ΑΡΙΣ ΓΕΡΟΝΤΑΚΗΣ
+job: επιμέλεια κοστουμιών
+name: Συμεώνη Γιαννάτου
+job: βοηθός σκηνοθέτης
+name: ΒΙΡΓΙΝΙΑ ΤΑΜΠΑΡΟΠΟΥΛΟΥ
+job: Παίζουν
+List names: ΤΑΚΗΣ ΣΑΚΕΛΛΑΡΙΟΥ
+List names: ΒΙΡΓΙΝΙΑ ΤΑΜΠΑΡΟΠΟΥΛΟΥ
+List names: ΣΥΜΕΩΝΗ ΓΙΑΝΝΑΤΟΥ,ΣΠΥΡΟΣ ΣΙΔΕΡΗΣ
+List names: ΑΝΤΩΝΗΣ ΑΝΤΩΝΑΚΟΣ
+List names: ΑΓΑΠΗ ΠΑΠΑΘΑΝΑΣΙΑΔΟΥ
+
+Process finished with exit code 0
