@@ -15,7 +15,21 @@ from webdriver_manager.chrome import ChromeDriverManager
 conn, cursor = connect_to_db()
 
 venue_titles = []
-system_id = 2
+system_id = ''
+
+
+def getSystemId(system_id):
+    try:
+        cursor.execute("SELECT ID FROM `system` WHERE name='Python'")
+        row = cursor.fetchone()
+        system_id = row[0]
+    except mariadb.Error as e:
+        print(f"Database Error: {e}")
+    return system_id
+
+
+system_id = getSystemId(system_id)
+
 
 def empty_table(table_name):
     try:
@@ -29,19 +43,21 @@ def scrap_by_production(url):
     soup = BeautifulSoup(page.content, 'html.parser')
 
     try:
-        title = soup.find(id='playTitle').getText().lstrip()
+        title = soup.find(id='playTitle').getText().strip()
     except AttributeError as error:
         title = ''
-
     try:
         description = soup.find("div", itemprop="description").getText()
     except AttributeError as error:
         description = ''
-
     try:
         media_url = urljoin(url, soup.find('div', class_='eventImageContainer').find('img')['src'])
     except AttributeError as error:
         media_url = ''
+    try:
+        duration = soup.find(id='PageContent_PlayDetails_UIDuration').getText().replace("Διάρκεια", "").strip()
+    except AttributeError as error:
+        duration = ''
 
     production_name = ''
     containers = soup.find_all("div", class_="playDetailsContainer")
@@ -49,16 +65,38 @@ def scrap_by_production(url):
         if container.find("h4") is not None:
             production_name = container.find("h4").getText()
 
+    try:
+        cursor.execute(
+            "SELECT ID FROM production WHERE URL=?",
+            (url,))
+        row = cursor.fetchone()
+        existed_production_id = row[0]
+    except mariadb.Error as e:
+        print(f"Database Error: {e}")
 
     organizer_id = scrap_orginizer(url)
-    if(organizer_id != 0):
+    if organizer_id != 0:
         try:
-            cursor.execute("INSERT INTO production (OrganizerID,Title,Description,URL,Producer,MediaURL, Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?,?)",(organizer_id, title, description, url, production_name, media_url, 0, system_id))
+            if existed_production_id:
+                cursor.execute(
+                    '''UPDATE production SET OrganizerID=%s Title=%s Description=%s URL=%s Producer=%s MediaURL=%s Duration=%s SystemID=%s WHERE ID = %s''',
+                    (organizer_id, title, description, url, production_name, media_url, duration, system_id, existed_production_id))
+            else:
+                cursor.execute(
+                    "INSERT INTO production (OrganizerID,Title,Description,URL,Producer,MediaURL, Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?,?)",
+                    (organizer_id, title, description, url, production_name, media_url, duration, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
     else:
         try:
-            cursor.execute("INSERT INTO production (Title,Description,URL,Producer,MediaURL,Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?)", (title, description, url, production_name, media_url, 0, system_id))
+            if existed_production_id:
+                cursor.execute(
+                    '''UPDATE production SET Title=%s Description=%s URL=%s Producer=%s MediaURL=%s Duration=%s SystemID=%s WHERE ID = %s''',
+                    (title, description, url, production_name, media_url, duration, system_id, existed_production_id))
+            else:
+                cursor.execute(
+                    "INSERT INTO production (Title,Description,URL,Producer,MediaURL,Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?)",
+                    (title, description, url, production_name, media_url, duration, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
 
@@ -73,14 +111,15 @@ def begin_productions_scraping():
 
     all_results = soup.find("div", id="play_results").select("article #ItemLink")
     for each_play in all_results:
-        play_url = urljoin(url,each_play['href'])
+        play_url = urljoin(url, each_play['href'])
         print("scraping url: " + play_url)
-        scrap_by_production(play_url)# fill production table
-        venue_scrap(play_url)# scrap venue title
-        scrap_events(play_url)#scrap events
-        scrap_persons(play_url)#scrap person including roles and contributions
+        scrap_by_production(play_url)  # fill production table
+        venue_scrap(play_url)  # scrap venue title
+        scrap_events(play_url)  # scrap events
+        scrap_persons(play_url)  # scrap person including roles and contributions
 
     fill_venue(venue_titles)
+
 
 # End of begin_productions_scraping function
 
@@ -91,11 +130,13 @@ def fill_venue(lvenue_titles):
     for each_title in lvenue_titles:
         try:
             cursor.execute(
-            "INSERT INTO venue (Title, SystemID) VALUES (?, ?)", (each_title, system_id))
+                "INSERT INTO venue (Title, SystemID) VALUES (?, ?)", (each_title, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
 
+
 # End of fill_venue function
+
 
 def venue_scrap(url):
     page = requests.get(url)
@@ -105,7 +146,9 @@ def venue_scrap(url):
     except AttributeError as error:
         return
 
+
 # End of venue_scrap function
+
 
 def scrap_events(url):
     options = webdriver.ChromeOptions()
@@ -116,7 +159,8 @@ def scrap_events(url):
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
 
-    for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div", class_="events-container__item"):
+    for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div",
+                                                                                               class_="events-container__item"):
 
         date = each_event.find(class_='events-container__item-date').getText()
         unformatted_date = re.findall("\d+/\d+", date)
@@ -129,7 +173,7 @@ def scrap_events(url):
 
         vanue_full = each_event.find("span", class_="events-container__item-venue").getText().strip()
         vanue_full_list = vanue_full.split("-")
-        vanue_title =  vanue_full_list[0].strip()
+        vanue_title = vanue_full_list[0].strip()
         vanue_address = vanue_full_list[1].strip()
 
         cursor.execute(
@@ -138,11 +182,12 @@ def scrap_events(url):
         row = cursor.fetchone()
 
         try:
-            venue_id= row[0]
+            venue_id = row[0]
         except TypeError:
             try:
                 cursor.execute(
-                    "INSERT INTO venue (Title,Address, SystemID) VALUES (?, ?, ?)", (vanue_title,vanue_address, system_id))
+                    "INSERT INTO venue (Title,Address, SystemID) VALUES (?, ?, ?)",
+                    (vanue_title, vanue_address, system_id))
                 cursor.execute(
                     "SELECT DISTINCT ID FROM venue WHERE Title=?",
                     (vanue_title,))
@@ -162,9 +207,11 @@ def scrap_events(url):
 
         try:
             cursor.execute(
-                "INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)", (production_id, venue_id, full_date, price_range, system_id))
+                "INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)",
+                (production_id, venue_id, full_date, price_range, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
+
 
 # End of scrap_events function
 
@@ -175,10 +222,14 @@ def scrap_orginizer(url):
     try:
         for organizer_desc in soup.find("dt", id="organizer").find_next_siblings('dd'):
             name = organizer_desc.select(".playDetailsContainer > h4")[0].getText()
-            address = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtAddress_0").find_next_siblings(class_="field")[0].getText().strip()
-            town = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtCity_0").find_next_siblings(class_="field")[0].getText().strip()
-            postcode = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtpostCode_0").find_next_siblings(
+            address = \
+                organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtAddress_0").find_next_siblings(
+                    class_="field")[0].getText().strip()
+            town = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtCity_0").find_next_siblings(
                 class_="field")[0].getText().strip()
+            postcode = \
+                organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtpostCode_0").find_next_siblings(
+                    class_="field")[0].getText().strip()
             phone = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtphone_0").find_next_siblings(
                 class_="field")[0].getText().strip()
             email = organizer_desc.find(id="PageContent_PlayDetails_rep_producer_lbl_txtemail_0").find_next_siblings(
@@ -199,7 +250,8 @@ def scrap_orginizer(url):
                 except TypeError:
                     try:
                         cursor.execute(
-                            "INSERT INTO organizer (Name,Address,Town,postcode,Phone,Email,Doy,Afm, SystemID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (name, address, town, postcode, phone, email, doy, afm, system_id))
+                            "INSERT INTO organizer (Name,Address,Town,postcode,Phone,Email,Doy,Afm, SystemID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                            (name, address, town, postcode, phone, email, doy, afm, system_id))
                         cursor.execute(
                             "SELECT ID FROM organizer WHERE Afm=?",
                             (afm,))
@@ -214,18 +266,17 @@ def scrap_orginizer(url):
         return 0
 
 
-
 def scrap_persons(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
-    person_id, production_id, role_id, subrole = '','','',''
+    person_id, production_id, role_id, subrole = '', '', '', ''
     subrole_flag = 0
 
     try:
-        search = text=re.compile('Συντελεστές$')
+        search = text = re.compile('Συντελεστές$')
         syntelestes = soup.find("dt", string=search)
-        syntelestes_text = syntelestes.findNext('dd').getText().strip().replace(u"\xa0"," ")
-        #print (syntelestes_text)
+        syntelestes_text = syntelestes.findNext('dd').getText().strip().replace(u"\xa0", " ")
+        # print (syntelestes_text)
         for each in syntelestes_text.split('\n'):
             if len(each) > 0:
                 line = each.split(":")
@@ -235,7 +286,7 @@ def scrap_persons(url):
                     full_name = line[1]
                     names = re.split(', |- ', full_name)
 
-                    if(subrole_flag == 1):
+                    if (subrole_flag == 1):
                         subrole = line[0]
                         role_id = insertRoletoDb('Ηθοποιός')
                     else:
@@ -243,15 +294,15 @@ def scrap_persons(url):
 
                     print("job: " + job)
 
-                    if len(names)>1:
+                    if len(names) > 1:
                         for each_name in names:
-                            name = each_name.strip()#.replace(u"\xa0"," ")
+                            name = each_name.strip()  # .replace(u"\xa0"," ")
                             print("List names: " + name)
                             person_id = insertPersonToDB(name)
-                            insertContributionToDB(url, person_id, role_id,subrole)
+                            insertContributionToDB(url, person_id, role_id, subrole)
 
                     else:
-                        name = full_name.strip()#.replace(u"\xa0", " ")
+                        name = full_name.strip()  # .replace(u"\xa0", " ")
                         print("name: " + full_name.strip())
                         person_id = insertPersonToDB(name)
                         insertContributionToDB(url, person_id, role_id, subrole)
@@ -260,11 +311,11 @@ def scrap_persons(url):
 
                     names = re.split(', |- ', line[0])
                     for each_name in names:
-                        name = each_name.strip()#.replace(u"\xa0", " ")
+                        name = each_name.strip()  # .replace(u"\xa0", " ")
                         if len(name.split(" ")) < 2:
                             subrole_flag = 1
                             continue
-                        print("ηθοποιος: " + subrole + " onoma: "+ name)
+                        print("ηθοποιος: " + subrole + " onoma: " + name)
                         role_id = insertRoletoDb('Ηθοποιός')
                         person_id = insertPersonToDB(name)
                         insertContributionToDB(url, person_id, role_id, subrole)
@@ -300,24 +351,25 @@ def insertRoletoDb(role):
 def insertPersonToDB(fullname):
     cursor.execute(
         "SELECT DISTINCT ID FROM persons WHERE Fullname=?",
-        (fullname, ))
+        (fullname,))
     row = cursor.fetchone()
     try:
         person_id = row[0]
     except TypeError:
         try:
             cursor.execute(
-                "INSERT INTO persons (Fullname,SystemID) VALUES (?, ?)",(fullname, system_id))
+                "INSERT INTO persons (Fullname,SystemID) VALUES (?, ?)", (fullname, system_id))
             cursor.execute(
                 "SELECT ID FROM persons WHERE Fullname=?",
-                (fullname, ))
+                (fullname,))
             row1 = cursor.fetchone()
             person_id = row1[0]
         except mariadb.Error as e:
             print(f"Database Error: {e}")
     return person_id
 
-def insertContributionToDB(url,person_id,role_id,subrole):
+
+def insertContributionToDB(url, person_id, role_id, subrole):
     try:
         cursor.execute(
             "SELECT ID FROM production WHERE URL=?",
@@ -330,6 +382,6 @@ def insertContributionToDB(url,person_id,role_id,subrole):
     try:
         cursor.execute(
             "INSERT INTO contributions (PeopleID,ProductionID,RoleID,subRole,SystemID) VALUES (?, ?, ?, ?, ?)",
-            (person_id, production_id, role_id, subrole,system_id))
+            (person_id, production_id, role_id, subrole, system_id))
     except mariadb.Error as e:
         print(f"Database Error: {e}")
