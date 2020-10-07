@@ -10,23 +10,21 @@ from connect_db import *
 
 conn, cursor = connect_to_db()
 
+empty_table('events')
+empty_table('venue')
+empty_table('production')
+empty_table('organizer')
 
-#empty_table('events')
-#empty_table('production')
-#empty_table('venue')
-#empty_table('organizer')
 empty_table('contributions')
 empty_table('persons')
 empty_table('roles')
 
 
-#begin_productions_scraping()
+begin_productions_scraping()
 #begin_actors_scraping()
 
-#scrap_events('https://www.viva.gr/tickets/theater/pollaploi-choroi/den-akouw-de-vlepw-de-milaw')
-#scrap_by_production('https://www.viva.gr/tickets/theatre/pallas/trito-stefani')
-
 #scrap_persons('https://www.viva.gr/tickets/theatre/pallas/trito-stefani')
-scrap_persons('https://www.viva.gr/tickets/theater/theatro-attis/nora')
+#scrap_persons('https://www.viva.gr/tickets/theater/theatro-attis/nora')
+
 
 conn.close()

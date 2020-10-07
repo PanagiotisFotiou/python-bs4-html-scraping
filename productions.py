@@ -74,6 +74,7 @@ def begin_productions_scraping():
     all_results = soup.find("div", id="play_results").select("article #ItemLink")
     for each_play in all_results:
         play_url = urljoin(url,each_play['href'])
+        print("scraping url: " + play_url)
         scrap_by_production(play_url)# fill production table
         venue_scrap(play_url)# scrap venue title
         scrap_events(play_url)#scrap events
@@ -109,6 +110,7 @@ def venue_scrap(url):
 def scrap_events(url):
     options = webdriver.ChromeOptions()
     options.add_argument("headless")
+    options.add_argument("log-level=3")
     driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
     driver.get(url)
     html = driver.page_source
@@ -222,7 +224,7 @@ def scrap_persons(url):
     try:
         search = text=re.compile('Συντελεστές$')
         syntelestes = soup.find("dt", string=search)
-        syntelestes_text = syntelestes.findNext('dd').getText().strip()
+        syntelestes_text = syntelestes.findNext('dd').getText().strip().replace(u"\xa0"," ")
         #print (syntelestes_text)
         for each in syntelestes_text.split('\n'):
             if len(each) > 0:
@@ -243,29 +245,31 @@ def scrap_persons(url):
 
                     if len(names)>1:
                         for each_name in names:
-                            name = each_name.strip().replace(u"\xa0"," ")
+                            name = each_name.strip()#.replace(u"\xa0"," ")
                             print("List names: " + name)
                             person_id = insertPersonToDB(name)
                             insertContributionToDB(url, person_id, role_id,subrole)
 
                     else:
-                        name = full_name.strip().replace(u"\xa0", " ")
+                        name = full_name.strip()#.replace(u"\xa0", " ")
                         print("name: " + full_name.strip())
                         person_id = insertPersonToDB(name)
                         insertContributionToDB(url, person_id, role_id, subrole)
 
-                elif length == 1:
+                elif length == 1 and (len(line[0].split(" ")) < 4):
 
                     names = re.split(', |- ', line[0])
                     for each_name in names:
-                        name = each_name.strip().replace(u"\xa0", " ")
+                        name = each_name.strip()#.replace(u"\xa0", " ")
                         if len(name.split(" ")) < 2:
                             subrole_flag = 1
                             continue
-                        print("ηθοποιος: " + name)
+                        print("ηθοποιος: " + subrole + " onoma: "+ name)
                         role_id = insertRoletoDb('Ηθοποιός')
                         person_id = insertPersonToDB(name)
                         insertContributionToDB(url, person_id, role_id, subrole)
+                else:
+                    print("skipped line: " + line[0])
     except AttributeError as error:
         return 0
 

@@ -7,7 +7,7 @@ def connect_to_db():
             password="lA,wA&5$w]}=",
             host="88.99.136.47",
             port=3306,
-            database="xuxlffke_scrapingdb"
+            database="xuxlffke_scrapingdb2"
         )
     except mariadb.Error as e:
         print(f"Error connecting to MariaDB Platform: {e}")
