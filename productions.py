@@ -70,16 +70,20 @@ def scrap_by_production(url):
             "SELECT ID FROM production WHERE URL=?",
             (url,))
         row = cursor.fetchone()
-        existed_production_id = row[0]
+        try:
+            existed_production_id = row[0]
+        except TypeError:
+            existed_production_id = None
     except mariadb.Error as e:
         print(f"Database Error: {e}")
 
     organizer_id = scrap_orginizer(url)
     if organizer_id != 0:
         try:
-            if existed_production_id:
+            if existed_production_id is not None:
+                print("existed production id")
                 cursor.execute(
-                    '''UPDATE production SET OrganizerID=%s Title=%s Description=%s URL=%s Producer=%s MediaURL=%s Duration=%s SystemID=%s WHERE ID = %s''',
+                    "UPDATE production SET OrganizerID=?, Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
                     (organizer_id, title, description, url, production_name, media_url, duration, system_id, existed_production_id))
             else:
                 cursor.execute(
@@ -91,7 +95,7 @@ def scrap_by_production(url):
         try:
             if existed_production_id:
                 cursor.execute(
-                    '''UPDATE production SET Title=%s Description=%s URL=%s Producer=%s MediaURL=%s Duration=%s SystemID=%s WHERE ID = %s''',
+                    "UPDATE production SET  Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
                     (title, description, url, production_name, media_url, duration, system_id, existed_production_id))
             else:
                 cursor.execute(
@@ -114,11 +118,11 @@ def begin_productions_scraping():
         play_url = urljoin(url, each_play['href'])
         print("scraping url: " + play_url)
         scrap_by_production(play_url)  # fill production table
-        venue_scrap(play_url)  # scrap venue title
-        scrap_events(play_url)  # scrap events
+        #venue_scrap(play_url)  # scrap venue title
+        scrap_events(play_url)  # scrap events and venues
         scrap_persons(play_url)  # scrap person including roles and contributions
 
-    fill_venue(venue_titles)
+    #fill_venue(venue_titles)
 
 
 # End of begin_productions_scraping function
@@ -207,8 +211,26 @@ def scrap_events(url):
 
         try:
             cursor.execute(
-                "INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)",
-                (production_id, venue_id, full_date, price_range, system_id))
+                "SELECT ID FROM events WHERE ProductionID=? AND VenueID=? AND DateEvent=?",
+                (production_id, venue_id, full_date))
+            row3 = cursor.fetchone()
+
+            try:
+                existed_event_id = row3[0]
+            except TypeError:
+                existed_event_id = None
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
+
+        try:
+            if existed_event_id is not None:
+                print("existed event id")
+                cursor.execute(
+                    "UPDATE events SET  ProductionID=?, VenueID=?, DateEvent=?, PriceRange=?, SystemID=? WHERE ID=?",
+                    (production_id, venue_id, full_date, price_range, system_id, existed_event_id))
+            else:
+                cursor.execute("INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)",
+                    (production_id, venue_id, full_date, price_range, system_id))
         except mariadb.Error as e:
             print(f"Database Error: {e}")
 
