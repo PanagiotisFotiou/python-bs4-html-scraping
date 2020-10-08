@@ -163,77 +163,79 @@ def scrap_events(url):
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
 
-    for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div",
-                                                                                               class_="events-container__item"):
+    try:
+        for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div",
+                                                                                                  class_="events-container__item"):
 
-        date = each_event.find(class_='events-container__item-date').getText()
-        unformatted_date = re.findall("\d+/\d+", date)
-        formatted_date = ''.join(map(str, unformatted_date)).split("/")
-        hour = each_event.find(class_="events-container__item-time").getText()
-        now = datetime.datetime.now()
-        full_date = f"{now.year}-{formatted_date[1]}-{formatted_date[0]} {hour}"
+           date = each_event.find(class_='events-container__item-date').getText()
+           unformatted_date = re.findall("\d+/\d+", date)
+           formatted_date = ''.join(map(str, unformatted_date)).split("/")
+           hour = each_event.find(class_="events-container__item-time").getText()
+           now = datetime.datetime.now()
+           full_date = f"{now.year}-{formatted_date[1]}-{formatted_date[0]} {hour}"
 
-        price_range = each_event.find("div", class_="events-container__item-prices").getText().strip()
+           price_range = each_event.find("div", class_="events-container__item-prices").getText().strip()
 
-        vanue_full = each_event.find("span", class_="events-container__item-venue").getText().strip()
-        vanue_full_list = vanue_full.split("-")
-        vanue_title = vanue_full_list[0].strip()
-        vanue_address = vanue_full_list[1].strip()
+           vanue_full = each_event.find("span", class_="events-container__item-venue").getText().strip()
+           vanue_full_list = vanue_full.split("-")
+           vanue_title = vanue_full_list[0].strip()
+           vanue_address = vanue_full_list[1].strip()
 
-        cursor.execute(
-            "SELECT DISTINCT ID FROM venue WHERE Title=?",
-            (vanue_title,))
-        row = cursor.fetchone()
+           cursor.execute(
+               "SELECT DISTINCT ID FROM venue WHERE Title=?",
+               (vanue_title,))
+           row = cursor.fetchone()
 
-        try:
-            venue_id = row[0]
-        except TypeError:
-            try:
-                cursor.execute(
-                    "INSERT INTO venue (Title,Address, SystemID) VALUES (?, ?, ?)",
-                    (vanue_title, vanue_address, system_id))
-                cursor.execute(
-                    "SELECT DISTINCT ID FROM venue WHERE Title=?",
-                    (vanue_title,))
-                row1 = cursor.fetchone()
-                venue_id = row1[0]
-            except mariadb.Error as e:
-                print(f"Database Error: {e}")
+           try:
+               venue_id = row[0]
+           except TypeError:
+               try:
+                   cursor.execute(
+                       "INSERT INTO venue (Title,Address, SystemID) VALUES (?, ?, ?)",
+                       (vanue_title, vanue_address, system_id))
+                   cursor.execute(
+                       "SELECT DISTINCT ID FROM venue WHERE Title=?",
+                       (vanue_title,))
+                   row1 = cursor.fetchone()
+                   venue_id = row1[0]
+               except mariadb.Error as e:
+                   print(f"Database Error: {e}")
 
-        try:
-            cursor.execute(
-                "SELECT ID FROM production WHERE URL=?",
-                (url,))
-            row2 = cursor.fetchone()
-            production_id = row2[0]
-        except mariadb.Error as e:
-            print(f"Database Error: {e}")
+           try:
+               cursor.execute(
+                   "SELECT ID FROM production WHERE URL=?",
+                   (url,))
+               row2 = cursor.fetchone()
+               production_id = row2[0]
+           except mariadb.Error as e:
+               print(f"Database Error: {e}")
 
-        try:
-            cursor.execute(
-                "SELECT ID FROM events WHERE ProductionID=? AND VenueID=? AND DateEvent=?",
-                (production_id, venue_id, full_date))
-            row3 = cursor.fetchone()
+           try:
+               cursor.execute(
+                   "SELECT ID FROM events WHERE ProductionID=? AND VenueID=? AND DateEvent=?",
+                   (production_id, venue_id, full_date))
+               row3 = cursor.fetchone()
 
-            try:
-                existed_event_id = row3[0]
-            except TypeError:
-                existed_event_id = None
-        except mariadb.Error as e:
-            print(f"Database Error: {e}")
+               try:
+                   existed_event_id = row3[0]
+               except TypeError:
+                   existed_event_id = None
+           except mariadb.Error as e:
+               print(f"Database Error: {e}")
 
-        try:
-            if existed_event_id is not None:
-                print("existed event id")
-                cursor.execute(
-                    "UPDATE events SET  ProductionID=?, VenueID=?, DateEvent=?, PriceRange=?, SystemID=? WHERE ID=?",
-                    (production_id, venue_id, full_date, price_range, system_id, existed_event_id))
-            else:
-                cursor.execute("INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)",
-                    (production_id, venue_id, full_date, price_range, system_id))
-        except mariadb.Error as e:
-            print(f"Database Error: {e}")
-
+           try:
+               if existed_event_id is not None:
+                   print("existed event id")
+                   cursor.execute(
+                       "UPDATE events SET  ProductionID=?, VenueID=?, DateEvent=?, PriceRange=?, SystemID=? WHERE ID=?",
+                       (production_id, venue_id, full_date, price_range, system_id, existed_event_id))
+               else:
+                   cursor.execute("INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)",
+                       (production_id, venue_id, full_date, price_range, system_id))
+           except mariadb.Error as e:
+               print(f"Database Error: {e}")
+    except AttributeError as error:
+        print(f"Attribute Error: {error}")
 
 # End of scrap_events function
 
