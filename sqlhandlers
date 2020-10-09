@@ -1,0 +1,33 @@
+ 
+GO
+ 
+CREATE TRIGGER production_change
+ON Production
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+	DECLARE @operation CHAR(6)
+		SET @operation = CASE
+				WHEN EXISTS(SELECT * FROM inserted) AND EXISTS(SELECT * FROM deleted)
+					THEN 'Update'
+				WHEN EXISTS(SELECT * FROM inserted)
+					THEN 'Insert'
+				WHEN EXISTS(SELECT * FROM deleted)
+					THEN 'Delete'
+				ELSE NULL
+		END
+	IF @operation = 'Delete'
+			INSERT INTO changeLog (TableName, OldValue, NewValue, CollumnName, SqlCommand)
+			SELECT @operation,  d.Cell, d.PaidPerCell, 'test' , 'test'
+			FROM deleted d
+ 
+	IF @operation = 'Insert'
+			INSERT INTO changeLog (TableName, OldValue, NewValue, CollumnName, SqlCommand)
+			SELECT @operation, i.Cell, i.PaidPerCell, 'test' , 'test'
+			FROM inserted i
+ 
+	IF @operation = 'Update'
+			INSERT INTO changeLog (TableName, OldValue, NewValue, CollumnName, SqlCommand)
+			SELECT @operation, i.Cell, i.PaidPerCell, 'test' , 'test'
+			FROM deleted d, inserted i
+END
