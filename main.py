@@ -10,13 +10,13 @@ from connect_db import *
 
 conn, cursor = connect_to_db()
 
+#empty_table('contributions')
 #empty_table('events')
-#empty_table('venue')
 #empty_table('production')
 #empty_table('organizer')
-#empty_table('contributions')
 #empty_table('persons')
 #empty_table('roles')
+#empty_table('venue')
 
 
 #begin_productions_scraping()
@@ -27,5 +27,6 @@ conn, cursor = connect_to_db()
 
 #scrap_by_production('https://www.viva.gr/tickets/theater/multiple-locations/i-porni-apo-panw')
 #scrap_events('https://www.viva.gr/tickets/theater/multiple-locations/i-porni-apo-panw')
-scrap_events('https://www.viva.gr/tickets/dance/theatro-roes/siss-phuss-while-you-carry-time-our-bodies-hold-history')
+#scrap_events('https://www.viva.gr/tickets/dance/theatro-roes/siss-phuss-while-you-carry-time-our-bodies-hold-history')
+
 conn.close()

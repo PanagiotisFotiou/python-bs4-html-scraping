@@ -84,7 +84,8 @@ def scrap_by_production(url):
                 print("existed production id")
                 cursor.execute(
                     "UPDATE production SET OrganizerID=?, Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
-                    (organizer_id, title, description, url, production_name, media_url, duration, system_id, existed_production_id))
+                    (organizer_id, title, description, url, production_name, media_url, duration, system_id,
+                     existed_production_id))
             else:
                 cursor.execute(
                     "INSERT INTO production (OrganizerID,Title,Description,URL,Producer,MediaURL, Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?,?)",
@@ -118,11 +119,11 @@ def begin_productions_scraping():
         play_url = urljoin(url, each_play['href'])
         print("scraping url: " + play_url)
         scrap_by_production(play_url)  # fill production table
-        #venue_scrap(play_url)  # scrap venue title
+        venue_scrap(play_url)  # scrap venue title
         scrap_events(play_url)  # scrap events and venues
         scrap_persons(play_url)  # scrap person including roles and contributions
 
-    #fill_venue(venue_titles)
+    # fill_venue(venue_titles)
 
 
 # End of begin_productions_scraping function
@@ -165,77 +166,79 @@ def scrap_events(url):
 
     try:
         for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div",
-                                                                                                  class_="events-container__item"):
+                                                                                                   class_="events-container__item"):
 
-           date = each_event.find(class_='events-container__item-date').getText()
-           unformatted_date = re.findall("\d+/\d+", date)
-           formatted_date = ''.join(map(str, unformatted_date)).split("/")
-           hour = each_event.find(class_="events-container__item-time").getText()
-           now = datetime.datetime.now()
-           full_date = f"{now.year}-{formatted_date[1]}-{formatted_date[0]} {hour}"
+            date = each_event.find(class_='events-container__item-date').getText()
+            unformatted_date = re.findall("\d+/\d+", date)
+            formatted_date = ''.join(map(str, unformatted_date)).split("/")
+            hour = each_event.find(class_="events-container__item-time").getText()
+            now = datetime.datetime.now()
+            full_date = f"{now.year}-{formatted_date[1]}-{formatted_date[0]} {hour}"
 
-           price_range = each_event.find("div", class_="events-container__item-prices").getText().strip()
+            price_range = each_event.find("div", class_="events-container__item-prices").getText().strip()
 
-           vanue_full = each_event.find("span", class_="events-container__item-venue").getText().strip()
-           vanue_full_list = vanue_full.split("-")
-           vanue_title = vanue_full_list[0].strip()
-           vanue_address = vanue_full_list[1].strip()
+            vanue_full = each_event.find("span", class_="events-container__item-venue").getText().strip()
+            vanue_full_list = vanue_full.split("-")
+            vanue_title = vanue_full_list[0].strip()
+            vanue_address = vanue_full_list[1].strip()
 
-           cursor.execute(
-               "SELECT DISTINCT ID FROM venue WHERE Title=?",
-               (vanue_title,))
-           row = cursor.fetchone()
+            cursor.execute(
+                "SELECT DISTINCT ID FROM venue WHERE Title=?",
+                (vanue_title,))
+            row = cursor.fetchone()
 
-           try:
-               venue_id = row[0]
-           except TypeError:
-               try:
-                   cursor.execute(
-                       "INSERT INTO venue (Title,Address, SystemID) VALUES (?, ?, ?)",
-                       (vanue_title, vanue_address, system_id))
-                   cursor.execute(
-                       "SELECT DISTINCT ID FROM venue WHERE Title=?",
-                       (vanue_title,))
-                   row1 = cursor.fetchone()
-                   venue_id = row1[0]
-               except mariadb.Error as e:
-                   print(f"Database Error: {e}")
+            try:
+                venue_id = row[0]
+            except TypeError:
+                try:
+                    cursor.execute(
+                        "INSERT INTO venue (Title,Address, SystemID) VALUES (?, ?, ?)",
+                        (vanue_title, vanue_address, system_id))
+                    cursor.execute(
+                        "SELECT DISTINCT ID FROM venue WHERE Title=?",
+                        (vanue_title,))
+                    row1 = cursor.fetchone()
+                    venue_id = row1[0]
+                except mariadb.Error as e:
+                    print(f"Database Error: {e}")
 
-           try:
-               cursor.execute(
-                   "SELECT ID FROM production WHERE URL=?",
-                   (url,))
-               row2 = cursor.fetchone()
-               production_id = row2[0]
-           except mariadb.Error as e:
-               print(f"Database Error: {e}")
+            try:
+                cursor.execute(
+                    "SELECT ID FROM production WHERE URL=?",
+                    (url,))
+                row2 = cursor.fetchone()
+                production_id = row2[0]
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
 
-           try:
-               cursor.execute(
-                   "SELECT ID FROM events WHERE ProductionID=? AND VenueID=? AND DateEvent=?",
-                   (production_id, venue_id, full_date))
-               row3 = cursor.fetchone()
+            try:
+                cursor.execute(
+                    "SELECT ID FROM events WHERE ProductionID=? AND VenueID=? AND DateEvent=?",
+                    (production_id, venue_id, full_date))
+                row3 = cursor.fetchone()
 
-               try:
-                   existed_event_id = row3[0]
-               except TypeError:
-                   existed_event_id = None
-           except mariadb.Error as e:
-               print(f"Database Error: {e}")
+                try:
+                    existed_event_id = row3[0]
+                except TypeError:
+                    existed_event_id = None
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
 
-           try:
-               if existed_event_id is not None:
-                   print("existed event id")
-                   cursor.execute(
-                       "UPDATE events SET  ProductionID=?, VenueID=?, DateEvent=?, PriceRange=?, SystemID=? WHERE ID=?",
-                       (production_id, venue_id, full_date, price_range, system_id, existed_event_id))
-               else:
-                   cursor.execute("INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)",
-                       (production_id, venue_id, full_date, price_range, system_id))
-           except mariadb.Error as e:
-               print(f"Database Error: {e}")
+            try:
+                if existed_event_id is not None:
+                    print("existed event id")
+                    cursor.execute(
+                        "UPDATE events SET  ProductionID=?, VenueID=?, DateEvent=?, PriceRange=?, SystemID=? WHERE ID=?",
+                        (production_id, venue_id, full_date, price_range, system_id, existed_event_id))
+                else:
+                    cursor.execute(
+                        "INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)",
+                        (production_id, venue_id, full_date, price_range, system_id))
+            except mariadb.Error as e:
+                print(f"Database Error: {e}")
     except AttributeError as error:
         print(f"Attribute Error: {error}")
+
 
 # End of scrap_events function
 
@@ -270,6 +273,9 @@ def scrap_orginizer(url):
                 row = cursor.fetchone()
                 try:
                     id = row[0]
+                    cursor.execute(
+                        "UPDATE organizer SET Name=?, Address=?, Town=?, postcode=?, Phone=?, Email=?, Doy=?, SystemID=? WHERE ID=?",
+                        (name, address, town, postcode, phone, email, doy, afm, system_id, id))
                     return id
                 except TypeError:
                     try:
@@ -404,8 +410,29 @@ def insertContributionToDB(url, person_id, role_id, subrole):
         print(f"Database Error: {e}")
 
     try:
-        cursor.execute(
-            "INSERT INTO contributions (PeopleID,ProductionID,RoleID,subRole,SystemID) VALUES (?, ?, ?, ?, ?)",
-            (person_id, production_id, role_id, subrole, system_id))
+        try:
+            cursor.execute(
+                "SELECT ID FROM contributions WHERE PeopleID=? AND ProductionID=? AND RoleID=?",
+                (person_id, production_id, role_id))
+            row2 = cursor.fetchone()
+            try:
+                existed_contribution_id = row2[0]
+            except TypeError:
+                existed_contribution_id = None
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
+
+        try:
+            if existed_contribution_id is not None:
+                print("existed contribution id")
+                cursor.execute(
+                    "UPDATE contributions SET  subRole=?, SystemID WHERE ID=?",
+                    (subrole, system_id))
+            else:
+                cursor.execute(
+                    "INSERT INTO contributions (PeopleID,ProductionID,RoleID,subRole,SystemID) VALUES (?, ?, ?, ?, ?)",
+                    (person_id, production_id, role_id, subrole, system_id))
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
     except mariadb.Error as e:
         print(f"Database Error: {e}")
