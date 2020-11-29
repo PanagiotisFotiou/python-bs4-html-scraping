@@ -5,28 +5,28 @@ import sys
 from actors import *
 from productions import *
 from connect_db import *
-
-# begin_actors_scraping()
+from tkinter import *
 
 conn, cursor = connect_to_db()
 
-#empty_table('contributions')
-#empty_table('events')
-#empty_table('production')
-#empty_table('organizer')
-#empty_table('persons')
-#empty_table('roles')
-#empty_table('venue')
-
+# empty_table('contributions')
+# empty_table('events')
+# empty_table('production')
+# empty_table('organizer')
+# empty_table('persons')
+# empty_table('roles')
+# empty_table('venue')
+# empty_table('changeLog')
 
 #begin_productions_scraping()
-#begin_actors_scraping()
-
-#scrap_persons('https://www.viva.gr/tickets/theatre/pallas/trito-stefani')
-#scrap_persons('https://www.viva.gr/tickets/theater/theatro-attis/nora')
-
-#scrap_by_production('https://www.viva.gr/tickets/theater/multiple-locations/i-porni-apo-panw')
+#scrap_by_production('https://www.viva.gr/tickets/theatre/pallas/trito-stefani')
 #scrap_events('https://www.viva.gr/tickets/theater/multiple-locations/i-porni-apo-panw')
-#scrap_events('https://www.viva.gr/tickets/dance/theatro-roes/siss-phuss-while-you-carry-time-our-bodies-hold-history')
+
+window = Tk()
+window.title("Python HTML Scraping")
+window.geometry('650x400')
+btn = Button(window, text="Begin Scraping", command = begin_productions_scraping)
+btn.grid(column=1, row=0)
+window.mainloop()
 
 conn.close()
