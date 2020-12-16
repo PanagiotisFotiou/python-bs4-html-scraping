@@ -3,11 +3,11 @@ import mariadb
 def connect_to_db():
     try:
         conn = mariadb.connect(
-            user="xuxlffke_scraperuser",
-            password="lA,wA&5$w]}=",
-            host="88.99.136.47",
+            user="*",
+            password="*",
+            host="*",
             port=3306,
-            database="xuxlffke_scrapingdb"
+            database="*"
         )
     except mariadb.Error as e:
         print(f"Error connecting to MariaDB Platform: {e}")
