@@ -11,27 +11,35 @@ from connect_db import *
 from urllib.parse import urljoin
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from tkinter import ttk as ttk
 from tkinter import *
 from threading import *
 from tkinter import messagebox as mb
+from textwrap import wrap
 
 conn, cursor = connect_to_db()
+conn2, cursor2 = connect_to_db()
 venue_titles = []
 system_id = ''
-
 
 class GUI(object):
     def __init__(self, master):
         self.master = master
+        # width = master.winfo_screenwidth()
+        # height = master.winfo_screenheight()
+        #self.master.geometry("%dx%d" % (width, height))
         self.master.title("Python HTML Scraping")
-        # self.master.geometry('900x400')
-        self.master.resizable(0, 0)
-        self.Console = Text(master, height=15, width=100)
+        # p1 = PhotoImage(file='info.png')
+        self.master.iconphoto(False, PhotoImage(file='icons\pngwing.png'))
+        self.master.configure(bg='#32c1d5')
+        #self.master.resizable(0, 0)
+        self.Console = Text(master, height=15, width=120)
         self.scroll = Scrollbar(master, borderwidth=50)
         self.scroll.config(command=self.Console.yview)
-        self.Console.grid(column=0, row=1, columnspan=2, rowspan=5, padx=(10, 0))
-        self.scroll.grid(column=1, row=1, sticky=N + S + E, rowspan=5)
+        self.Console.grid(column=1, row=1, columnspan=2, rowspan=5, padx=(10, 0), sticky=W)
+        self.scroll.grid(column=1, row=1, columnspan=2, rowspan=5, sticky=E + N + S)
         self.Console.config(state=DISABLED)
+
 
     def quit(self):
         self.master.destroy()
@@ -52,6 +60,33 @@ class GUI(object):
         self.Console.delete('1.0', END)
         self.Console.config(state=DISABLED)
 
+    def dataGridFill(self,tableName):
+        try:
+            for widget in f2.winfo_children():
+                widget.destroy()
+            conn2, cursor2 = connect_to_db()
+            cursor2.execute("SELECT * FROM " + tableName + " ORDER BY timestamp DESC limit 0,50")
+            i = 0
+            col = 0
+            for row in cursor2.description:
+                e = Label(f2, width=15, text=row[0], relief='flat', anchor="w", font='Helvetica 12 bold')
+                e.grid(row=i, column= col)
+                col = col + 1
+            i = i + 1
+
+            for row in cursor2:
+                for j in range(len(row)):
+                    cellText = row[j]
+                    cellTextLimited = str(cellText)[0:25]
+                    if len(cellTextLimited) > 24:
+                        cellTextLimited += "..."
+                    e = Button(f2, width=22, height=2 , text=cellTextLimited, borderwidth=2, relief='ridge', anchor="w", bg="white", command= lambda cellText=cellText: clickTableCell(cellText))
+                    e.grid(row=i, column=j)
+                i = i + 1
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
+
+
 
 root = Tk()
 app = GUI(root)
@@ -68,6 +103,22 @@ def deleteTablesConfirm():
     res = mb.askquestion('Διαγραφή πινάκων', 'Είστε σίγουροι;')
     if res == 'yes':
         empty_all_tables()
+
+
+def clickTableCell(text):
+    toplevel = Toplevel()
+    #root.eval(f'tk::PlaceWindow {str(toplevel)} center')
+    toplevel.title("Τιμή πεδίόυ")
+    toplevel.iconphoto(False, PhotoImage(file='icons\pngwing.png'))
+    label1 = Label(toplevel, text=text, bg="white")
+    label1.pack(padx=130, pady=30)
+    toplevel.update()
+    width = label1.winfo_width()
+    if width > 600:
+        char_width = width / len(text)
+        wrapped_text = '\n'.join(wrap(text, 120))
+        label1['text'] = wrapped_text
+    toplevel.mainloop()
 
 
 sec = -1
@@ -118,14 +169,19 @@ def Reset(label):
     global count
     count = -1
 
+def step(num):
+    root.update_idletasks()
+    pb1['value'] += num
 
 def threading():
-    t1 = Thread(target=begin_productions_scraping)
-    t1.start()
+    Thread(target=begin_productions_scraping).start()
+
+def threading2(el):
+    if el:
+        Thread(target=GUI.dataGridFill(app, el.get())).start()
 
 
 pause_status = 0
-
 
 def getPauseStatus():
     global pause_status
@@ -206,11 +262,11 @@ def scrap_by_production(url):
     containers = soup.find_all("div", class_="playDetailsContainer")
     for container in containers:
         if container.find("h4") is not None:
-            production_name = container.find("h4").getText()
+            production_name = container.find("h4").getText().strip()
 
     try:
         cursor.execute(
-            "SELECT ID FROM production WHERE URL=?",
+            "SELECT * FROM production WHERE URL=?",
             (url,))
         row = cursor.fetchone()
         try:
@@ -224,11 +280,12 @@ def scrap_by_production(url):
     if organizer_id != 0:
         try:
             if existed_production_id is not None:
-                print("existed production id")
-                cursor.execute(
-                    "UPDATE production SET OrganizerID=?, Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
-                    (organizer_id, title, description, url, production_name, media_url, duration, system_id,
-                     existed_production_id))
+                if row[1] != organizer_id or row[2] != title or row[3] != description or row[5] != production_name or row[6] != media_url or row[7] != duration:
+                    cursor.execute(
+                        "UPDATE production SET OrganizerID=?, Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
+                        (organizer_id, title, description, url, production_name, media_url, duration, system_id,
+                         existed_production_id))
+                    GUI.write(app, "Εντοπίστηκαν διαφορές στην σελίδα του θεατρικού και εγίναν οι κατάλληλες ενημέρωσεις τιμών")
             else:
                 cursor.execute(
                     "INSERT INTO production (OrganizerID,Title,Description,URL,Producer,MediaURL, Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?,?)",
@@ -238,9 +295,11 @@ def scrap_by_production(url):
     else:
         try:
             if existed_production_id:
-                cursor.execute(
-                    "UPDATE production SET  Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
-                    (title, description, url, production_name, media_url, duration, system_id, existed_production_id))
+                if row[2] != title or row[3] != description or row[5] != production_name or row[6] != media_url or row[7] != duration:
+                    cursor.execute(
+                        "UPDATE production SET  Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
+                        (title, description, url, production_name, media_url, duration, system_id, existed_production_id))
+                    GUI.write(app, "Εντοπίστηκαν διαφορές στην σελίδα του θεατρικού και εγίναν οι κατάλληλες ενημέρωσεις τιμών")
             else:
                 cursor.execute(
                     "INSERT INTO production (Title,Description,URL,Producer,MediaURL,Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?)",
@@ -263,6 +322,7 @@ def begin_productions_scraping():
     all_results = soup.find("div", id="play_results").select("article.theater #ItemLink")
     all_results_names_soup = soup.find("div", id="play_results").select("article #ItemLink .playinfo .playinfo__title")
     all_results_names = []
+    productionStatus = []
     GUI.write(app, "Σύνολο έργων: " + str(len(all_results)))
 
     for val in all_results_names_soup:
@@ -284,12 +344,16 @@ def begin_productions_scraping():
         except mariadb.Error as e:
             print(f"Database Error: {e}")
         if existed_production_id is not None:
+            productionStatus.append("Υπάρχον")
             existed += 1
         else:
+            productionStatus.append("Νέο")
             new += 1
 
     GUI.write(app, "Νέα έργα: " + str(new) + "\nΥπάρχοντα έργα: " + str(existed))
     idx = 0
+    percentage = 100 / float(len(all_results))
+
     for each_play in all_results:
         if getPauseStatus() == 1:
             GUI.write(app, "Η λειτουργία scraping βρίσκεται σε παυσή.")
@@ -302,21 +366,26 @@ def begin_productions_scraping():
             btn1['state'] = DISABLED
             btn4['state'] = DISABLED
             btn11['state'] = NORMAL
-        GUI.write(app, str(idx + 1) + "/" + str(len(all_results)) + " --> " + all_results_names[idx])
+        GUI.write(app, str(idx + 1) + "/" + str(len(all_results)) + " --> " + all_results_names[idx] + " (" + productionStatus[idx] + ")")
         idx += 1
         play_url = urljoin(url, each_play['href'])
         print("scraping url: " + play_url)
         scrap_by_production(play_url)  # fill production table
         venue_scrap(play_url)  # scrap venue title
-        scrap_events(play_url)  # scrap events and venues
+        scrap_events(play_url, productionStatus[idx])  # scrap events and venues
         scrap_persons(play_url)  # scrap person including roles and contributions
+        getSums()
+        step(percentage)
 
     fill_venue(venue_titles)
     btn['state'] = NORMAL
     Stop()
-    getSums()
     GUI.write(app, "Η διαδικασία ολοκληρώθηκε!")
-
+    try:
+        cursor.execute("UPDATE system SET date=? WHERE ID=?",(datetime.datetime.now(), 2))
+    except mariadb.Error as e:
+        print(f"Database Error: {e}")
+    getLastRun()
 
 # End of begin_productions_scraping function
 
@@ -348,7 +417,7 @@ def venue_scrap(url):
 # End of venue_scrap function
 
 
-def scrap_events(url):
+def scrap_events(url, status):
     options = FirefoxOptions()
     options.add_argument("--headless")
     driver = webdriver.Firefox(executable_path=r'C:\geckodriver.exe', options=options)
@@ -357,6 +426,7 @@ def scrap_events(url):
     soup = BeautifulSoup(html, 'html.parser')
 
     try:
+        new_events = 0
         for each_event in soup.find("div", class_="booking-panel-wrap__events-container").find_all("div",
                                                                                                    class_="events-container__item"):
             date = each_event.find(class_='events-container__item-date').getText()
@@ -420,7 +490,6 @@ def scrap_events(url):
 
             try:
                 if existed_event_id is not None:
-                    print("existed event id")
                     cursor.execute(
                         "UPDATE events SET  ProductionID=?, VenueID=?, DateEvent=?, PriceRange=?, SystemID=? WHERE ID=?",
                         (production_id, venue_id, full_date, price_range, system_id, existed_event_id))
@@ -428,8 +497,12 @@ def scrap_events(url):
                     cursor.execute(
                         "INSERT INTO events (ProductionID,VenueID,DateEvent,PriceRange, SystemID) VALUES (?, ?, ?, ?, ?)",
                         (production_id, venue_id, full_date, price_range, system_id))
+                    new_events += 1
+
             except mariadb.Error as e:
                 print(f"Database Error: {e}")
+        if status == 'Υπάρχον' and new_events > 0:
+            GUI.write(app, "Εγίνε προσθήκη " + str(new_events) + " νέων παραστάσεων")
     except AttributeError as error:
         print(f"Attribute Error: {error}")
     driver.close()
@@ -494,29 +567,39 @@ def scrap_orginizer(url):
 
 def scrap_persons(url):
     page = requests.get(url)
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup_alt = BeautifulSoup(page.content, 'html.parser')
     person_id, production_id, role_id, subrole = '', '', '', ''
     subrole_flag = 0
 
     try:
         search = text = re.compile('Συντελεστές$')
-        syntelestes = soup.find("dt", string=search)
+        syntelestes = soup_alt.find("dt", string=search)
+
+        for s in syntelestes.parent.select('#organizer, #openMedia, #openShare, h4, dd > dd'):
+            s.extract()
+
         syntelestes_text = syntelestes.findNext('dd').getText().strip().replace(u"\xa0", " ")
+
         for each in syntelestes_text.split('\n'):
             if len(each) > 0 and len(each) < 150:
                 print("len(each): ", len(each))
+                each = each.replace('|', ':')
                 line = each.split(":")
                 length = len(line)
-                if (length > 1) and (len(line[1]) > 0):
-                    job = line[0]
-                    full_name = line[1]
+
+                if (length > 1) and (len(line[1].strip()) > 0):
+                    job = line[0].strip()
+                    full_name = line[1].strip()
                     names = re.split(', |- ', full_name)
 
+                    if(job == 'Πρωταγωνιστούν'):
+                        subrole_flag == 1
+
                     if (subrole_flag == 1):
-                        subrole = line[0]
+                        subrole = line[0].strip()
                         role_id = insertRoletoDb('Ηθοποιός')
                     else:
-                        role_id = insertRoletoDb(job)
+                        role_id = insertRoletoDb(job.strip())
 
                     print("job: " + job)
 
@@ -528,7 +611,7 @@ def scrap_persons(url):
                             person_id = insertPersonToDB(name)
                             insertContributionToDB(url, person_id, role_id, subrole)
 
-                    else:
+                    elif all(x.isalpha() or x.isspace() for x in full_name) and (len(full_name.split()) == 2) and (full_name[0].isupper()): #if full name is 2 words and alphabetical and first letter is Capital
                         name = full_name.strip()  # .replace(u"\xa0", " ")
                         print("name: " + full_name.strip())
                         person_id = insertPersonToDB(name)
@@ -542,7 +625,7 @@ def scrap_persons(url):
                         if len(name.split(" ")) < 2:
                             subrole_flag = 1
                             continue
-                        print("ηθοποιος: " + subrole + " onoma: " + name)
+                        print("sub role: " + subrole + " onoma: " + name)
                         role_id = insertRoletoDb('Ηθοποιός')
                         person_id = insertPersonToDB(name)
                         insertContributionToDB(url, person_id, role_id, subrole)
@@ -665,54 +748,132 @@ def getSums():
     entryvar4.set(getGetActorsFromDB())
     entryvar5.set(getGetCountFromDB("venue"))
 
+def getLastRun():
+    try:
+        cursor.execute("SELECT date FROM `system` WHERE name='Python'")
+        row = cursor.fetchone()
+        date = row[0]
+    except mariadb.Error as e:
+        print(f"Database Error: {e}")
+    lastRunFrameLabelText.config(text=date)
 
+
+titleLabel = Label(root, text="ΣΥΣΤΗΜΑ HTML SCRAPING VIVA.GR", font='Helvetica 16 bold')
+titleLabel.grid(column=0, row=0, columnspan=5, pady=(0, 10),sticky=W+E+N+S)
 f0 = Frame(root)
 f1 = Frame(root)
 timerLabelText = Label(f0, text="Χρόνος :")
 timerLabel = Label(f0, text="")
-btn = Button(f0, text="Ξεκίνα το  Scraping", command=lambda: threading())
-btn1 = Button(f1, text="Συνέχεια", command=lambda: resumeScraping())
+btn = Button(f0, text="Ξεκίνα το  Scraping", font='Helvetica 11 bold', command=lambda: threading())
+btn1 = Button(f1, text="Συνέχεια", command=lambda: resumeScraping(), font='Helvetica 11 bold')
 btn1['state'] = DISABLED
-btn11 = Button(f1, text="Πάυση", command=pauseScraping)
+btn11 = Button(f1, text="Πάυση", command=pauseScraping, font='Helvetica 11 bold')
 btn11['state'] = DISABLED
-btn111 = Button(f1, text="Κλείσιμο", command=ExitApplication, bg='brown', fg='white')
-btn2 = Button(root, text="Άδειασμα Πινάκων", command=deleteTablesConfirm)
+btn111 = Button(f1, text="Κλείσιμο", command=ExitApplication, bg='brown', fg='white', font='Helvetica 11 bold')
+btn2 = Button(root, text="Άδειασμα Πινάκων", command=deleteTablesConfirm, font='Helvetica 10 bold')
 btn3 = Button(root, text="Καθαρισμός", command=lambda: GUI.clearConsole(app))
-btn4 = Button(root, text="Ανανέωση Συνόλων", command=lambda: getSums())
-f0.grid(column=0, row=0, pady=(10, 10))
-btn.pack(side="left", padx=6)
+btn4 = Button(root, text="Ανανέωση Συνόλων", font='Helvetica 11 bold', command=lambda: getSums())
+f0.grid(column=0, row=1, pady=(10, 10), padx=(10, 0))
+btn.pack(side="left", padx=(0, 6))
 timerLabel.pack(side="right", padx=3)
 timerLabelText.pack(side="right")
-f1.grid(column=1, row=0, pady=(10, 10))
+f1.grid(column=0, row=2, pady=(10, 10), padx=(10, 0))
 btn1.pack(side="left")
 btn111.pack(side="right")
 btn11.pack(side="right")
-btn2.grid(column=1, row=6, sticky=E, pady=(10, 10))
-btn3.grid(column=0, row=6, sticky=W, padx=(10, 0), pady=(10, 10))
-btn4.grid(column=2, row=6, columnspan=2, pady=(10, 10))
+btn2.grid(column=3, row=5, columnspan=2, sticky=W+E+N+S, padx=(10, 10))
+#btn3.grid(column=0, row=3, sticky=W+E+N+S, padx=(10, 0), pady=(10, 10))
+btn4.grid(column=3, row=15, columnspan=2, sticky=W+E+N+S, pady=(10, 10), padx=(10, 10))
 
-label = Label(root, text="ΣΥΝΟΛΑ", font='Helvetica 16 bold')
-label.grid(column=2, row=0, columnspan=2)
-label2 = Label(root, text="Έργα:")
-label3 = Label(root, text="Διοργανωτές:")
-label4 = Label(root, text="Παραστάσεις:")
-label5 = Label(root, text="Ηθοποιοί:")
-label6 = Label(root, text="Θεατρικοί χώροι:")
-label2.grid(column=2, row=1, sticky=W, padx=(10, 10))
-label3.grid(column=2, row=2, sticky=W, padx=(10, 10))
-label4.grid(column=2, row=3, sticky=W, padx=(10, 10))
-label5.grid(column=2, row=4, sticky=W, padx=(10, 10))
-label6.grid(column=2, row=5, sticky=W, padx=(10, 10))
+detailsFrame = Frame(root, bg="#FFFF99")
+lastRunFrameLabelText = Label(detailsFrame, font='Helvetica 10 bold', bg="#FFFF99")
+lastRunFrameLabel = Label(detailsFrame, text='Τελευταία επιτυχημένη ολοκλήρωση :', font='Helvetica 10 bold', bg="#FFFF99")
+detailsFrame.grid(column=3, row=1, sticky=W+E+N+S, padx=(10, 10), pady=(0, 10))
+lastRunFrameLabel.grid(column=3, row=2, sticky=W+E+N+S, padx=(10, 0), pady=(0, 10))
+lastRunFrameLabelText.grid(column=4, row=2, sticky=W+E+N+S, padx=(0, 10), pady=(0, 10))
+
+systemLabelHeader = Label(detailsFrame, text='Πληροφορίες συστήματος', font='Helvetica 12 bold underline', bg="#FFFF99")
+systemLabelHeader.grid(column=3, row=1, columnspan=2, sticky=W, padx=(10, 10), pady=(10, 10))
+systemLabel = Label(detailsFrame, text='System ID : 2', font='Helvetica 10 bold', bg="#FFFF99")
+systemLabel.grid(column=3, row=3, columnspan=2, sticky=W, padx=(10, 10), pady=(0, 10))
+systemLabel2 = Label(detailsFrame, text='System Name : Python', font='Helvetica 10 bold', bg="#FFFF99")
+systemLabel2.grid(column=3, row=4, columnspan=2, sticky=W, padx=(10, 10), pady=(0, 10))
+
+f5 = Frame(root, bg="white")
+label = Label(root, text="ΔΕΔΟΜΕΝΑ", font='Helvetica 16 bold')
+label.grid(column=0, row=7, columnspan=5, sticky=W+E+N+S, padx=(0, 0), pady=(0, 10))
+label2 = Label(f5, text=" Έργα:", bg="white", font='Helvetica 11 bold')
+img2 = PhotoImage(file="icons/erga.png")
+label2["compound"] = LEFT
+label2["image"] = img2
+label3 = Label(f5, text=" Διοργανωτές:", bg="white", font='Helvetica 11 bold')
+img3 = PhotoImage(file="icons/organizer.png")
+label3["compound"] = LEFT
+label3["image"] = img3
+label4 = Label(f5, text=" Παραστάσεις:", bg="white", font='Helvetica 11 bold')
+img4 = PhotoImage(file="icons/tickets.png")
+label4["compound"] = LEFT
+label4["image"] = img4
+label5 = Label(f5, text=" Ηθοποιοί:", bg="white", font='Helvetica 11 bold')
+img5 = PhotoImage(file="icons/actor.png")
+label5["compound"] = LEFT
+label5["image"] = img5
+label6 = Label(f5, text=" Θεατρικοί χώροι:", bg="white", font='Helvetica 11 bold')
+img6 = PhotoImage(file="icons/venue.png")
+label6["compound"] = LEFT
+label6["image"] = img6
+label7 = Label(f5, text="Σύνολα εγγραφών", font='Helvetica 14 bold underline', bg="white")
+label2.grid(column=3, row=10, sticky=W, padx=(10, 10), pady=(0,10))
+label3.grid(column=3, row=11, sticky=W, padx=(10, 10), pady=(0,10))
+label4.grid(column=3, row=12, sticky=W, padx=(10, 10), pady=(0,10))
+label5.grid(column=3, row=13, sticky=W, padx=(10, 10), pady=(0,10))
+label6.grid(column=3, row=14, sticky=W, padx=(10, 10), pady=(0,10))
+label7.grid(column=3, row=9, sticky=W+E+N+S, columnspan=2, padx=(100, 100),pady=(10, 10))
+f5.grid(column=3, row=9, sticky=W+E+N+S, padx=(10, 10), pady=(10, 0))
 
 entryvar1, entryvar2, entryvar3, entryvar4, entryvar5 = StringVar(), StringVar(), StringVar(), StringVar(), StringVar()
-entry, entry2, entry3, entry4, entry5 = Label(root, textvariable=entryvar1), Label(root, textvariable=entryvar2), Label(
-    root, textvariable=entryvar3), Label(root, textvariable=entryvar4), Label(root, textvariable=entryvar5)
+entry, entry2, entry3, entry4, entry5 = Label(f5, textvariable=entryvar1, font='Helvetica 11 bold', bg="white"), Label(f5, textvariable=entryvar2, font='Helvetica 11 bold', bg="white"), Label(
+    f5, textvariable=entryvar3, font='Helvetica 11 bold', bg="white"), Label(f5, textvariable=entryvar4, font='Helvetica 11 bold', bg="white"), Label(f5, textvariable=entryvar5, font='Helvetica 11 bold', bg="white")
 
-entry.grid(column=3, row=1, padx=(0, 10))
-entry2.grid(column=3, row=2, padx=(0, 10))
-entry3.grid(column=3, row=3, padx=(0, 10))
-entry4.grid(column=3, row=4, padx=(0, 10))
-entry5.grid(column=3, row=5, padx=(0, 10))
+entry.grid(column=4, row=10, padx=(0, 10), pady=(0,10))
+entry2.grid(column=4, row=11, padx=(0, 10), pady=(0,10))
+entry3.grid(column=4, row=12, padx=(0, 10), pady=(0,10))
+entry4.grid(column=4, row=13, padx=(0, 10), pady=(0,10))
+entry5.grid(column=4, row=14, padx=(0, 10), pady=(0,10))
+
+f3 = Frame(root)
+labelTable = Label(f3, text="Επιλογή Πίνακα :", font='Helvetica 10 bold')
+labelTable.pack(side="left", padx=6)
+#labelTable.grid(column=0, row=8, sticky=W, padx=(10, 10))
+databaseList = ["production", "organizer", "venue", "events", "persons", "roles", "contributions", "changeLog"]
+combo = ttk.Combobox(f3, state="readonly", values=databaseList, font=("TkDefaultFont", 14))
+combo.current(0)
+#combo.grid(column=1, row=8, padx=(10, 10))
+formBtn = Button(f3, text="Εμφάνιση", font='Helvetica 10 bold', command=lambda: threading2(combo))
+formBtn.pack(side="right")
+combo.pack(side="right")
+#formBtn.grid(column=2, row=8, padx=(10, 10))
+
+f3.grid(column=0, row=8, sticky=W, padx=(10, 10))
+text_area = Canvas(root, background="white", width=1250, height=400)
+text_area.grid(row=9, column=0, sticky=N+S+E+W, columnspan=3, rowspan=7, padx=(10, 10), pady=(10, 10))
+
+sbVerticalScrollBar = Scrollbar(root, orient=VERTICAL, command=text_area.yview)
+sbVerticalScrollBar.grid(column=0, row=9, sticky=N + S + E, columnspan=3, rowspan=7, pady=(10, 23))
+sbHorizontalScrollBar = Scrollbar(root, orient=HORIZONTAL, command=text_area.xview)
+sbHorizontalScrollBar.grid(column=0, row=9, sticky=S + W + E, columnspan=3, rowspan=7, padx=(10, 0), pady=(0, 10))
+
+text_area.configure(yscrollcommand=sbVerticalScrollBar)
+text_area.configure(xscrollcommand=sbHorizontalScrollBar)
+text_area.bind('<Configure>', lambda e: text_area.configure(scrollregion = text_area.bbox("all")))
+f2 = Frame(text_area)
+text_area.create_window((0,0), window=f2, anchor="nw")
+pb1 = ttk.Progressbar(root, orient=HORIZONTAL, length=954, mode='determinate')
+pb1.grid(column=1, row=6, columnspan=2, padx=10, pady=(0, 10))
+
+
+
+getLastRun()
 getSums()
-
+GUI.dataGridFill(app,"production")
 root.mainloop()

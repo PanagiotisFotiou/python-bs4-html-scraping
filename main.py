@@ -4,7 +4,7 @@ import mariadb
 import time
 import sys
 from connect_db import *
-#from productions import *
+from productions import *
 
 
 def main():

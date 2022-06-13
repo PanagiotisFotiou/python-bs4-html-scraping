@@ -20,3 +20,4 @@ class PythonCornerExample(SMWinservice):
 
 if __name__ == '__main__':
     PythonCornerExample.parse_command_line()
+
