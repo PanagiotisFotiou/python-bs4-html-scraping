@@ -22,24 +22,24 @@ conn2, cursor2 = connect_to_db()
 venue_titles = []
 system_id = ''
 
+
 class GUI(object):
     def __init__(self, master):
         self.master = master
         # width = master.winfo_screenwidth()
         # height = master.winfo_screenheight()
-        #self.master.geometry("%dx%d" % (width, height))
+        # self.master.geometry("%dx%d" % (width, height))
         self.master.title("Python HTML Scraping")
         # p1 = PhotoImage(file='info.png')
         self.master.iconphoto(False, PhotoImage(file='icons\pngwing.png'))
         self.master.configure(bg='#32c1d5')
-        #self.master.resizable(0, 0)
+        # self.master.resizable(0, 0)
         self.Console = Text(master, height=15, width=120)
         self.scroll = Scrollbar(master, borderwidth=50)
         self.scroll.config(command=self.Console.yview)
         self.Console.grid(column=1, row=1, columnspan=2, rowspan=5, padx=(10, 0), sticky=W)
         self.scroll.grid(column=1, row=1, columnspan=2, rowspan=5, sticky=E + N + S)
         self.Console.config(state=DISABLED)
-
 
     def quit(self):
         self.master.destroy()
@@ -60,7 +60,7 @@ class GUI(object):
         self.Console.delete('1.0', END)
         self.Console.config(state=DISABLED)
 
-    def dataGridFill(self,tableName):
+    def dataGridFill(self, tableName):
         try:
             for widget in f2.winfo_children():
                 widget.destroy()
@@ -70,7 +70,7 @@ class GUI(object):
             col = 0
             for row in cursor2.description:
                 e = Label(f2, width=15, text=row[0], relief='flat', anchor="w", font='Helvetica 12 bold')
-                e.grid(row=i, column= col)
+                e.grid(row=i, column=col)
                 col = col + 1
             i = i + 1
 
@@ -80,12 +80,12 @@ class GUI(object):
                     cellTextLimited = str(cellText)[0:25]
                     if len(cellTextLimited) > 24:
                         cellTextLimited += "..."
-                    e = Button(f2, width=22, height=2 , text=cellTextLimited, borderwidth=2, relief='ridge', anchor="w", bg="white", command= lambda cellText=cellText: clickTableCell(cellText))
+                    e = Button(f2, width=22, height=2, text=cellTextLimited, borderwidth=2, relief='ridge', anchor="w",
+                               bg="white", command=lambda cellText=cellText: clickTableCell(cellText))
                     e.grid(row=i, column=j)
                 i = i + 1
         except mariadb.Error as e:
             print(f"Database Error: {e}")
-
 
 
 root = Tk()
@@ -107,7 +107,7 @@ def deleteTablesConfirm():
 
 def clickTableCell(text):
     toplevel = Toplevel()
-    #root.eval(f'tk::PlaceWindow {str(toplevel)} center')
+    # root.eval(f'tk::PlaceWindow {str(toplevel)} center')
     toplevel.title("Τιμή πεδίόυ")
     toplevel.iconphoto(False, PhotoImage(file='icons\pngwing.png'))
     label1 = Label(toplevel, text=text, bg="white")
@@ -145,7 +145,7 @@ def var_name(timerLabel):
                 minute += 1
             if (minute == 60):
                 minute = 0
-                hour += 1;
+                hours += 1;
 
     value()
 
@@ -169,12 +169,15 @@ def Reset(label):
     global count
     count = -1
 
+
 def step(num):
     root.update_idletasks()
     pb1['value'] += num
 
+
 def threading():
     Thread(target=begin_productions_scraping).start()
+
 
 def threading2(el):
     if el:
@@ -182,6 +185,7 @@ def threading2(el):
 
 
 pause_status = 0
+
 
 def getPauseStatus():
     global pause_status
@@ -285,7 +289,7 @@ def scrap_by_production(url):
                         "UPDATE production SET OrganizerID=?, Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
                         (organizer_id, title, description, url, production_name, media_url, duration, system_id,
                          existed_production_id))
-                    GUI.write(app, "Εντοπίστηκαν διαφορές στην σελίδα του θεατρικού και εγίναν οι κατάλληλες ενημέρωσεις τιμών")
+                    GUI.write(app,"Εντοπίστηκαν διαφορές στην σελίδα του θεατρικού και εγίναν οι κατάλληλες ενημέρωσεις τιμών")
             else:
                 cursor.execute(
                     "INSERT INTO production (OrganizerID,Title,Description,URL,Producer,MediaURL, Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?,?)",
@@ -298,8 +302,10 @@ def scrap_by_production(url):
                 if row[2] != title or row[3] != description or row[5] != production_name or row[6] != media_url or row[7] != duration:
                     cursor.execute(
                         "UPDATE production SET  Title=?, Description=?, URL=?, Producer=?, MediaURL=?, Duration=?, SystemID=? WHERE ID=?",
-                        (title, description, url, production_name, media_url, duration, system_id, existed_production_id))
-                    GUI.write(app, "Εντοπίστηκαν διαφορές στην σελίδα του θεατρικού και εγίναν οι κατάλληλες ενημέρωσεις τιμών")
+                        (title, description, url, production_name, media_url, duration, system_id,
+                         existed_production_id))
+                    GUI.write(app,
+                              "Εντοπίστηκαν διαφορές στην σελίδα του θεατρικού και εγίναν οι κατάλληλες ενημέρωσεις τιμών")
             else:
                 cursor.execute(
                     "INSERT INTO production (Title,Description,URL,Producer,MediaURL,Duration,SystemID) VALUES (?, ?, ?, ?, ?, ? ,?)",
@@ -312,9 +318,12 @@ def scrap_by_production(url):
 
 
 def begin_productions_scraping():
+
     btn['state'] = DISABLED
     btn4['state'] = DISABLED
     btn11['state'] = NORMAL
+    conn, cursor = connect_to_db()
+
     Start(timerLabel)
     url = 'https://www.viva.gr/tickets/theatre/'
     page = requests.get(url)
@@ -366,8 +375,8 @@ def begin_productions_scraping():
             btn1['state'] = DISABLED
             btn4['state'] = DISABLED
             btn11['state'] = NORMAL
-        GUI.write(app, str(idx + 1) + "/" + str(len(all_results)) + " --> " + all_results_names[idx] + " (" + productionStatus[idx] + ")")
-        idx += 1
+        GUI.write(app, str(idx + 1) + "/" + str(len(all_results)) + " --> " + all_results_names[idx] + " (" +
+                  productionStatus[idx] + ")")
         play_url = urljoin(url, each_play['href'])
         print("scraping url: " + play_url)
         scrap_by_production(play_url)  # fill production table
@@ -376,16 +385,17 @@ def begin_productions_scraping():
         scrap_persons(play_url)  # scrap person including roles and contributions
         getSums()
         step(percentage)
+        idx += 1
 
+    try:
+        cursor.execute("UPDATE system SET date=? WHERE ID=?", (datetime.datetime.now(), 2))
+    except mariadb.Error as e:
+        print(f"Database Error: {e}")
+    getLastRun()
     fill_venue(venue_titles)
     btn['state'] = NORMAL
     Stop()
     GUI.write(app, "Η διαδικασία ολοκληρώθηκε!")
-    try:
-        cursor.execute("UPDATE system SET date=? WHERE ID=?",(datetime.datetime.now(), 2))
-    except mariadb.Error as e:
-        print(f"Database Error: {e}")
-    getLastRun()
 
 # End of begin_productions_scraping function
 
@@ -569,7 +579,6 @@ def scrap_persons(url):
     page = requests.get(url)
     soup_alt = BeautifulSoup(page.content, 'html.parser')
     person_id, production_id, role_id, subrole = '', '', '', ''
-    subrole_flag = 0
 
     try:
         search = text = re.compile('Συντελεστές$')
@@ -583,54 +592,72 @@ def scrap_persons(url):
         for each in syntelestes_text.split('\n'):
             if len(each) > 0 and len(each) < 150:
                 print("len(each): ", len(each))
+                each = each.replace('•', ':')
                 each = each.replace('|', ':')
                 line = each.split(":")
                 length = len(line)
 
-                if (length > 1) and (len(line[1].strip()) > 0):
+                if line[0].strip() == 'Ταυτότητα Παράστασης':
+                    continue
+
+                if (length > 1) and (len(line[1].strip()) > 0):#if row has "%:%"
                     job = line[0].strip()
                     full_name = line[1].strip()
-                    names = re.split(', |- ', full_name)
+                    names = re.split(',|-•&/', full_name)
 
-                    if(job == 'Πρωταγωνιστούν'):
-                        subrole_flag == 1
+                    if len(full_name.split()) > 2 and len(' '.join(full_name.split()[2:3])) > 3:
+                        subrole = ' '.join(full_name.split()[2:3])
 
-                    if (subrole_flag == 1):
-                        subrole = line[0].strip()
+                    if job == 'Πρωταγωνιστούν':
                         role_id = insertRoletoDb('Ηθοποιός')
                     else:
                         role_id = insertRoletoDb(job.strip())
-
-                    print("job: " + job)
-
-                    if len(names) > 1:
-                        for each_name in names:
-                            print("len(names)", len(names))
-                            name = each_name.strip()  # .replace(u"\xa0"," ")
-                            print("List names: " + name)
-                            person_id = insertPersonToDB(name)
-                            insertContributionToDB(url, person_id, role_id, subrole)
-
-                    elif all(x.isalpha() or x.isspace() for x in full_name) and (len(full_name.split()) == 2) and (full_name[0].isupper()): #if full name is 2 words and alphabetical and first letter is Capital
-                        name = full_name.strip()  # .replace(u"\xa0", " ")
-                        print("name: " + full_name.strip())
-                        person_id = insertPersonToDB(name)
-                        insertContributionToDB(url, person_id, role_id, subrole)
-
-                elif length == 1 and (len(line[0].split(" ")) < 4):
-
-                    names = re.split(', |- ', line[0])
-                    for each_name in names:
-                        name = each_name.strip()  # .replace(u"\xa0", " ")
-                        if len(name.split(" ")) < 2:
-                            subrole_flag = 1
+                        if all(x.isupper() or x.isspace() for x in job.strip()) or len(job.strip) == 0:
                             continue
-                        print("sub role: " + subrole + " onoma: " + name)
-                        role_id = insertRoletoDb('Ηθοποιός')
-                        person_id = insertPersonToDB(name)
-                        insertContributionToDB(url, person_id, role_id, subrole)
+
+                    print("role_id: " + str(role_id))
+                    if len(str(names)) > 1:
+                        for each_name in names:
+                            subrole = each_name.strip().split()[2:3]
+                            if re.sub('\W+',' ', ''.join(subrole)).isnumeric() or len(re.sub('\W+',' ', ''.join(subrole))) < 3:
+                                subrole = ''
+                            each_name = each_name.strip().split()[:2]
+                            print("subrole: " + re.sub('\W+',' ', ''.join(subrole)))
+                            print("each_name: " + str(each_name))
+                            if all(x.isalpha() or x.isspace() for x in each_name) and (len(each_name) == 2) and len(each_name[0]) > 1 and len(each_name[1]) > 1:
+                                if (each_name[0][0].isupper()) and (each_name[1][0].isupper()) and (each_name[0][1].islower()) and (each_name[1][1].islower()):
+                                    print("role_id: " + str(role_id))
+                                    name = ' '.join(each_name)
+                                    person_id = insertPersonToDB(name)
+                                    insertContributionToDB(url, person_id, role_id, re.sub('\W+',' ', ''.join(subrole)))
+
+                    elif all(x.isalpha() or x.isspace() for x in full_name.split()[:2]) and (len(full_name.split()[:2]) == 2) and len(str(names)) == 1 :  # if full name is 2 words and alphabetical and first letter is Capital
+                        if full_name.split()[:2][0][0].isupper() and full_name.split()[:2][1][0].isupper() and full_name.split()[:2][0][1].islower() and full_name.split()[:2][1][0].islower():
+                            name = ' '.join(full_name)
+                            print("name: " + name)
+                            print("role_id: " + str(role_id))
+                            person_id = insertPersonToDB(name)
+                            insertContributionToDB(url, person_id, role_id, re.sub('\W+',' ', ''.join(subrole)))
+
+                elif length == 1: #and (len(line[0].split(" ")) < 4):
+                    names = re.split(',|-•&/', line[0].strip())
+                    for each_name in names:
+                        subrole = ''
+                        name = each_name.split()[:2]
+
+                        if len(each_name.split()) > 2 and len(' '.join(each_name.split()[2:3])) > 3:
+                            subrole = str(each_name.split()[2:3])
+
+                        if all(x.isalpha() or x.isspace() for x in each_name.split()[:2]) and (len(name) == 2) and len(name[0]) > 1 and len(name[1]) > 1:
+                            if (name[0][0].isupper()) and (name[1][0].isupper()) and (name[0][1].islower()) and (name[1][1].islower()):
+                                print("sub role: " + ' '.join(subrole) + " onoma: " + ' '.join(name))
+                                role_id = insertRoletoDb('Ηθοποιός')
+                                person_id = insertPersonToDB(' '.join(name))
+                                insertContributionToDB(url, person_id, role_id, re.sub('\W+',' ', ''.join(subrole)))
                 else:
                     print("skipped line: " + line[0])
+            else:
+                print("skipped line too many chars")
     except AttributeError as error:
         return 0
 
@@ -748,6 +775,7 @@ def getSums():
     entryvar4.set(getGetActorsFromDB())
     entryvar5.set(getGetCountFromDB("venue"))
 
+
 def getLastRun():
     try:
         cursor.execute("SELECT date FROM `system` WHERE name='Python'")
@@ -758,8 +786,9 @@ def getLastRun():
     lastRunFrameLabelText.config(text=date)
 
 
+
 titleLabel = Label(root, text="ΣΥΣΤΗΜΑ HTML SCRAPING VIVA.GR", font='Helvetica 16 bold')
-titleLabel.grid(column=0, row=0, columnspan=5, pady=(0, 10),sticky=W+E+N+S)
+titleLabel.grid(column=0, row=0, columnspan=5, pady=(0, 10), sticky=W + E + N + S)
 f0 = Frame(root)
 f1 = Frame(root)
 timerLabelText = Label(f0, text="Χρόνος :")
@@ -781,16 +810,17 @@ f1.grid(column=0, row=2, pady=(10, 10), padx=(10, 0))
 btn1.pack(side="left")
 btn111.pack(side="right")
 btn11.pack(side="right")
-btn2.grid(column=3, row=5, columnspan=2, sticky=W+E+N+S, padx=(10, 10))
-#btn3.grid(column=0, row=3, sticky=W+E+N+S, padx=(10, 0), pady=(10, 10))
-btn4.grid(column=3, row=15, columnspan=2, sticky=W+E+N+S, pady=(10, 10), padx=(10, 10))
+btn2.grid(column=3, row=5, columnspan=2, sticky=W + E + N + S, padx=(10, 10))
+btn3.grid(column=2, row=5, sticky=E, padx=(0, 20), pady=(0, 0))
+btn4.grid(column=3, row=15, columnspan=2, sticky=W + E + N + S, pady=(10, 10), padx=(10, 10))
 
 detailsFrame = Frame(root, bg="#FFFF99")
 lastRunFrameLabelText = Label(detailsFrame, font='Helvetica 10 bold', bg="#FFFF99")
-lastRunFrameLabel = Label(detailsFrame, text='Τελευταία επιτυχημένη ολοκλήρωση :', font='Helvetica 10 bold', bg="#FFFF99")
-detailsFrame.grid(column=3, row=1, sticky=W+E+N+S, padx=(10, 10), pady=(0, 10))
-lastRunFrameLabel.grid(column=3, row=2, sticky=W+E+N+S, padx=(10, 0), pady=(0, 10))
-lastRunFrameLabelText.grid(column=4, row=2, sticky=W+E+N+S, padx=(0, 10), pady=(0, 10))
+lastRunFrameLabel = Label(detailsFrame, text='Τελευταία επιτυχημένη ολοκλήρωση :', font='Helvetica 10 bold',
+                          bg="#FFFF99")
+detailsFrame.grid(column=3, row=1, sticky=W + E + N + S, padx=(10, 10), pady=(0, 10))
+lastRunFrameLabel.grid(column=3, row=2, sticky=W + E + N + S, padx=(10, 0), pady=(0, 10))
+lastRunFrameLabelText.grid(column=4, row=2, sticky=W + E + N + S, padx=(0, 10), pady=(0, 10))
 
 systemLabelHeader = Label(detailsFrame, text='Πληροφορίες συστήματος', font='Helvetica 12 bold underline', bg="#FFFF99")
 systemLabelHeader.grid(column=3, row=1, columnspan=2, sticky=W, padx=(10, 10), pady=(10, 10))
@@ -801,7 +831,7 @@ systemLabel2.grid(column=3, row=4, columnspan=2, sticky=W, padx=(10, 10), pady=(
 
 f5 = Frame(root, bg="white")
 label = Label(root, text="ΔΕΔΟΜΕΝΑ", font='Helvetica 16 bold')
-label.grid(column=0, row=7, columnspan=5, sticky=W+E+N+S, padx=(0, 0), pady=(0, 10))
+label.grid(column=0, row=7, columnspan=5, sticky=W + E + N + S, padx=(0, 0), pady=(0, 10))
 label2 = Label(f5, text=" Έργα:", bg="white", font='Helvetica 11 bold')
 img2 = PhotoImage(file="icons/erga.png")
 label2["compound"] = LEFT
@@ -823,40 +853,46 @@ img6 = PhotoImage(file="icons/venue.png")
 label6["compound"] = LEFT
 label6["image"] = img6
 label7 = Label(f5, text="Σύνολα εγγραφών", font='Helvetica 14 bold underline', bg="white")
-label2.grid(column=3, row=10, sticky=W, padx=(10, 10), pady=(0,10))
-label3.grid(column=3, row=11, sticky=W, padx=(10, 10), pady=(0,10))
-label4.grid(column=3, row=12, sticky=W, padx=(10, 10), pady=(0,10))
-label5.grid(column=3, row=13, sticky=W, padx=(10, 10), pady=(0,10))
-label6.grid(column=3, row=14, sticky=W, padx=(10, 10), pady=(0,10))
-label7.grid(column=3, row=9, sticky=W+E+N+S, columnspan=2, padx=(100, 100),pady=(10, 10))
-f5.grid(column=3, row=9, sticky=W+E+N+S, padx=(10, 10), pady=(10, 0))
+label2.grid(column=3, row=10, sticky=W, padx=(10, 10), pady=(0, 10))
+label3.grid(column=3, row=11, sticky=W, padx=(10, 10), pady=(0, 10))
+label4.grid(column=3, row=12, sticky=W, padx=(10, 10), pady=(0, 10))
+label5.grid(column=3, row=13, sticky=W, padx=(10, 10), pady=(0, 10))
+label6.grid(column=3, row=14, sticky=W, padx=(10, 10), pady=(0, 10))
+label7.grid(column=3, row=9, sticky=W + E + N + S, columnspan=2, padx=(100, 100), pady=(10, 10))
+f5.grid(column=3, row=9, sticky=W + E + N + S, padx=(10, 10), pady=(10, 0))
 
 entryvar1, entryvar2, entryvar3, entryvar4, entryvar5 = StringVar(), StringVar(), StringVar(), StringVar(), StringVar()
-entry, entry2, entry3, entry4, entry5 = Label(f5, textvariable=entryvar1, font='Helvetica 11 bold', bg="white"), Label(f5, textvariable=entryvar2, font='Helvetica 11 bold', bg="white"), Label(
-    f5, textvariable=entryvar3, font='Helvetica 11 bold', bg="white"), Label(f5, textvariable=entryvar4, font='Helvetica 11 bold', bg="white"), Label(f5, textvariable=entryvar5, font='Helvetica 11 bold', bg="white")
+entry, entry2, entry3, entry4, entry5 = Label(f5, textvariable=entryvar1, font='Helvetica 11 bold', bg="white"), Label(
+    f5, textvariable=entryvar2, font='Helvetica 11 bold', bg="white"), Label(
+    f5, textvariable=entryvar3, font='Helvetica 11 bold', bg="white"), Label(f5, textvariable=entryvar4,
+                                                                             font='Helvetica 11 bold',
+                                                                             bg="white"), Label(f5,
+                                                                                                textvariable=entryvar5,
+                                                                                                font='Helvetica 11 bold',
+                                                                                                bg="white")
 
-entry.grid(column=4, row=10, padx=(0, 10), pady=(0,10))
-entry2.grid(column=4, row=11, padx=(0, 10), pady=(0,10))
-entry3.grid(column=4, row=12, padx=(0, 10), pady=(0,10))
-entry4.grid(column=4, row=13, padx=(0, 10), pady=(0,10))
-entry5.grid(column=4, row=14, padx=(0, 10), pady=(0,10))
+entry.grid(column=4, row=10, padx=(0, 10), pady=(0, 10))
+entry2.grid(column=4, row=11, padx=(0, 10), pady=(0, 10))
+entry3.grid(column=4, row=12, padx=(0, 10), pady=(0, 10))
+entry4.grid(column=4, row=13, padx=(0, 10), pady=(0, 10))
+entry5.grid(column=4, row=14, padx=(0, 10), pady=(0, 10))
 
 f3 = Frame(root)
 labelTable = Label(f3, text="Επιλογή Πίνακα :", font='Helvetica 10 bold')
 labelTable.pack(side="left", padx=6)
-#labelTable.grid(column=0, row=8, sticky=W, padx=(10, 10))
+# labelTable.grid(column=0, row=8, sticky=W, padx=(10, 10))
 databaseList = ["production", "organizer", "venue", "events", "persons", "roles", "contributions", "changeLog"]
 combo = ttk.Combobox(f3, state="readonly", values=databaseList, font=("TkDefaultFont", 14))
 combo.current(0)
-#combo.grid(column=1, row=8, padx=(10, 10))
+# combo.grid(column=1, row=8, padx=(10, 10))
 formBtn = Button(f3, text="Εμφάνιση", font='Helvetica 10 bold', command=lambda: threading2(combo))
 formBtn.pack(side="right")
 combo.pack(side="right")
-#formBtn.grid(column=2, row=8, padx=(10, 10))
+# formBtn.grid(column=2, row=8, padx=(10, 10))
 
 f3.grid(column=0, row=8, sticky=W, padx=(10, 10))
-text_area = Canvas(root, background="white", width=1250, height=400)
-text_area.grid(row=9, column=0, sticky=N+S+E+W, columnspan=3, rowspan=7, padx=(10, 10), pady=(10, 10))
+text_area = Canvas(root, width=1250, height=400)
+text_area.grid(row=9, column=0, sticky=N + S + E + W, columnspan=3, rowspan=7, padx=(10, 10), pady=(10, 10))
 
 sbVerticalScrollBar = Scrollbar(root, orient=VERTICAL, command=text_area.yview)
 sbVerticalScrollBar.grid(column=0, row=9, sticky=N + S + E, columnspan=3, rowspan=7, pady=(10, 23))
@@ -865,15 +901,13 @@ sbHorizontalScrollBar.grid(column=0, row=9, sticky=S + W + E, columnspan=3, rows
 
 text_area.configure(yscrollcommand=sbVerticalScrollBar)
 text_area.configure(xscrollcommand=sbHorizontalScrollBar)
-text_area.bind('<Configure>', lambda e: text_area.configure(scrollregion = text_area.bbox("all")))
+text_area.bind('<Configure>', lambda e: text_area.configure(scrollregion=text_area.bbox("all")))
 f2 = Frame(text_area)
-text_area.create_window((0,0), window=f2, anchor="nw")
-pb1 = ttk.Progressbar(root, orient=HORIZONTAL, length=954, mode='determinate')
-pb1.grid(column=1, row=6, columnspan=2, padx=10, pady=(0, 10))
-
-
+text_area.create_window((0, 0), window=f2, anchor="nw")
+pb1 = ttk.Progressbar(root, orient=HORIZONTAL, length=950, mode='determinate')
+pb1.grid(column=1, row=6, columnspan=2, padx=(10, 0) ,pady=(0, 10), sticky=W)
 
 getLastRun()
 getSums()
-GUI.dataGridFill(app,"production")
+GUI.dataGridFill(app, "production")
 root.mainloop()
