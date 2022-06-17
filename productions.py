@@ -112,6 +112,7 @@ def clickTableCell(text):
     toplevel.iconphoto(False, PhotoImage(file='icons\pngwing.png'))
     label1 = Label(toplevel, text=text, bg="white")
     label1.pack(padx=130, pady=30)
+    Button(toplevel, text="OK", font=("Helvetica", 10, "bold"), command=lambda: closePopup(toplevel)).pack(pady=20)
     toplevel.update()
     width = label1.winfo_width()
     if width > 600:
@@ -119,6 +120,10 @@ def clickTableCell(text):
         wrapped_text = '\n'.join(wrap(text, 120))
         label1['text'] = wrapped_text
     toplevel.mainloop()
+
+
+def closePopup(toplevel):
+   toplevel.destroy()
 
 
 sec = -1
@@ -387,6 +392,7 @@ def begin_productions_scraping():
         step(percentage)
         idx += 1
 
+    conn, cursor = connect_to_db()
     try:
         cursor.execute("UPDATE system SET date=? WHERE ID=?", (datetime.datetime.now(), 2))
     except mariadb.Error as e:
@@ -612,21 +618,19 @@ def scrap_persons(url):
                         role_id = insertRoletoDb('Ηθοποιός')
                     else:
                         role_id = insertRoletoDb(job.strip())
-                        if all(x.isupper() or x.isspace() for x in job.strip()) or len(job.strip) == 0:
+                        if all(x.isupper() or x.isspace() or x == "/" for x in job.strip()) or len(job.strip()) == 0 or all(x.islower() or x.isspace() for x in job.strip()):
                             continue
 
-                    print("role_id: " + str(role_id))
                     if len(str(names)) > 1:
                         for each_name in names:
                             subrole = each_name.strip().split()[2:3]
-                            if re.sub('\W+',' ', ''.join(subrole)).isnumeric() or len(re.sub('\W+',' ', ''.join(subrole))) < 3:
+                            if re.sub('\W+',' ', ''.join(subrole)).isnumeric() or len(re.sub('\W+',' ', ''.join(subrole).strip())) < 4:
                                 subrole = ''
                             each_name = each_name.strip().split()[:2]
                             print("subrole: " + re.sub('\W+',' ', ''.join(subrole)))
                             print("each_name: " + str(each_name))
                             if all(x.isalpha() or x.isspace() for x in each_name) and (len(each_name) == 2) and len(each_name[0]) > 1 and len(each_name[1]) > 1:
                                 if (each_name[0][0].isupper()) and (each_name[1][0].isupper()) and (each_name[0][1].islower()) and (each_name[1][1].islower()):
-                                    print("role_id: " + str(role_id))
                                     name = ' '.join(each_name)
                                     person_id = insertPersonToDB(name)
                                     insertContributionToDB(url, person_id, role_id, re.sub('\W+',' ', ''.join(subrole)))
@@ -635,7 +639,6 @@ def scrap_persons(url):
                         if full_name.split()[:2][0][0].isupper() and full_name.split()[:2][1][0].isupper() and full_name.split()[:2][0][1].islower() and full_name.split()[:2][1][0].islower():
                             name = ' '.join(full_name)
                             print("name: " + name)
-                            print("role_id: " + str(role_id))
                             person_id = insertPersonToDB(name)
                             insertContributionToDB(url, person_id, role_id, re.sub('\W+',' ', ''.join(subrole)))
 
@@ -663,6 +666,8 @@ def scrap_persons(url):
 
 
 def insertRoletoDb(role):
+    if all(x.isupper() or x.isspace() or x == "/" for x in role) or len(role) == 0 or all(x.islower() or x.isspace() for x in role):
+        return
     cursor.execute(
         "SELECT DISTINCT ID FROM roles WHERE Role=?",
         (role,))
