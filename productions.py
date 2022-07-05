@@ -7,6 +7,7 @@ import datetime
 import time
 import re
 import unidecode
+import uuid
 from connect_db import *
 from urllib.parse import urljoin
 from selenium import webdriver
@@ -21,15 +22,17 @@ conn, cursor = connect_to_db()
 conn2, cursor2 = connect_to_db()
 venue_titles = []
 system_id = ''
-
+global sess_id
+sess_id = str(uuid.uuid1())
 
 class GUI(object):
     def __init__(self, master):
         self.master = master
-        # width = master.winfo_screenwidth()
-        # height = master.winfo_screenheight()
-        # self.master.geometry("%dx%d" % (width, height))
+        width = master.winfo_screenwidth()
+        height = master.winfo_screenheight()
+        self.master.geometry("%dx%d" % (width, height - 200))
         self.master.title("Python HTML Scraping")
+        self.master.grid_columnconfigure(0, weight=1)
         # p1 = PhotoImage(file='info.png')
         self.master.iconphoto(False, PhotoImage(file='icons\pngwing.png'))
         self.master.configure(bg='#32c1d5')
@@ -37,9 +40,10 @@ class GUI(object):
         self.Console = Text(master, height=15, width=120)
         self.scroll = Scrollbar(master, borderwidth=50)
         self.scroll.config(command=self.Console.yview)
-        self.Console.grid(column=1, row=1, columnspan=2, rowspan=5, padx=(10, 0), sticky=W)
-        self.scroll.grid(column=1, row=1, columnspan=2, rowspan=5, sticky=E + N + S)
+        self.Console.grid(column=1, row=1, columnspan=2, rowspan=5, padx=(10, 100), sticky=W)
+        self.scroll.grid(column=1, row=1, columnspan=2, rowspan=5, padx=(10, 100), sticky=E + N + S)
         self.Console.config(state=DISABLED)
+
 
     def quit(self):
         self.master.destroy()
@@ -181,6 +185,13 @@ def step(num):
 
 
 def threading():
+    conn, cursor = connect_to_db()
+    try:
+        cursor.execute(
+            "INSERT INTO changeLog (EventType, Value) VALUES (?, ?)",
+            ('Scraping started!', 'Session ID: ' + sess_id))
+    except mariadb.Error as e:
+        print(f"Database Error: {e}")
     Thread(target=begin_productions_scraping).start()
 
 
@@ -200,10 +211,18 @@ def getPauseStatus():
 def setPauseStatus(num):
     global pause_status
     pause_status = num
+    if num == 1:
+        conn, cursor = connect_to_db()
+        try:
+            cursor.execute(
+                "INSERT INTO changeLog (EventType, Value) VALUES (?, ?)",
+                ('Scraping paused', 'Session ID: ' + sess_id))
+        except mariadb.Error as e:
+            print(f"Database Error: {e}")
 
 
 def pauseScraping():
-    GUI.write(app, "Έχει σταλεί αίτημα για πάυση της λειτουργίας scraping")
+    GUI.write(app, "Έχει σταλεί αίτημα για παύση της λειτουργίας scraping")
     setPauseStatus(1)
     btn11['state'] = DISABLED
 
@@ -212,6 +231,13 @@ def resumeScraping():
     btn11['state'] = NORMAL
     var.set(1)
     Start(timerLabel)
+    conn, cursor = connect_to_db()
+    try:
+        cursor.execute(
+            "INSERT INTO changeLog (EventType, Value) VALUES (?, ?)",
+            ('Scraping unpaused', 'Session ID: ' + sess_id))
+    except mariadb.Error as e:
+        print(f"Database Error: {e}")
 
 
 def getSystemId(system_id):
@@ -395,6 +421,9 @@ def begin_productions_scraping():
     conn, cursor = connect_to_db()
     try:
         cursor.execute("UPDATE system SET date=? WHERE ID=?", (datetime.datetime.now(), 2))
+        cursor.execute(
+            "INSERT INTO changeLog (EventType, Value) VALUES (?, ?)",
+            ('Scraping finished!', 'Session ID: ' + sess_id))
     except mariadb.Error as e:
         print(f"Database Error: {e}")
     getLastRun()
@@ -436,7 +465,8 @@ def venue_scrap(url):
 def scrap_events(url, status):
     options = FirefoxOptions()
     options.add_argument("--headless")
-    driver = webdriver.Firefox(executable_path=r'C:\geckodriver.exe', options=options)
+    options.add_argument("hide_console")
+    driver = webdriver.Firefox(executable_path='.\geckodriver.exe', options=options)
     driver.get(url)
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
@@ -801,7 +831,7 @@ timerLabel = Label(f0, text="")
 btn = Button(f0, text="Ξεκίνα το  Scraping", font='Helvetica 11 bold', command=lambda: threading())
 btn1 = Button(f1, text="Συνέχεια", command=lambda: resumeScraping(), font='Helvetica 11 bold')
 btn1['state'] = DISABLED
-btn11 = Button(f1, text="Πάυση", command=pauseScraping, font='Helvetica 11 bold')
+btn11 = Button(f1, text="Παύση", command=pauseScraping, font='Helvetica 11 bold')
 btn11['state'] = DISABLED
 btn111 = Button(f1, text="Κλείσιμο", command=ExitApplication, bg='brown', fg='white', font='Helvetica 11 bold')
 btn2 = Button(root, text="Άδειασμα Πινάκων", command=deleteTablesConfirm, font='Helvetica 10 bold')
@@ -816,7 +846,7 @@ btn1.pack(side="left")
 btn111.pack(side="right")
 btn11.pack(side="right")
 btn2.grid(column=3, row=5, columnspan=2, sticky=W + E + N + S, padx=(10, 10))
-btn3.grid(column=2, row=5, sticky=E, padx=(0, 20), pady=(0, 0))
+btn3.grid(column=2, row=5, sticky=E, padx=(0, 120), pady=(0, 0))
 btn4.grid(column=3, row=15, columnspan=2, sticky=W + E + N + S, pady=(10, 10), padx=(10, 10))
 
 detailsFrame = Frame(root, bg="#FFFF99")
@@ -836,7 +866,7 @@ systemLabel2.grid(column=3, row=4, columnspan=2, sticky=W, padx=(10, 10), pady=(
 
 f5 = Frame(root, bg="white")
 label = Label(root, text="ΔΕΔΟΜΕΝΑ", font='Helvetica 16 bold')
-label.grid(column=0, row=7, columnspan=5, sticky=W + E + N + S, padx=(0, 0), pady=(0, 10))
+label.grid(column=0, row=7, columnspan=5, sticky=W + E + N + S, padx=(0, 0), pady=(10, 10))
 label2 = Label(f5, text=" Έργα:", bg="white", font='Helvetica 11 bold')
 img2 = PhotoImage(file="icons/erga.png")
 label2["compound"] = LEFT

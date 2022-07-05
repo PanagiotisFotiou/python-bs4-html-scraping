@@ -7,17 +7,20 @@ import datetime
 import time
 import re
 import unidecode
+import uuid
 from connect_db import *
 from urllib.parse import urljoin
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from textwrap import wrap
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 
 conn, cursor = connect_to_db()
-conn2, cursor2 = connect_to_db()
 venue_titles = []
 system_id = ''
-
+global sess_id
+sess_id = str(uuid.uuid1())
 
 def getSystemId(system_id):
     try:
@@ -143,6 +146,13 @@ def begin_productions_scraping():
 
     idx = 0
     percentage = 100 / float(len(all_results))
+    conn, cursor = connect_to_db()
+    try:
+        cursor.execute(
+            "INSERT INTO changeLog (EventType, Value) VALUES (?, ?)",
+            ('Scraping started!', 'Session ID: ' + sess_id))
+    except mariadb.Error as e:
+        print(f"Database Error: {e}")
 
     for each_play in all_results:
 
@@ -155,7 +165,10 @@ def begin_productions_scraping():
 
     conn, cursor = connect_to_db()
     try:
-        cursor.execute("UPDATE system SET date=? WHERE ID=?", (datetime.datetime.now(), 2))
+        cursor.execute("UPDATE system SET date=? WHERE ID=?", (datetime.now(), 2))
+        cursor.execute(
+            "INSERT INTO changeLog (EventType, Value) VALUES (?, ?)",
+            ('Scraping finished!', 'Session ID: ' + sess_id))
     except mariadb.Error as e:
         print(f"Database Error: {e}")
     fill_venue(venue_titles)
@@ -206,7 +219,7 @@ def scrap_events(url, status):
             unformatted_date = re.findall("\d+/\d+", date)
             formatted_date = ''.join(map(str, unformatted_date)).split("/")
             hour = each_event.find(class_="events-container__item-time").getText().strip()
-            now = datetime.datetime.now()
+            now = datetime.now()
             try:
                 full_date = f"{now.year}-{formatted_date[1]}-{formatted_date[0]} {hour}"
             except IndexError as error:
@@ -521,4 +534,21 @@ def getGetActorsFromDB():
         print(f"Database Error: {e}")
     return result
 
-begin_productions_scraping()
+
+conn, cursor = connect_to_db()
+try:
+    cursor.execute("SELECT date FROM system WHERE ID=2")
+    result = cursor.fetchone()
+    now = datetime.now()
+    last_date = result[0]
+    diff = relativedelta(last_date, now)
+    tdelta = now - last_date
+    diff = tdelta.total_seconds()
+    if diff < 86400:
+        time.sleep(3600)
+    else:
+        begin_productions_scraping()
+except mariadb.Error as e:
+    print(f"Database Error: {e}")
+
+
